@@ -21,13 +21,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
     private BufferedImage background;
     private Hero hero;
-    private Target targetA;
-    private Target targetB;
-    private Fireball fireballA;
-    private boolean makeFireball;
-    private boolean hasBeenMade;
-    private boolean aHit;
-    private boolean bHit;
+   
 
     /**
      * Construct a game panel and initialize the game
@@ -35,10 +29,6 @@ public class GamePanel extends JPanel implements ActionListener {
     public GamePanel() {
         this.setLayout(null);
 
-        this.makeFireball = false;
-        this.hasBeenMade = false;
-        this.aHit = false;
-        this.bHit = false;
 
 
 
