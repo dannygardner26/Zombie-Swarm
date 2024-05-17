@@ -9,7 +9,7 @@ public class Hero extends GameObject {
     private int dx;
     private int dy;
 
-    public Hero(int x, int y, GamePanel gp) {
+    public Hero(int x, int y) {
         super(x, y);
         this.setSize(32, 36);
         direction = Direction.DOWN;
