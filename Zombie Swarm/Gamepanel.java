@@ -17,7 +17,7 @@ import java.net.URL;
  * hit by fireballs and removed from the game.
  */
 
-public class GamePanel extends JPanel implements ActionListener {
+public class Gamepanel extends JPanel implements ActionListener {
 
     private BufferedImage background;
     private Hero hero;
@@ -26,7 +26,7 @@ public class GamePanel extends JPanel implements ActionListener {
     /**
      * Construct a game panel and initialize the game
      */
-    public GamePanel() {
+    public Gamepanel() {
         this.setLayout(null);
 
 
@@ -86,7 +86,6 @@ public class GamePanel extends JPanel implements ActionListener {
 
                     case KeyEvent.VK_SPACE:
                         
-                        makeFireball = true;
                     
                         break;
                              
