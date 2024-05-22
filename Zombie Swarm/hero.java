@@ -8,8 +8,9 @@ public class Hero extends GameObject {
     private int phaseCounter;
     private int dx;
     private int dy;
+    private GamePanel gp;
 
-    public Hero(int x, int y) {
+    public Hero(int x, int y, GamePanel gp) {
         super(x, y);
         this.setSize(32, 36);
         direction = Direction.DOWN;
@@ -17,7 +18,7 @@ public class Hero extends GameObject {
         phaseCounter = 0;
         dx = 0;
         dy = 0;
-        
+        this.gp = gp;
 
         icons = new ImageIcon[4][3];
 
@@ -96,9 +97,9 @@ public class Hero extends GameObject {
 
   
          if (this.getX() + dx >= 0){ //left border
-            if(this.getX() + dx + this.getWidth() <= X){ //right border
+            if(this.getX() + dx + this.getWidth() <= 0){ //right border
                 if (this.getY()  + dy >= 0){ //top border
-                    if (this.getY() + dy + this.getHeight() <= X - this.getHeight()) //bbttom border
+                    if (this.getY() + dy + this.getHeight() <= 0 - this.getHeight()) //bbttom border
                     {
                     this.setLocation(this.getX() + dx, this.getY() + dy);
                     }

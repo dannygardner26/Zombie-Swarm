@@ -41,7 +41,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
         hero = new Hero(100, 100, tempGP);
 
-        URL imageURL = getClass().getResource("./images/background/gray_tile_background.png");
+        URL imageURL = getClass().getResource("./images/Background.jpg");
 
         try {
             background = ImageIO.read(imageURL);
@@ -93,7 +93,6 @@ public class GamePanel extends JPanel implements ActionListener {
 
                     case KeyEvent.VK_SPACE:
                         
-                        makeFireball = true;
                     
                         break;
                              
