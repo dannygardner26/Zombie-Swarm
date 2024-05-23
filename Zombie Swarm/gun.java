@@ -1,27 +1,31 @@
 import javax.swing.ImageIcon;
 
-public class Gun extends GameObject {
+public class Gun{
 
+    private ImageIcon iconGun;
 
-    private ImageIcon[][] iconGun;
-    public Gun(int x, int y){
+    public Gun(ImageIcon icon, int damage, double bulletSpeed, int reloadSpeed){
         super(x,y);
         this.setSize(15,20);
 
         iconGun = new ImageIcon[4][5];
 
-        for(int i = 0; i<iconGun.length; i++){
-            for(int j= 0; j<iconGun[0].length; j++){
-                if(i==3 && j==4){
-                    iconGun[i][j]= null;
-                }
-                iconGun[i][j]= new ImageIcon("./images/");
-            }
-        }
+        
+        
     }
 
-
     
-    
+    @Override
+    public void update() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
+    }
 
+    public void reload(){
+
+    }
+
+    public void fire(){
+
+    }
 }
