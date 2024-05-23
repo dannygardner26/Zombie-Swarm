@@ -2,6 +2,7 @@ import javax.swing.ImageIcon;
 
 public class Gun extends GameObject {
 
+
     private ImageIcon[][] iconGun;
     public Gun(int x, int y){
         super(x,y);
@@ -14,7 +15,7 @@ public class Gun extends GameObject {
                 if(i==3 && j==4){
                     iconGun[i][j]= null;
                 }
-                iconGun[i][j]= new ImageIcon("./images/")
+                iconGun[i][j]= new ImageIcon("./images/");
             }
         }
     }
