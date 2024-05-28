@@ -1,21 +1,22 @@
 import javax.swing.ImageIcon;
 
-public class Gun{
+public class Gun extends GameObject{
 
     private ImageIcon iconGun;
-    private int damage
-    private int bulletSpeed
-    private int reloadSpeed
+    private int damage;
+    private double bulletSpeed;
+    private int reloadSpeed;
+    private boolean visible;
 
 
 
 
-
-    public Gun(ImageIcon icon, int damage, double bulletSpeed, int reloadSpeed){
+    public Gun(int x, int y, ImageIcon icon, int damage, double bulletSpeed, int reloadSpeed){
         super(x,y);
         this.setSize(15,20);
 
-        iconGun = new ImageIcon[4][5];
+        this.visible = false;
+        iconGun = icon;
         this.damage = damage;
         this.bulletSpeed = bulletSpeed;
         this.reloadSpeed = reloadSpeed;

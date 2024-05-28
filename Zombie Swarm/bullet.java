@@ -1,4 +1,6 @@
-public class Bullet{
+import javax.swing.ImageIcon;
+
+public class Bullet extends GameObject{
 
     private int damage;
     private ImageIcon iconBullet;
@@ -11,8 +13,14 @@ public class Bullet{
         this.fireRate = fireRate;
         this.bulletSpeed = bulletSpeed;
 
-        iconBullet = 
+        iconBullet = new ImageIcon("./images/hero_" + i + "_" + j + ".png");
 
+    }
+
+    @Override
+    public void update() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 
 }
