@@ -31,15 +31,9 @@ public class GamePanel extends JPanel implements ActionListener {
     public GamePanel() {
         this.setLayout(null);
         tempGP = this;
-
-
-
-        
-
-
-
-
         hero = new Hero(100, 100, tempGP);
+        this.add(hero);
+        hero.setVisible(true);
 
         URL imageURL = getClass().getResource("./images/Background.jpg");
 
@@ -51,7 +45,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
         
 
-        this.add(hero);
+        
 
         
     
@@ -143,6 +137,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        hero.update();
         
     }
 
