@@ -24,7 +24,7 @@ public class Hero extends GameObject {
 
         for (int i = 0; i < icons.length; i++) {
             for (int j = 0; j < icons[i].length; j++) {
-                icons[i][j] = new ImageIcon("./images/hero_" + i + "_" + j + ".png");
+                icons[i][j] = new ImageIcon("./images/hero" + i + "_" + j + ".png");
 
             }
         }
