@@ -7,14 +7,17 @@ public class Bullet extends GameObject{
     private int fireRate;
     private double bulletSpeed;
 
-    public Bullet(int damageL, int fireRate, double bulletSpeed)
+
+    public Bullet(int damage, int fireRate, double bulletSpeed, int x, int y)
     {
-        this.damage = damageL;
+        this.damage = damage;
         this.fireRate = fireRate;
         this.bulletSpeed = bulletSpeed;
 
-        iconBullet = new ImageIcon("./images/hero_" + i + "_" + j + ".png");
+        iconBullet = new ImageIcon("./images/BulletCircle.png");
 
+        super(x,y);
+        this.setSize(4,4);
     }
 
     @Override
