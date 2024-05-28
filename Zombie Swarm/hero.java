@@ -93,25 +93,23 @@ public class Hero extends GameObject {
      * update the character's location and image based on the dx and dy
      */
     public void update() {
-        
-
-  
-         if (this.getX() + dx >= 0){ //left border
-            if(this.getX() + dx + this.getWidth() <= 0){ //right border
-                if (this.getY()  + dy >= 0){ //top border
-                    if (this.getY() + dy + this.getHeight() <= 0 - this.getHeight()) //bbttom border
-                    {
-                    this.setLocation(this.getX() + dx, this.getY() + dy);
-                    }
-                }
+        if (dx != 0 || dy != 0) {
+            if(this.getY()<=0 && dy<0){
+                this.setLocation(this.getX(),this.getY()- dy );
             }
-        
-        if (dx != 0 || dy != 0)
-        {
-            this.updateIcon();
-        }
-        
+            if(this.getX()<=0 && dx<0){
+                this.setLocation(this.getX()-dx,this.getY() );
+            }
+            if(this.getY() + this.getHeight()>=gp.getHeight() && dy>0){
+                this.setLocation(this.getX(),this.getY()-dy);
+            }
+            if(this.getX() + this.getWidth()>=gp.getWidth() && dx>0){
+                this.setLocation(this.getX()-dx, this.getY());
+            }
             
+            this.setLocation(this.getX() + dx, this.getY() + dy);
+            this.updateIcon();
+
         }
     }
 
