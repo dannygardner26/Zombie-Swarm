@@ -53,8 +53,8 @@ public class GamePanel extends JPanel implements ActionListener {
         for(int i = 0; i < 19; i++){
             gunPics.add(new ImageIcon("./images/realGun" + i + ".png"));
         }
-        Gun gun = new Gun(0, 0, gunPics.get(0), 5, 10, 10);
-
+        Gun pistol = new Gun("pistol", 0, 0, gunPics.get(0), 5, 10, 10);
+        gunList.add(pistol);
         
 
         
