@@ -22,7 +22,7 @@ public class GamePanel extends JPanel implements ActionListener {
     private BufferedImage background;
     private Hero hero;
     private static GamePanel tempGP;
-    
+    private ArrayList<Gun> gunList;
    
 
     /**
@@ -35,7 +35,7 @@ public class GamePanel extends JPanel implements ActionListener {
         this.add(hero);
         hero.setVisible(true);
         
-
+        
 
 
         URL imageURL = getClass().getResource("./images/Background.jpg");
@@ -47,6 +47,7 @@ public class GamePanel extends JPanel implements ActionListener {
         }
 
         
+        Gun gun = new Gun(0, 0, "./images/realGun0_0.png", 5, 10, 10);
 
         
 

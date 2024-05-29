@@ -8,7 +8,7 @@ public class Gun extends GameObject{
     private int reloadSpeed;
     private boolean visible;
 
-
+    
 
 
     public Gun(int x, int y, ImageIcon icon, int damage, double bulletSpeed, int reloadSpeed){
