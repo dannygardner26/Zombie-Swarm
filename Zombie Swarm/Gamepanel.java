@@ -34,6 +34,9 @@ public class GamePanel extends JPanel implements ActionListener {
         hero = new Hero(100, 100, tempGP);
         this.add(hero);
         hero.setVisible(true);
+        
+
+
 
         URL imageURL = getClass().getResource("./images/Background.jpg");
 

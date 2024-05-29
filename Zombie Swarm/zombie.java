@@ -28,13 +28,17 @@ public class Zombie extends GameObject {
             }
         }
     
-        this.setIcon(icons[direction.getDirection()][direction]);
+        this.setIcon(icons[direction.getDirection()][0]);
     }
 
     @Override
     public void update() {
         updateIcon();
-        this.setIcon(icons[phase]);
+        animationCounter++;
+        this.setIcon(icons[direction.getDirection()][animationCounter%3]);
+
+
+
     }
     private void updateIcon() {
         animationCounter++;
