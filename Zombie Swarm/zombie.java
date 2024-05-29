@@ -16,7 +16,6 @@ public class Zombie extends GameObject {
         this.setSize(32, 28);
         this.animationCounter = 0;
         this.direction = new Direction(0);
-        randomValScramble();
 
         icons = new ImageIcon[4][3];
 
@@ -42,29 +41,10 @@ public class Zombie extends GameObject {
     }
     private void updateIcon() {
         animationCounter++;
-        if (animationCounter == 0)
-            phase = 0;
-        if (animationCounter == 10)
-            phase = 1;
-        if (animationCounter == 20)
-            phase = 2;
-        if (animationCounter == 30)
-            phase = 3;
-        if (animationCounter == 40)
-            phase = 0;
-        if (animationCounter > randomVal)
-        {
-            animationCounter = 0;
-            phase = 0;
-            randomValScramble();
-        }
-        
+    
         }
     
-    public void randomValScramble()
-    {
-        this.randomVal = (int)((Math.random()*150) + 100);
-    }
+    
     
     
 }
