@@ -10,6 +10,7 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
 /**
  * This class will house all game objects which are part of the
@@ -31,7 +32,8 @@ public class GamePanel extends JPanel implements ActionListener {
     public GamePanel() {
         this.setLayout(null);
         tempGP = this;
-        hero = new Hero(100, 100, tempGP);
+        gunList = null;
+        hero = new Hero(100, 100, tempGP, gunList);
         this.add(hero);
         hero.setVisible(true);
         
