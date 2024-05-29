@@ -47,6 +47,9 @@ public class Hero extends GameObject {
      */
     private void updateIcon() {
         if (phaseCounter % 6 == 0) {
+            if(phase>3){
+                phase = 0;
+            }
             phase = (phase + 1) % 4;
             this.setIcon(icons[direction][phase]);
         }
