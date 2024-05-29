@@ -1,4 +1,5 @@
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -32,10 +33,6 @@ public class GamePanel extends JPanel implements ActionListener {
     public GamePanel() {
         this.setLayout(null);
         tempGP = this;
-<<<<<<< HEAD
-=======
-        gunList = null;
->>>>>>> 755a3fcec246a140d9b7e57aaed55ca581bff7c5
         hero = new Hero(100, 100, tempGP, gunList);
         this.add(hero);
         hero.setVisible(true);
@@ -51,9 +48,9 @@ public class GamePanel extends JPanel implements ActionListener {
             e.printStackTrace();
         }
 
-        ArrayList<ImageIcon> gunPics = new ArrayList<ImageIcon>;
+        ArrayList<ImageIcon> gunPics = new ArrayList<ImageIcon>();
 
-        for(int = 0; i < 19; i++){
+        for(int i = 0; i < 19; i++){
             gunPics.add(new ImageIcon("./images/realGun" + i + ".png"));
         }
         Gun gun = new Gun(0, 0, gunPics.get(0), 5, 10, 10);
