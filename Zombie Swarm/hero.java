@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
 
 public class Hero extends GameObject {
@@ -9,8 +11,10 @@ public class Hero extends GameObject {
     private int dx;
     private int dy;
     private GamePanel gp;
+    private Gun gun;
+    private ArrayList<Gun> gunList;
 
-    public Hero(int x, int y, GamePanel gp) {
+    public Hero(int x, int y, GamePanel gp, ArrayList<Gun> list) {
         super(x, y);
         this.setSize(32, 36);
         direction = Direction.DOWN;
@@ -19,6 +23,8 @@ public class Hero extends GameObject {
         dx = 0;
         dy = 0;
         this.gp = gp;
+        this.gunList = list;
+        this.gun = list.get(0);
 
         icons = new ImageIcon[4][3];
 
@@ -118,5 +124,9 @@ public class Hero extends GameObject {
         return direction;
     }
 
+    public void gunPickup(Gun gun)
+    {
+        this.gun = gun;
+    }
     
 }
