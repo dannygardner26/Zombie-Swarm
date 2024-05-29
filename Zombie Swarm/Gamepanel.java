@@ -32,6 +32,10 @@ public class GamePanel extends JPanel implements ActionListener {
     public GamePanel() {
         this.setLayout(null);
         tempGP = this;
+<<<<<<< HEAD
+=======
+        gunList = null;
+>>>>>>> 755a3fcec246a140d9b7e57aaed55ca581bff7c5
         hero = new Hero(100, 100, tempGP, gunList);
         this.add(hero);
         hero.setVisible(true);
