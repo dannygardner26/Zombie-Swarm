@@ -25,7 +25,9 @@ public class GamePanel extends JPanel implements ActionListener {
     private Hero hero;
     private static GamePanel tempGP;
     private ArrayList<Gun> gunList;
-   
+    private ArrayList<Zombie> zombieList;
+    private int tickCounter;
+    private int randomNum;
 
     /**
      
@@ -33,7 +35,8 @@ public class GamePanel extends JPanel implements ActionListener {
     public GamePanel() {
         this.setLayout(null);
         tempGP = this;
-
+        randomNumScramble();
+        zombieList = new ArrayList<Zombie>;
         ArrayList<ImageIcon> gunPics = new ArrayList<ImageIcon>();
         gunList = new ArrayList<Gun>();
         for(int i = 0; i < 19; i++){
@@ -133,12 +136,12 @@ public class GamePanel extends JPanel implements ActionListener {
 
         // create and start the game timer. This gamepanel is passed
         // as the action listener which will be triggered every 17 milliseconds
-        Timer gameLoop = new Timer(17, this);
+        Timer gameLoop = new Timer(10, this);
         gameLoop.start();
 
         
         this.setFocusable(true);
-        this.requestFocusInWindow();
+        this.requestFocusInWindow(;)
     }
 
     @Override
@@ -151,10 +154,29 @@ public class GamePanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         hero.update();
-        
+        for(int i = 0; i < zombieList.size(); i++){
+            zombieList.get(i).update();
+        }
+
+        tickCounter++;
+
+        if(tickCounter > randomNum){
+            int x = (int)(Math.random()*400+50);
+            int y = (int)(Math.random()*400+50);
+            Zombie temp = new Zombie(x,y);
+            randomNumScramble();
+            tickCounter = 0;
+        }
+
+
+
     }
 
-    
+    public void randomNumScramble{
+        this.randomNum = (int)(Math.random()*100+100);
+
+
+    }
 
     
 
