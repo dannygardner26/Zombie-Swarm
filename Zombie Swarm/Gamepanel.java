@@ -35,7 +35,7 @@ public class GamePanel extends JPanel implements ActionListener {
         tempGP = this;
 
         ArrayList<ImageIcon> gunPics = new ArrayList<ImageIcon>();
-
+        gunList = new ArrayList<Gun>();
         for(int i = 0; i < 19; i++){
             gunPics.add(new ImageIcon("./images/realGun" + i + ".png"));
         }
