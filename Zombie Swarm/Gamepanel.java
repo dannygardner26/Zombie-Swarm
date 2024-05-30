@@ -1,4 +1,5 @@
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -33,7 +34,6 @@ public class GamePanel extends JPanel implements ActionListener {
     public GamePanel() {
         this.setLayout(null);
         tempGP = this;
-        gunList = null;
         hero = new Hero(100, 100, tempGP, gunList);
         this.add(hero);
         hero.setVisible(true);
@@ -50,9 +50,7 @@ public class GamePanel extends JPanel implements ActionListener {
         }
 
         
-       // Gun gun = new Gun(0, 0, "./images/realGun0_0.png", 5, 10, 10);
-
-
+        Gun gun = new Gun(0, 0, "./images/realGun0_0.png", 5, 10, 10);
 
         
 
@@ -65,7 +63,7 @@ public class GamePanel extends JPanel implements ActionListener {
             public void keyTyped(KeyEvent e) {
 
             }
-
+3
             @Override
             public void keyPressed(KeyEvent e) {
                 
