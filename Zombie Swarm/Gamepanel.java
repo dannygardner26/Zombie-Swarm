@@ -141,7 +141,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
         
         this.setFocusable(true);
-        this.requestFocusInWindow(;)
+        this.requestFocusInWindow();
     }
 
     @Override
@@ -172,7 +172,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
     }
 
-    public void randomNumScramble{
+    public void randomNumScramble(){
         this.randomNum = (int)(Math.random()*100+100);
 
 
