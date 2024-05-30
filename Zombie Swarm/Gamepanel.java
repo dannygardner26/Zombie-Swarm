@@ -36,7 +36,7 @@ public class GamePanel extends JPanel implements ActionListener {
         this.setLayout(null);
         tempGP = this;
         randomNumScramble();
-        zombieList = new ArrayList<Zombie>;
+        zombieList = new ArrayList<Zombie>();
         ArrayList<ImageIcon> gunPics = new ArrayList<ImageIcon>();
         gunList = new ArrayList<Gun>();
         for(int i = 0; i < 19; i++){
@@ -164,8 +164,11 @@ public class GamePanel extends JPanel implements ActionListener {
             int x = (int)(Math.random()*400+50);
             int y = (int)(Math.random()*400+50);
             Zombie temp = new Zombie(x,y);
+            zombieList.add(temp);
             randomNumScramble();
             tickCounter = 0;
+            this.add(temp);
+            temp.setVisible(true);
         }
 
 
