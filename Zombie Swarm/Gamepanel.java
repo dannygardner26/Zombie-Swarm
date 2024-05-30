@@ -59,15 +59,6 @@ public class GamePanel extends JPanel implements ActionListener {
             e.printStackTrace();
         }
 
-        ArrayList<ImageIcon> gunPics = new ArrayList<ImageIcon>();
-
-        for(int i = 0; i < 19; i++){
-            gunPics.add(new ImageIcon("./images/realGun" + i + ".png"));
-        }
-        Gun pistol = new Gun("pistol", 0, 0, gunPics.get(0), 5, 10, 10);
-        gunList.add(pistol);
-        Gun AssaultRifle = new Gun("pistol", 0, 0, gunPics.get(1), 5, 10, 10);
-        gunList.add(pistol);
 
         
     
