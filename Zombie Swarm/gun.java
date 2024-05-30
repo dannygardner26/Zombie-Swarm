@@ -7,11 +7,11 @@ public class Gun extends GameObject{
     private double bulletSpeed;
     private int reloadSpeed;
     private boolean visible;
+    private String name;
 
-    
 
 
-    public Gun(int x, int y, ImageIcon icon, int damage, double bulletSpeed, int reloadSpeed){
+    public Gun(String name, int x, int y, ImageIcon icon, int damage, double bulletSpeed, int reloadSpeed){
         super(x,y);
         this.setSize(15,20);
 
@@ -20,7 +20,7 @@ public class Gun extends GameObject{
         this.damage = damage;
         this.bulletSpeed = bulletSpeed;
         this.reloadSpeed = reloadSpeed;
-        
+        this.name = name;
         
     }
 
