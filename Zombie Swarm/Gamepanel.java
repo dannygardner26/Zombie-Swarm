@@ -47,13 +47,6 @@ public class GamePanel extends JPanel implements ActionListener {
         Gun AssaultRifle = new Gun("pistol", 0, 0, gunPics.get(1), 5, 10, 10);
         gunList.add(pistol);
 
-        hero = new Hero(100, 100, tempGP, gunList);
-        this.add(hero);
-        hero.setVisible(true);
-        
-        
-
-
         URL imageURL = getClass().getResource("./images/Background.jpg");
 
         try {
@@ -61,6 +54,15 @@ public class GamePanel extends JPanel implements ActionListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        hero = new Hero(100, 100, tempGP, gunList);
+        this.add(hero);
+        hero.setVisible(true);
+        
+        
+
+
+       
 
 
         
