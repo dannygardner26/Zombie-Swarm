@@ -30,12 +30,14 @@ public class Hero extends GameObject {
 
         for (int i = 0; i < icons.length; i++) {
             for (int j = 0; j < icons[i].length; j++) {
-                icons[i][j] = new ImageIcon("./images/hero" + i + "_" + j + ".png");
+                icons[i][j] = new ImageIcon("./Zombie Swarm/images/hero" + i + "_" + j + ".png");
 
             }
         }
-
+        
         this.setIcon(icons[direction][phase]);
+        
+
 
     }
 
@@ -53,10 +55,7 @@ public class Hero extends GameObject {
      */
     private void updateIcon() {
         if (phaseCounter % 6 == 0) {
-            if(phase>3){
-                phase = 0;
-            }
-            phase = (phase + 1) % 4;
+            
             this.setIcon(icons[direction][phase]);
         }
 
