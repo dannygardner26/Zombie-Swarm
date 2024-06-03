@@ -133,6 +133,15 @@ public class Hero extends GameObject {
     
     public void fire(int x, int y)
     {
-        gun.fire(x,y);
+        gun.fire(this.getX(), this.getY(), x,y);
+    }
+
+
+    public int getAmmo(){
+        return gun.getAmmo();
+    }
+
+    public int getFireRate(){
+        return gun.getFireRate();
     }
 }

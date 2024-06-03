@@ -10,22 +10,23 @@ public class Bullet extends GameObject{
     private int dy;
 
 
-    public Bullet(int x, int y, int damage, int fireRate, int bulletSpeed)
+    public Bullet(int x, int y, int damage, int fireRate, int mouseX, int mouseY)
     {
         super(x,y);
 
         this.damage = damage;
         this.fireRate = fireRate;
-        this.bulletSpeed = bulletSpeed;
+        
 
         iconBullet = new ImageIcon("./images/BulletCircle.png");
 
+        this.setIcon(iconBullet);
         this.setSize(4,4);
     }
 
     @Override
     public void update() {
-        
+         
     }
 
 }
