@@ -19,7 +19,7 @@ import java.util.ArrayList;
  * hit by fireballs and removed from the game.
  */
 
-public class GamePanel extends JPanel implements ActionListener {
+public class GamePanel extends JPanel implements ActionListener, MouseListener{
 
     private BufferedImage background;
     private Hero hero;
@@ -28,6 +28,7 @@ public class GamePanel extends JPanel implements ActionListener {
     private ArrayList<Zombie> zombieList;
     private int tickCounter;
     private int randomNum;
+    private Gun gun;
 
     /**
      
@@ -47,8 +48,7 @@ public class GamePanel extends JPanel implements ActionListener {
         Gun AssaultRifle = new Gun("pistol", 0, 0, gunPics.get(1), 5, 10, 10);
         gunList.add(pistol);
 
-        URL imageURL = getClass().getResource("./images/backgrounddetailed2.png");
-        
+        URL imageURL = getClass().getResource("./images/Background.jpg");
 
         try {
             background = ImageIO.read(imageURL);
@@ -106,7 +106,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
                     case KeyEvent.VK_SPACE:
                         
-                    
+                        hero.fire();
                         break;
                              
                     
@@ -139,6 +139,18 @@ public class GamePanel extends JPanel implements ActionListener {
             }
 
         });
+
+        this.addMouseListener(new MouseListener(){
+
+            public void mouseClicked(MouseEvent e){
+
+                new 
+                hero.fire(this.getX(), this.getY())
+
+
+            }
+        });
+
 
         // create and start the game timer. This gamepanel is passed
         // as the action listener which will be triggered every 17 milliseconds

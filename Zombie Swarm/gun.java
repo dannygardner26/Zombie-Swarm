@@ -1,3 +1,6 @@
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 import javax.swing.ImageIcon;
 
 public class Gun extends GameObject{
@@ -35,7 +38,15 @@ public class Gun extends GameObject{
 
     }
 
-    public void fire(){
+
+
+
+
+    public void fire(int x, int y){
+
+
+        
+
 
     }
 }
