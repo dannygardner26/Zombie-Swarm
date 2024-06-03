@@ -131,8 +131,8 @@ public class Hero extends GameObject {
         this.gun = gun;
     }
     
-    public void fire(x,y)
+    public void fire(int x, int y)
     {
-        gun.fire();
+        gun.fire(x,y);
     }
 }

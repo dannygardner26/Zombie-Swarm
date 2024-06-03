@@ -1,5 +1,6 @@
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
@@ -7,14 +8,15 @@ public class Gun extends GameObject{
 
     private ImageIcon iconGun;
     private int damage;
-    private double bulletSpeed;
+    private int bulletSpeed;
     private int reloadSpeed;
+    private int fireRate;
     private boolean visible;
     private String name;
+    private ArrayList<Bullet> bulletList;
+    private int ammo;
 
-
-
-    public Gun(String name, int x, int y, ImageIcon icon, int damage, double bulletSpeed, int reloadSpeed){
+    public Gun(String name, int x, int y, ImageIcon icon, int damage, int bulletSpeed, int reloadSpeed, int ammo, int fireRate){
         super(x,y);
         this.setSize(15,20);
 
@@ -24,7 +26,7 @@ public class Gun extends GameObject{
         this.bulletSpeed = bulletSpeed;
         this.reloadSpeed = reloadSpeed;
         this.name = name;
-        
+        ammo = ammo;
     }
 
     
@@ -43,7 +45,8 @@ public class Gun extends GameObject{
 
 
     public void fire(int x, int y){
-
+        
+        bulletList.add(new Bullet(x,y, damage, fireRate, bulletSpeed));
 
         
 

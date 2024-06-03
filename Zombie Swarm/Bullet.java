@@ -6,6 +6,8 @@ public class Bullet extends GameObject{
     private ImageIcon iconBullet;
     private int fireRate;
     private int bulletSpeed;
+    private int dx;
+    private int dy;
 
 
     public Bullet(int x, int y, int damage, int fireRate, int bulletSpeed)
@@ -23,8 +25,7 @@ public class Bullet extends GameObject{
 
     @Override
     public void update() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        
     }
 
 }

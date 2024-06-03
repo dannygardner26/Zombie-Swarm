@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -44,15 +45,14 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
         for(int i = 0; i < 19; i++){
             gunPics.add(new ImageIcon("./images/realGun" + i + ".png"));
         }
-        Gun pistol = new Gun("pistol", 0, 0, gunPics.get(0), 5, 10, 10);
+        Gun pistol = new Gun("pistol", 0, 0, gunPics.get(0), 5, 10, 10, 8, 50);
         gunList.add(pistol);
-        Gun AssaultRifle = new Gun("pistol", 0, 0, gunPics.get(1), 5, 10, 10);
-        gunList.add(pistol);
+        Gun AssaultRifle = new Gun("pistol", 0, 0, gunPics.get(1), 5, 10, 10, 30, 200);
+        gunList.add(AssaultRifle);
 
-        blankArea.addMouseListener(this);
-        addMouseListener(this);
+        
 
-        URL imageURL = getClass().getResource("./images/Background.jpg");
+        URL imageURL = getClass().getResource("./images/backgrounddetailed2.png");
 
         try {
             background = ImageIO.read(imageURL);
@@ -110,7 +110,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
 
                     case KeyEvent.VK_SPACE:
                         
-                        hero.fire();
+                        hero.fire(hero.getX(), hero.getY());
                         break;
                              
                     
@@ -193,6 +193,38 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
 
 
     }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'mouseClicked'");
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'mousePressed'");
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'mouseReleased'");
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'mouseEntered'");
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'mouseExited'");
+    }
+
+    
 
     
 
