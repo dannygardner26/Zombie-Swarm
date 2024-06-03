@@ -55,10 +55,9 @@ public class Hero extends GameObject {
      */
     private void updateIcon() {
         if (phaseCounter % 6 == 0) {
-            
+            phase = (phase + 1) % icons[direction].length; // Update phase
             this.setIcon(icons[direction][phase]);
         }
-
         phaseCounter++;
     }
 
@@ -66,7 +65,8 @@ public class Hero extends GameObject {
      * reset character in idle position
      */
     public void setIdle() {
-        this.setIcon(icons[direction][0]);
+        phase = 0;
+        this.setIcon(icons[direction][phase]);
         phaseCounter = 0;
     }
 

@@ -47,7 +47,8 @@ public class GamePanel extends JPanel implements ActionListener {
         Gun AssaultRifle = new Gun("pistol", 0, 0, gunPics.get(1), 5, 10, 10);
         gunList.add(pistol);
 
-        URL imageURL = getClass().getResource("./images/Background.jpg");
+        URL imageURL = getClass().getResource("./images/backgrounddetailed2.png");
+        
 
         try {
             background = ImageIO.read(imageURL);
