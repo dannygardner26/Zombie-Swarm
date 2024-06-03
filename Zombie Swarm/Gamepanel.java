@@ -118,6 +118,9 @@ public class GamePanel extends JPanel implements ActionListener {
                 int code = e.getKeyCode();
                 switch (code) {
                     case KeyEvent.VK_W:
+                    hero.setDx(0);
+                        hero.setIdle();
+                        break;
                         
                     case KeyEvent.VK_A:
                         hero.setDx(0);
