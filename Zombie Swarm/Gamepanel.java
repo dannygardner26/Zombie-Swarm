@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
@@ -47,6 +48,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
         gunList.add(pistol);
         Gun AssaultRifle = new Gun("pistol", 0, 0, gunPics.get(1), 5, 10, 10);
         gunList.add(pistol);
+
+        blankArea.addMouseListener(this);
+        addMouseListener(this);
 
         URL imageURL = getClass().getResource("./images/Background.jpg");
 
@@ -140,16 +144,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
 
         });
 
-        this.addMouseListener(new MouseListener(){
-
-            public void mouseClicked(MouseEvent e){
-
-                new 
-                hero.fire(this.getX(), this.getY())
-
-
-            }
-        });
+       
 
 
         // create and start the game timer. This gamepanel is passed
