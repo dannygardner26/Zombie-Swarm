@@ -13,6 +13,7 @@ public class Hero extends GameObject {
     private GamePanel gp;
     private Gun gun;
     private ArrayList<Gun> gunList;
+   
 
     public Hero(int x, int y, GamePanel gp, ArrayList<Gun> list) {
         super(x, y);
@@ -121,6 +122,7 @@ public class Hero extends GameObject {
             this.updateIcon();
 
         }
+        
     }
 
     public int getDirection()

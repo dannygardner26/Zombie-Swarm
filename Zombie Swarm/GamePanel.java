@@ -63,12 +63,14 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
             e.printStackTrace();
         }
 
-        hero = new Hero(100, 100, tempGP, gunList);
-        this.add(hero);
-        hero.setVisible(true);
+        
 
         coin = new Coin(200,200, hero);
         this.add(coin);
+
+        hero = new Hero(100, 100, tempGP, gunList);
+        this.add(hero);
+        hero.setVisible(true);
         
         
 
@@ -171,6 +173,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         hero.update();
+        coin.update();
         
         for(int i = 0; i < bulletList.size(); i++){
             if(bulletList.get(i).isDone())
