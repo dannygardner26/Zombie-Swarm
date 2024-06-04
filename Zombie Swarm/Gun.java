@@ -35,10 +35,12 @@ public class Gun extends GameObject{
        reloadTimer++;
     }
 
+
     public void reload(){
 
     }
 
+    
     public int getAmmo(){
         return this.ammo;
     }
