@@ -32,7 +32,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
     private int randomNum;
     private Gun gun;
     private Coin coin;
-
+    private ArrayList<Bullet> bulletList;
+    private ArrayList<ImageIcon> gunPics;
     /**
      
      */
@@ -41,7 +42,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
         tempGP = this;
         randomNumScramble();
         zombieList = new ArrayList<Zombie>();
-        ArrayList<ImageIcon> gunPics = new ArrayList<ImageIcon>();
+        bulletList = new ArrayList<Bullet>();
+        gunPics = new ArrayList<ImageIcon>();
         gunList = new ArrayList<Gun>();
         for(int i = 0; i < 19; i++){
             gunPics.add(new ImageIcon("./images/realGun" + i + ".png"));
@@ -173,8 +175,18 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
         hero.update();
         coin.update();
         
+        for(int i = 0; i < bulletList.size(); i++){
+            if(bulletList.get(i).isDone())
+            {
+                bulletList.remove(i);
+                i--;
+            }
+            else
+            {
+                bulletList.get(i).update();
+            }
+        }
 
-        
         for(int i = 0; i < zombieList.size(); i++){
             zombieList.get(i).update();
         }
@@ -204,10 +216,13 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println("shooted");
-        this.add(new Bullet(hero.getX(),hero.getY(), hero.getDamage(), hero.getFireRate(),  e.getX(), e.getY()));
-
         
+        Bullet temp = new Bullet(hero.getX(),hero.getY(), hero.getDamage(), hero.getFireRate(),  e.getX(), e.getY(), this);
+        this.add(temp);
+        bulletList.add(temp);
+        temp.setVisible(true);
+
+
 
 
 

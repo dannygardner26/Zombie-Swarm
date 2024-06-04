@@ -141,6 +141,10 @@ public class Hero extends GameObject {
         return gun.getAmmo();
     }
 
+    public int useAmmo(){
+        return gun.getAmmo();
+    }
+
     public int getFireRate(){
         return gun.getFireRate();
     }
