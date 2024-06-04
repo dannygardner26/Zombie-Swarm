@@ -101,6 +101,8 @@ public class Hero extends GameObject {
      * update the character's location and image based on the dx and dy
      */
     public void update() {
+        gun.update();
+        
         if (dx != 0 || dy != 0) {
             if(this.getY()<=0 && dy<0){
                 this.setLocation(this.getX(),this.getY()- dy );
@@ -131,11 +133,7 @@ public class Hero extends GameObject {
         this.gun = gun;
     }
     
-    public void fire(int x, int y)
-    {
-        gun.fire(this.getX(), this.getY(), x,y);
-    }
-
+    
 
     public int getAmmo(){
         return gun.getAmmo();
@@ -143,5 +141,9 @@ public class Hero extends GameObject {
 
     public int getFireRate(){
         return gun.getFireRate();
+    }
+
+    public int getDamage(){
+        return gun.getDamage();
     }
 }
