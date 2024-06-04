@@ -170,6 +170,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         hero.update();
+        coin.update();
         for(int i = 0; i < zombieList.size(); i++){
             zombieList.get(i).update();
         }
