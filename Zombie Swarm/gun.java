@@ -35,6 +35,7 @@ public class Gun extends GameObject{
        reloadTimer++;
     }
 
+    
     public void reload(){
 
     }
