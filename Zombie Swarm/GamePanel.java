@@ -61,12 +61,14 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
             e.printStackTrace();
         }
 
-        hero = new Hero(100, 100, tempGP, gunList);
-        this.add(hero);
-        hero.setVisible(true);
+        
 
         coin = new Coin(200,200, hero);
         this.add(coin);
+
+        hero = new Hero(100, 100, tempGP, gunList);
+        this.add(hero);
+        hero.setVisible(true);
         
         
 
@@ -113,7 +115,6 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
 
                     case KeyEvent.VK_SPACE:
                         
-                        hero.fire(hero.getX(), hero.getY());
                         break;
                              
                     
@@ -171,6 +172,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
     public void actionPerformed(ActionEvent e) {
         hero.update();
         coin.update();
+        
+
+        
         for(int i = 0; i < zombieList.size(); i++){
             zombieList.get(i).update();
         }
@@ -200,9 +204,10 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(hero.getAmmo() > 0)
-        this.add(new Bullet(x,y, hero.getDamage(), hero.getFireRate(),  e.getX(), e.getY()));
+        System.out.println("shooted");
+        this.add(new Bullet(hero.getX(),hero.getY(), hero.getDamage(), hero.getFireRate(),  e.getX(), e.getY()));
 
+        
 
 
 
