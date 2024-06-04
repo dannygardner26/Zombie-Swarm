@@ -6,8 +6,8 @@ public class Bullet extends GameObject{
     private ImageIcon iconBullet;
     private int fireRate;
     private int bulletSpeed;
-    private int dx;
-    private int dy;
+    private double dx;
+    private double dy;
     private boolean done;
     private GamePanel gp;
 
@@ -34,7 +34,7 @@ public class Bullet extends GameObject{
 
     @Override
     public void update() {
-        this.setLocation(this.getX() + dx, this.getY() + dy);
+        this.setLocation((int)(this.getX() + dx), (int)(this.getY() + dy));
         if(this.getY()<=0 && dy<0){
             done = true;
         }
