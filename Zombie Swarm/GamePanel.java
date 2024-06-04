@@ -31,6 +31,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
     private int tickCounter;
     private int randomNum;
     private Gun gun;
+    private Coin coin;
 
     /**
      
@@ -63,6 +64,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
         hero = new Hero(100, 100, tempGP, gunList);
         this.add(hero);
         hero.setVisible(true);
+
+        coin = new Coin(200,200, hero);
+        this.add(coin);
         
         
 
