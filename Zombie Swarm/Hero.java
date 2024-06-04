@@ -107,15 +107,22 @@ public class Hero extends GameObject {
         if (dx != 0 || dy != 0) {
             if(this.getY()<=0 && dy<0){
                 this.setLocation(this.getX(),this.getY()- dy );
+                System.out.println("errpr");
             }
             if(this.getX()<=0 && dx<0){
                 this.setLocation(this.getX()-dx,this.getY() );
+                System.out.println("errpr");
+
             }
             if(this.getY() + this.getHeight()>=gp.getHeight() && dy>0){
                 this.setLocation(this.getX(),this.getY()-dy);
+                System.out.println("errpr");
+
             }
             if(this.getX() + this.getWidth()>=gp.getWidth() && dx>0){
                 this.setLocation(this.getX()-dx, this.getY());
+                System.out.println("errpr");
+
             }
             
             this.setLocation(this.getX() + dx, this.getY() + dy);

@@ -6,8 +6,8 @@ public class Bullet extends GameObject{
     private ImageIcon iconBullet;
     private int fireRate;
     private int bulletSpeed;
-    private int dx;
-    private int dy;
+    private double dx;
+    private double dy;
     private boolean done;
     private GamePanel gp;
 
@@ -26,15 +26,15 @@ public class Bullet extends GameObject{
 
         double angle = Math.atan2(mouseY - y, mouseX - x);
 
-        this.dx = (int)(5 * Math.cos(angle));
-        this.dy = (int)(5 * Math.sin(angle));
+        this.dx = (int)(5 * Math.cos(angle));//find a way to add decimals and make it so that the horiz/vert movement is seperates
+        this.dy = (int)(5 * Math.sin(angle));// this will allow for it to shoot left and right fast, but up and down slow in certain cases
         this.gp = gp;
 
     }
 
     @Override
     public void update() {
-        this.setLocation(this.getX() + dx, this.getY() + dy);
+        this.setLocation((int)(this.getX() + dx), (int)(this.getY() + dy));
         if(this.getY()<=0 && dy<0){
             done = true;
         }
