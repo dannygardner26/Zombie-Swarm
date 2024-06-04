@@ -4,6 +4,7 @@ public class Coin extends GameObject {
 
     private ImageIcon icon;
     private Hero hero;
+    private int coinCount;
 
     public Coin(int x, int y, Hero hero) {
         super(x, y);
@@ -13,7 +14,15 @@ public class Coin extends GameObject {
         this.hero = hero;
     }
 
+
+
     public void update(){
+        boolean collision = hero.hasCollidedWith(this);
+        if(collision){
+            coinCount++;
+            this.setVisible(false);
+        }
+
         
     }
 
