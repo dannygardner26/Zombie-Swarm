@@ -14,9 +14,9 @@ public class Gun extends GameObject{
     private String name;
     private ArrayList<Bullet> bulletList;
     private int ammo;
-    private int maxAmmo;
+    private int reloadTimer;
 
-    public Gun(String name, int x, int y, ImageIcon icon, int damage, int reloadSpeed, int maxAmmo, int fireRate){
+    public Gun(String name, int x, int y, ImageIcon icon, int damage, int reloadSpeed, int ammo, int fireRate){
         super(x,y);
         this.setSize(15,20);
 
@@ -25,19 +25,18 @@ public class Gun extends GameObject{
         this.damage = damage;
         this.reloadSpeed = reloadSpeed;
         this.name = name;
-        this.ammo = maxAmmo;
-        this.maxAmmo = maxAmmo;
+        this.ammo = ammo;
+        this.reloadTimer = 0;
     }
 
     
     @Override
     public void update() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+       reloadTimer++;
     }
 
     public void reload(){
-        ammo = maxAmmo;
+
     }
 
     public int getAmmo(){
@@ -49,7 +48,7 @@ public class Gun extends GameObject{
     }
 
     public int getDamage(){
-        return damage;
+        return fireRate;
     }
 
     
