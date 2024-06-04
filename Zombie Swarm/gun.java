@@ -31,7 +31,7 @@ public class Gun extends GameObject{
     @Override
     public void update() {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        //throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 
     public void reload(){
