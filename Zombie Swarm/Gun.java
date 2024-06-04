@@ -14,7 +14,6 @@ public class Gun extends GameObject{
     private String name;
     private ArrayList<Bullet> bulletList;
     private int ammo;
-    private int bulletSpeed;
 
     public Gun(String name, int x, int y, ImageIcon icon, int damage, int reloadSpeed, int ammo, int fireRate){
         super(x,y);
@@ -23,7 +22,6 @@ public class Gun extends GameObject{
         this.visible = false;
         iconGun = icon;
         this.damage = damage;
-        this.bulletSpeed = bulletSpeed;
         this.reloadSpeed = reloadSpeed;
         this.name = name;
         this.ammo = ammo;
