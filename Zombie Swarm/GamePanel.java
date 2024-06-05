@@ -34,6 +34,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
     private Coin coin;
     private ArrayList<Bullet> bulletList;
     private ArrayList<ImageIcon> gunPics;
+    private int enemyTimer;
+    private int enemySpawnRate;
     /**
      
      */
@@ -41,6 +43,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
         this.setLayout(null);
         tempGP = this;
         randomNumScramble();
+        enemyTimer = 0;
         zombieList = new ArrayList<Zombie>();
         bulletList = new ArrayList<Bullet>();
         gunPics = new ArrayList<ImageIcon>();
@@ -52,7 +55,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
         gunList.add(pistol);
         Gun AssaultRifle = new Gun("pistol", 0, 0, gunPics.get(1), 5, 10,  30, 200);
         gunList.add(AssaultRifle);
-
+        enemySpawnRate = 2;
         
 
         URL imageURL = getClass().getResource("./images/backgrounddetailed2.png");
@@ -186,6 +189,21 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
         hero.update();
         coin.update();
         
+        enemyTimer++;
+        if(enemyTimer > 10)
+            {
+                enemyTimer  = 0;
+                for (int i = 0; i < (int)(Math.random()*enemySpawnRate+1); i++){
+                    Zombie temp = new Zombie((int)(Math.random()*this.getWidth()), (int)(Math.random()*this.getHeight()));
+                    zombieList.add(temp);
+                    this.add(temp);
+                    temp.setVisible(true);
+                }
+            }
+
+
+
+
         for(int i = 0; i < bulletList.size(); i++){
             if(bulletList.get(i).isDone())
             {
@@ -200,6 +218,11 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
 
         for(int i = 0; i < zombieList.size(); i++){
             zombieList.get(i).update();
+            if(zombieList.get(i).isDone())
+            {
+                zombieList.remove(i);
+                i--;
+            }
         }
 
         tickCounter++;

@@ -9,6 +9,7 @@ public class Zombie extends GameObject {
     private int phase;
     private int animationCounter;
     private Direction direction;
+    private Boolean done;
 
     public Zombie(int x, int y) { //this constructor provides the parameter to create a target
         super(x, y); 
@@ -16,7 +17,7 @@ public class Zombie extends GameObject {
         this.setSize(32, 28);
         this.animationCounter = 0;
         this.direction = new Direction(0);
-
+        this.done = false;
         icons = new ImageIcon[4][3];
 
 
@@ -44,7 +45,12 @@ public class Zombie extends GameObject {
     
         }
     
-    
+    public boolean isDone(){
+            return done;
+        }
+    public void die(){
+        this.done = true;
+    }
     
     
 }
