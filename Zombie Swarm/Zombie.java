@@ -40,6 +40,10 @@ public class Zombie extends GameObject {
         this.setIcon(icons[direction.getDirection()][animationCounter%3]);
 
 
+        if(Math.abs(hero.getX() - this.getX()) > Math.abs(hero.getY() - this.getY())){
+
+        }
+
 
     }
     private void updateIcon() {
