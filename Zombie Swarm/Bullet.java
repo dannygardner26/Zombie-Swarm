@@ -69,7 +69,7 @@ public class Bullet extends GameObject{
         movingY += dy;
         if((int)movingY!=0)
         {
-            this.setLocation(this.getY(), this.getY() + (int)movingY);
+            this.setLocation(this.getX(), this.getY() + (int)movingY);
             movingY = movingY - (int)movingY;
         }
     }
