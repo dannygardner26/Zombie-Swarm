@@ -34,6 +34,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
     private Coin coin;
     private ArrayList<Bullet> bulletList;
     private ArrayList<ImageIcon> gunPics;
+    private ArrayList<Coin> coinList;
     private int enemyTimer;
     private int enemySpawnRate;
     /**
@@ -47,6 +48,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
         zombieList = new ArrayList<Zombie>();
         bulletList = new ArrayList<Bullet>();
         gunPics = new ArrayList<ImageIcon>();
+        coinList = new ArrayList<Coin>();
         gunList = new ArrayList<Gun>();
         for(int i = 0; i < 19; i++){
             gunPics.add(new ImageIcon("./images/realGun" + i + ".png"));
