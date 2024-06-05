@@ -10,6 +10,8 @@ public class Bullet extends GameObject{
     private double dy;
     private boolean done;
     private GamePanel gp;
+    private double movingX;
+    private double movingY;
 
     public Bullet(int x, int y, int damage, int fireRate, int mouseX, int mouseY, GamePanel gp)
     {
@@ -26,15 +28,19 @@ public class Bullet extends GameObject{
 
         double angle = Math.atan2(mouseY - y, mouseX - x);
 
-        this.dx = (int)(5 * Math.cos(angle));//find a way to add decimals and make it so that the horiz/vert movement is seperates
-        this.dy = (int)(5 * Math.sin(angle));// this will allow for it to shoot left and right fast, but up and down slow in certain cases
+        this.dx = (5 * Math.cos(angle));//find a way to add decimals and make it so that the horiz/vert movement is seperates
+        this.dy = (5 * Math.sin(angle));// this will allow for it to shoot left and right fast, but up and down slow in certain cases
         this.gp = gp;
-
+        this.movingX = 0;
+        this.movingY = 0;
     }
 
     @Override
     public void update() {
-        this.setLocation((int)(this.getX() + dx), (int)(this.getY() + dy));
+
+        updateX();
+        updateY();
+
         if(this.getY()<=0 && dy<0){
             done = true;
         }
@@ -47,11 +53,32 @@ public class Bullet extends GameObject{
         if(this.getX() + this.getWidth()>=gp.getWidth() && dx>0){
             done = true;
         }
-
-
-
-
     }
+
+    public void updateX(){
+        movingX += dx;
+
+        
+        if((int)movingX!=0)
+        {
+            this.setLocation(this.getX() + (int)movingX, this.getY());
+            movingX = movingX - (int)movingX;
+        }
+    }
+    public void updateY(){
+        movingY += dy;
+        if((int)movingY!=0)
+        {
+            this.setLocation(this.getY(), this.getY() + (int)movingY);
+            movingY = movingY - (int)movingY;
+        }
+    }
+
+
+
+
+
+
 
     public boolean isDone(){
         return done;
