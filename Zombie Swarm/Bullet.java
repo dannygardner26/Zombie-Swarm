@@ -57,6 +57,8 @@ public class Bullet extends GameObject{
 
     public void updateX(){
         movingX += dx;
+
+        
         if((int)movingX!=0)
         {
             this.setLocation(this.getX() + (int)movingX, this.getY());
