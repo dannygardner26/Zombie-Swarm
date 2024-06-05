@@ -37,6 +37,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
     private ArrayList<Coin> coinList;
     private int enemyTimer;
     private int enemySpawnRate;
+    private int coinTimer;
     /**
      
      */
@@ -58,7 +59,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
         Gun AssaultRifle = new Gun("pistol", 0, 0, gunPics.get(1), 5, 10,  30, 200);
         gunList.add(AssaultRifle);
         enemySpawnRate = 2;
-        
+        coinTimer = 0;
 
         URL imageURL = getClass().getResource("./images/backgrounddetailed2.png");
 
@@ -77,14 +78,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
         hero.setVisible(true);
         
 
-        int x = (int)(Math.random()*10);
        
-        for(int i= 0; i<x; i++){
-            int rany = (int)(Math.random()*this.getHeight());
-            int ranx = (int)(Math.random()*this.getWidth());
-            coin = new Coin(ranx,rany, hero);
-            this.add(coin);
-        }
+        
         
 
             
@@ -189,8 +184,23 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         hero.update();
-        coin.update();
         
+
+        coinTimer++;
+        System.out.println((coinTimer));
+        if (coinTimer > 25){
+            int rany = (int)(Math.random()*this.getHeight());
+            int ranx = (int)(Math.random()*this.getWidth());
+            Coin temp = new Coin(ranx,rany, hero);
+            coinList.add(temp);
+            this.add(temp);
+            temp.setVisible(true);
+            System.out.println("coin made");
+            this.coinTimer = 0;
+        }
+
+
+
         enemyTimer++;
         if(enemyTimer > 50)
             {
@@ -227,7 +237,13 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
             }
         }
 
-        
+        for (int i = 0; i < coinList.size(); i++){
+            coinList.get(i).update();
+            if(coinList.get(i).isDone()){
+                coinList.remove(i);
+                i--;
+            }
+        }
 
 
 
