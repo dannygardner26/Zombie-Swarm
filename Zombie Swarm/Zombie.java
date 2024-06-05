@@ -10,8 +10,9 @@ public class Zombie extends GameObject {
     private int animationCounter;
     private Direction direction;
     private Boolean done;
+    private Hero hero;
 
-    public Zombie(int x, int y) { //this constructor provides the parameter to create a target
+    public Zombie(int x, int y, Hero hero) { //this constructor provides the parameter to create a target
         super(x, y); 
         this.phase = 0;
         this.setSize(32, 28);
@@ -19,6 +20,7 @@ public class Zombie extends GameObject {
         this.direction = new Direction(0);
         this.done = false;
         icons = new ImageIcon[4][3];
+        this.hero = hero;
 
 
         for (int i = 0; i < icons.length; i++) {

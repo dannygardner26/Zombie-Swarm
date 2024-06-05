@@ -190,11 +190,11 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
         coin.update();
         
         enemyTimer++;
-        if(enemyTimer > 10)
+        if(enemyTimer > 50)
             {
                 enemyTimer  = 0;
                 for (int i = 0; i < (int)(Math.random()*enemySpawnRate+1); i++){
-                    Zombie temp = new Zombie((int)(Math.random()*this.getWidth()), (int)(Math.random()*this.getHeight()));
+                    Zombie temp = new Zombie((int)(Math.random()*this.getWidth()), (int)(Math.random()*this.getHeight()), hero);
                     zombieList.add(temp);
                     this.add(temp);
                     temp.setVisible(true);
@@ -225,18 +225,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
             }
         }
 
-        tickCounter++;
-
-        if(tickCounter > randomNum){
-            int x = (int)(Math.random()*400+50);
-            int y = (int)(Math.random()*400+50);
-            Zombie temp = new Zombie(x,y);
-            zombieList.add(temp);
-            randomNumScramble();
-            tickCounter = 0;
-            this.add(temp);
-            temp.setVisible(true);
-        }
+        
 
 
 
