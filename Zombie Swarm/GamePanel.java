@@ -71,8 +71,19 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
         this.add(hero);
         hero.setVisible(true);
         
-        coin = new Coin(200,200, hero);
-        this.add(coin);
+/* 
+        int x = (int)(Math.random()*10);
+        int rany = (int)(Math.random()*this.getHeight());
+        int ranx = (int)(Math.random()*this.getWidth());
+        for(int i= 0; i<x; i++){
+            coin = new Coin(ranx,rany, hero);
+            this.add(coin);
+        }
+        */
+
+            coin = new Coin(200,200, hero);
+            this.add(coin);
+        
 
 
        
