@@ -23,7 +23,7 @@ public class Zombie extends GameObject {
 
         for (int i = 0; i < icons.length; i++) {
             for (int j = 0; j < icons[i].length; j++) {
-                icons[i][j] = new ImageIcon("./images/sprite_" + i + "_" + j + ".png");
+                icons[i][j] = new ImageIcon("./Zombie Swarm/images/sprite_" + i + "_" + j + ".png");
 
             }
         }
