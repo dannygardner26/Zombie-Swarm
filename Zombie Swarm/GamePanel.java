@@ -231,11 +231,14 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
         if(firing){
             if(fireTimer > hero.getFireRate()){
+                if(hero.getAmmo() > 0){
                 fireTimer = 0;
                 Bullet temp = new Bullet(hero.getX(),hero.getY(), hero.getDamage(), hero.getFireRate(),  mouseX, mouseY, this);
                 this.add(temp);
                 bulletList.add(temp);
                 temp.setVisible(true);
+                hero.fire();
+                }
             } 
         }
         enemyTimer++;

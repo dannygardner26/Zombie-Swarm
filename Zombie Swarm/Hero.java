@@ -178,8 +178,11 @@ public class Hero extends GameObject {
         }
    }
 
-   public void reload(){
-    gun.reload();
-   }
+    public void reload(){
+        gun.reload();
+    }
+    public void fire(){
+        gun.fire();
+    }
 
 }
