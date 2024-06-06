@@ -258,7 +258,10 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
             temp.setVisible(true);
             this.coinTimer = 0;
         }
-        power.update();
+        for(int i = 0; i < powerList.size(); i++)
+        {
+            powerList.get(i).update();
+        }
 
         if(firing){
             if(fireTimer > hero.getFireRate()){
