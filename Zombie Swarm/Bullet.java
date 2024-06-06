@@ -75,13 +75,19 @@ public class Bullet extends GameObject{
     }
 
 
-
+    public int getDamage(){
+        return damage;
+    }
 
 
 
 
     public boolean isDone(){
         return done;
+    }
+
+    public void isDead(Boolean baka){
+        this.done = baka;
     }
 
 }

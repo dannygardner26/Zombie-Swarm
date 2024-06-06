@@ -50,7 +50,7 @@ public class Gun extends GameObject{
     }
 
     public int getDamage(){
-        return fireRate;
+        return damage;
     }
 
     

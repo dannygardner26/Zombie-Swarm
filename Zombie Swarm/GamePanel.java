@@ -38,6 +38,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
     private int enemyTimer;
     private int enemySpawnRate;
     private int coinTimer;
+    private int healthMulti;
+    private int fireTimer;
     /**
      
      */
@@ -51,12 +53,14 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
         gunPics = new ArrayList<ImageIcon>();
         coinList = new ArrayList<Coin>();
         gunList = new ArrayList<Gun>();
+        this.healthMulti = 1;
+        this.fireTimer = 0;
         for(int i = 0; i < 19; i++){
             gunPics.add(new ImageIcon("./images/realGun" + i + ".png"));
         }
-        Gun pistol = new Gun("pistol", 0, 0, gunPics.get(0), 5, 10, 8, 50);
+        Gun pistol = new Gun("pistol", 0, 0, gunPics.get(0), 5, 10, 8, 200);
         gunList.add(pistol);
-        Gun AssaultRifle = new Gun("pistol", 0, 0, gunPics.get(1), 5, 10,  30, 200);
+        Gun AssaultRifle = new Gun("pistol", 0, 0, gunPics.get(1), 5, 10,  30, 50);
         gunList.add(AssaultRifle);
         enemySpawnRate = 2;
         coinTimer = 0;
@@ -184,7 +188,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         hero.update();
-        
+        fireTimer++;
 
         coinTimer++;
         if (coinTimer > 200){
@@ -194,7 +198,6 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
             coinList.add(temp);
             this.add(temp);
             temp.setVisible(true);
-            System.out.println("coin made");
             this.coinTimer = 0;
         }
 
@@ -205,7 +208,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
             {
                 enemyTimer  = 0;
                 for (int i = 0; i < (int)(Math.random()*enemySpawnRate+1); i++){
-                    Zombie temp = new Zombie((int)(Math.random()*this.getWidth()), (int)(Math.random()*this.getHeight()), hero);
+                    Zombie temp = new Zombie((int)(Math.random()*this.getWidth()), (int)(Math.random()*this.getHeight()), hero, healthMulti, bulletList);
                     zombieList.add(temp);
                     this.add(temp);
                     temp.setVisible(true);
@@ -218,7 +221,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
         for(int i = 0; i < bulletList.size(); i++){
             if(bulletList.get(i).isDone())
             {
-                bulletList.remove(i);
+                removeBullet(bulletList.get(i), i);
                 i--;
             }
             else
@@ -231,15 +234,15 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
             zombieList.get(i).update();
             if(zombieList.get(i).isDone())
             {
-                zombieList.remove(i);
+                removeZombie(zombieList.get(i), i);
                 i--;
             }
         }
 
         for (int i = 0; i < coinList.size(); i++){
-            coinList.get(i).update();
+            coinList.get(i).update(); 
             if(coinList.get(i).isDone()){
-                coinList.remove(i);
+                removeCoin(coinList.get(i), i);
                 i--;
             }
         }
@@ -256,11 +259,13 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        
-        Bullet temp = new Bullet(hero.getX(),hero.getY(), hero.getDamage(), hero.getFireRate(),  e.getX(), e.getY(), this);
-        this.add(temp);
-        bulletList.add(temp);
-        temp.setVisible(true);
+        if(fireTimer > hero.getFireRate()){
+            fireTimer = 0;
+            Bullet temp = new Bullet(hero.getX(),hero.getY(), hero.getDamage(), hero.getFireRate(),  e.getX(), e.getY(), this);
+            this.add(temp);
+            bulletList.add(temp);
+            temp.setVisible(true);
+        }
 
 
 
@@ -284,8 +289,21 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
     public void mouseExited(MouseEvent e) {     
     }
 
-    
+    public void removeZombie(Zombie zombie, int i){
+        zombieList.remove(i);
+        zombie.setVisible(false);
+        remove(zombie);
+    }
 
-    
+    public void removeCoin(Coin coin, int i){
+        coinList.remove(i);
+        coin.setVisible(false);
+        remove(coin);
+    }
 
+    public void removeBullet(Bullet bullet, int i){
+        bulletList.remove(i);
+        bullet.setVisible(false);
+        remove(bullet);
+    }
 }
