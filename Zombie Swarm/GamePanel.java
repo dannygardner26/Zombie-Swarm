@@ -3,6 +3,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -74,11 +76,11 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         for(int i = 0; i < 19; i++){
             gunPics.add(new ImageIcon("./images/realGun" + i + ".png"));
         }
-        Gun pistol = new Gun("Pistol", 0, 0, gunPics.get(0), 5, 10, 8, 5);
+        Gun pistol = new Gun("Pistol", 0, 0, gunPics.get(0), 5, 10, 8, 5, this);
         gunList.add(pistol);
-        Gun AssaultRifle = new Gun("Assault Rifle", 0, 0, gunPics.get(1), 5, 10,  30, 20);
+        Gun AssaultRifle = new Gun("Assault Rifle", 0, 0, gunPics.get(1), 5, 10,  30, 20, this);
         gunList.add(AssaultRifle);
-        Gun revolver = new Gun("Revolver", 0,0, gunPics.get(2), 10, 10, 6, 2);
+        Gun revolver = new Gun("Revolver", 0,0, gunPics.get(2), 10, 10, 6, 2, this);
         gunList.add(revolver);
 
 
@@ -240,6 +242,14 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(background, 0, 0, this.getWidth(), this.getHeight(), this);
+
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Arial", Font.BOLD, 14));
+        g.drawString("Current Gun: " + hero.getName(), 10, 20);
+        g.drawString("Current Ammo: " + hero.getAmmo(), 10, 40);
+        g.drawString("Max Ammo: " + hero.getMaxAmmo(), 10, 60);
+        g.drawString("Reload Time: " + hero.getReloadTime(), 10, 80);
+
     }
 
 
@@ -407,4 +417,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     public void reloading(boolean reloading){
         this.reloading = reloading;
     }
+
+    
+    
+
 }

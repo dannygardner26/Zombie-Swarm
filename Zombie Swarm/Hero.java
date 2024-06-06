@@ -147,9 +147,16 @@ public class Hero extends GameObject {
     public int getAmmo(){
         return gun.getAmmo();
     }
+    public int getMaxAmmo(){
+        return gun.getMaxAmmo();
+    }
 
     public int useAmmo(){
         return gun.getAmmo();
+    }
+
+    public String getName(){
+        return gun.getName();
     }
 
     public double getFireRate(){
@@ -180,9 +187,24 @@ public class Hero extends GameObject {
 
     public void reload(){
         gun.reload();
+        gp.repaint();
+
     }
     public void fire(){
+        if (gun.getAmmo() > 0) {
         gun.fire();
+        gp.repaint();
+        }
     }
+
+    public double getReloadTime(){
+        if (gun.isReloading())
+            return (double) gun.getReloadTime() / 10.0;
+
+        else
+            return 0.0;
+
+    }
+
 
 }

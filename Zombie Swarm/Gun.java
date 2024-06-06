@@ -21,14 +21,16 @@ public class Gun extends GameObject{
     private int maxAmmo;
     private Timer reloadTimer;
     private int reloadTime;
-    
+    private GamePanel gp;
+    private boolean isReloading;
 
-    public Gun(String name, int x, int y, ImageIcon icon, int damage, int reloadSpeed, int ammo, double fireRate){
+    public Gun(String name, int x, int y, ImageIcon icon, int damage, int reloadSpeed, int ammo, double fireRate, GamePanel gp){
         super(x,y);
         this.setSize(15,20);
         reloadTime = 0;
         this.visible = false;
         iconGun = icon;
+        this.gp = gp;
         this.damage = damage;
         this.reloadSpeed = reloadSpeed;
         this.name = name;
@@ -36,6 +38,7 @@ public class Gun extends GameObject{
         this.reloadTime = 0;
         this.fireRate = fireRate;
         this.maxAmmo = ammo;
+        this.isReloading = false;
         
         reloadTimer = new Timer(100, new ActionListener() { 
             
@@ -43,28 +46,37 @@ public class Gun extends GameObject{
                 reloadTick();
             }
         });
-        reloadTimer.start();
     }
 
     
     @Override
     public void update() {
-       
+        if(reloadTime > reloadSpeed){
+            ammo = maxAmmo;
+            reloadTime = 0;
+            isReloading = false;
+            reloadTimer.stop();
+            }
     }
 
 
     public void reload(){
-        if(reloadTime > reloadSpeed){
-        ammo = maxAmmo;
-        reloadTime = 0;
-        
+        if(!isReloading){
+        isReloading = true;
+        reloadTime = reloadSpeed;
+        reloadTimer.start();
         }
+        
         
     }
 
     
     public int getAmmo(){
         return this.ammo;
+    }
+
+    public int getMaxAmmo(){
+        return maxAmmo;
     }
 
     public double getFireRate(){
@@ -84,9 +96,24 @@ public class Gun extends GameObject{
     }
     
     public void reloadTick(){
-        reloadTime++;
+        if (reloadTime > 0) {
+            reloadTime--;
+        } else {
+            reloadTimer.stop();
+            ammo = maxAmmo;
+            reloadTime = 0;
+            isReloading = false;
+        }
+        gp.repaint();
+    }
+
+    public int getReloadTime(){
+        return reloadTime;
     }
     
+    public boolean isReloading(){
+        return isReloading;
+    }
 
     
 }
