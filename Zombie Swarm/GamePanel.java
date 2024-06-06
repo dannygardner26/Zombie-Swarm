@@ -54,9 +54,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
         for(int i = 0; i < 19; i++){
             gunPics.add(new ImageIcon("./images/realGun" + i + ".png"));
         }
-        Gun pistol = new Gun("pistol", 0, 0, gunPics.get(0), 5, 10, 8, 50);
+        Gun pistol = new Gun("pistol", 0, 0, gunPics.get(0), 5, 10, 8, 50, 1);
         gunList.add(pistol);
-        Gun AssaultRifle = new Gun("pistol", 0, 0, gunPics.get(1), 5, 10,  30, 200);
+        Gun AssaultRifle = new Gun("pistol", 0, 0, gunPics.get(1), 5, 10,  30, 200, 1);
         gunList.add(AssaultRifle);
         enemySpawnRate = 2;
         coinTimer = 0;
