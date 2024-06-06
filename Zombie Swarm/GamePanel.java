@@ -145,11 +145,11 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                         hero.setDirection(new Direction(Direction.RIGHT));
                         break;
 
-                        case KeyEvent.VK_Q:
-                        hero.gunLeft();
+                    case KeyEvent.VK_Q:
+                            hero.gunLeft();
                         break;
-                        case KeyEvent.VK_E:
-                        hero.gunRight();
+                    case KeyEvent.VK_E:
+                            hero.gunRight();
                         break;
                              
                     
@@ -316,7 +316,6 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
     @Override
     public void mousePressed(MouseEvent e) {  
-        System.out.println("held");
 
         firing = true;
 

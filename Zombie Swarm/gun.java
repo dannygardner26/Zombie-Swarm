@@ -54,6 +54,10 @@ public class Gun extends GameObject{
         return this.damage;
     }
 
+    public String getName(){
+        return this.name;
+    }
+
     
     
 
