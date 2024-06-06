@@ -49,6 +49,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     private int gunTimer;
     private PowerUps power;
     
+    
     /**
      
      */
@@ -70,9 +71,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         for(int i = 0; i < 19; i++){
             gunPics.add(new ImageIcon("./images/realGun" + i + ".png"));
         }
-        Gun pistol = new Gun("pistol", 0, 0, gunPics.get(0), 5, 10, 8, 20);
+        Gun pistol = new Gun("pistol", 0, 0, gunPics.get(0), 5, 10, 8, 5);
         gunList.add(pistol);
-        Gun AssaultRifle = new Gun("pistol", 0, 0, gunPics.get(1), 5, 10,  30, 5);
+        Gun AssaultRifle = new Gun("pistol", 0, 0, gunPics.get(1), 5, 10,  30, 20);
         gunList.add(AssaultRifle);
         enemySpawnRate = 2;
         coinTimer = 0;
@@ -90,15 +91,14 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         }
 
         
-
+        power = new PowerUps(200, 200, hero);
+        this.add(power);
+        power.setVisible(true);
         
 
         hero = new Hero(100, 100, tempGP, pistol);
         this.add(hero);
         hero.setVisible(true);
-
-        power = new PowerUps(200, 200, hero);
-        this.add(power);
         
 
        
@@ -219,7 +219,6 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     @Override
     public void actionPerformed(ActionEvent e) {
         hero.update();
-        power.update();
         fireTimer++;
 
         coinTimer++;
@@ -232,7 +231,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
             temp.setVisible(true);
             this.coinTimer = 0;
         }
-
+        power.update();
 
         if(firing){
             if(fireTimer > hero.getFireRate()){
