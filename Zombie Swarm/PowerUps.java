@@ -15,9 +15,9 @@ public class PowerUps extends GameObject
         this.hero = hero;
         powerUps = new ArrayList<String>();
         icon = new ImageIcon[3];
-        icon[0] = new ImageIcon("Zombie Swarm/images/powerR.png");
-        icon[1] = new ImageIcon("Zombie Swarm/images/ammo.png");
-        icon[2] = new ImageIcon("Zombie Swarm/images/coinDoubler.png");
+        icon[0] = new ImageIcon("./Zombie Swarm/images/powerR.png");
+        icon[1] = new ImageIcon("./Zombie Swarm/images/ammo.png");
+        icon[2] = new ImageIcon("./Zombie Swarm/images/coinDoubler.png");
         
         powerUps.add("SpeedBoost");
         powerUps.add("AmmoBoost");
@@ -35,6 +35,7 @@ public class PowerUps extends GameObject
         if(temp.equals("CoinBoost")){
             this.setIcon(icon[2]);
         }
+        this.setLocation(x,y);
 
        
 

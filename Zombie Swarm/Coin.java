@@ -66,4 +66,8 @@ public class Coin extends GameObject {
     public boolean isDone() {
         return done;
     }
+
+    public int getCoins(){
+        return coinCount;
+    }
 }

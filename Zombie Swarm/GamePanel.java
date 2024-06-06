@@ -99,6 +99,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
         power = new PowerUps(200, 200, hero);
         this.add(power);
+        power.setVisible(true);
         
 
        
