@@ -23,7 +23,7 @@ public class PowerUps extends GameObject
    {
         powerUps.add("SpeedBoost");
         powerUps.add("AmmoBoost");
-        powerUps.add("Magnet");
+        powerUps.add("CoinBoost");
 
         int x = (int)(Math.random()* powerUps.size());
         return powerUps.get(x);
@@ -32,6 +32,12 @@ public class PowerUps extends GameObject
    }
 
     public void update(){
+        boolean collision = hero.hasCollidedWith(this);
+        if (collision) {
+            this.setVisible(false);
+            
+        }
+    }
 
     }
 
@@ -39,4 +45,4 @@ public class PowerUps extends GameObject
 
     
     
-}
+

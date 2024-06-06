@@ -40,6 +40,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
     private int coinTimer;
     private int healthMulti;
     private int fireTimer;
+    private PowerUps power;
     /**
      
      */
@@ -110,23 +111,23 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
                 int code = e.getKeyCode();
                 switch (code) {
                     case KeyEvent.VK_W:
-                            hero.setDy(-5);
+                            hero.setDy(-2);
                             hero.setDx(0); 
                         hero.setDirection(new Direction(Direction.UP));                     
                         break;
                     case KeyEvent.VK_A:
                             hero.setDy(0);
-                            hero.setDx(-5);
+                            hero.setDx(-2);
                         hero.setDirection(new Direction(Direction.LEFT));
                         break;
                     case KeyEvent.VK_S:                       
-                            hero.setDy(5);
+                            hero.setDy(2);
                             hero.setDx(0);                      
                         hero.setDirection(new Direction(Direction.DOWN));
                         break;
                     case KeyEvent.VK_D:
                             hero.setDy(0);// moving up
-                            hero.setDx(5);// horizontal v Vertical mutually exclusive                              
+                            hero.setDx(2);// horizontal v Vertical mutually exclusive                              
                         hero.setDirection(new Direction(Direction.RIGHT));
                         break;
 
