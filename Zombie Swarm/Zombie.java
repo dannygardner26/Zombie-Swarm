@@ -1,5 +1,7 @@
 
 
+import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
 
 
@@ -15,8 +17,12 @@ public class Zombie extends GameObject {
     private double dy;
     private double movingX;
     private double movingY;
+    private double hp;
+    private ArrayList<Bullet> bulletList;
 
-    public Zombie(int x, int y, Hero hero) { //this constructor provides the parameter to create a target
+
+
+    public Zombie(int x, int y, Hero hero, int healthMulti, ArrayList<Bullet> bulletList) { //this constructor provides the parameter to create a target
         super(x, y); 
         this.phase = 0;
         this.setSize(32, 28);
@@ -29,6 +35,8 @@ public class Zombie extends GameObject {
         this.movingY = 0;
         this.dy = 0;
         this.dx = 0;
+        this.hp = healthMulti * 10;
+        this.bulletList = bulletList;
 
 
         for (int i = 0; i < icons.length; i++) {
@@ -47,23 +55,37 @@ public class Zombie extends GameObject {
         animationCounter++;
         this.setIcon(icons[direction.getDirection()][animationCounter%3]);
 
+        double angle = Math.atan2(hero.getY() - this.getY(),hero.getX() - this.getX() );
 
-        
+        this.dx = (  Math.cos(angle));//find a way to add decimals and make it so that the horiz/vert movement is seperates
+        this.dy = (  Math.sin(angle));// this will allow for it to shoot left and right fast, but up and down slow in certain cases
+
         updateX();
         updateY();
+
+        for(int i = 0; i < bulletList.size(); i++){
+            if(this.hasCollidedWith(bulletList.get(i))){
+                bulletList.get(i).isDead(true);
+                hp = hp - bulletList.get(i).getDamage();
+                if(hp <= 0){
+                    this.die();
+                }
+            }
+        }
+
 
 
     }
 
     public void updateX(){
         movingX += dx;
-
         
         if((int)movingX!=0)
         {
             this.setLocation(this.getX() + (int)movingX, this.getY());
             movingX = movingX - (int)movingX;
         }
+        
     }
     public void updateY(){
         movingY += dy;
