@@ -50,7 +50,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     private PowerUps power;
     private ImageIcon[] powerIcons;
     private ArrayList<PowerUps> powerList;
-    
+    private boolean reloading;
     
     /**
      
@@ -262,8 +262,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
             powerList.get(i).update();
         }
 
-        if(firing){
-            if(fireTimer > hero.getFireRate()){
+        if(firing || !reloading){
+            if(fireTimer > hero.getFireRate() * 5){
                 if(hero.getAmmo() > 0){
                 fireTimer = 0;
                 Bullet temp = new Bullet(hero.getX(),hero.getY(), hero.getDamage(), hero.getFireRate(),  mouseX, mouseY, this);
@@ -401,5 +401,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     public void mouseMoved(MouseEvent e) {
         this.mouseX = e.getX();
         this.mouseY = e.getY();
+    }
+    
+    public void reloading(boolean reloading){
+        this.reloading = reloading;
     }
 }
