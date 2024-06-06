@@ -84,6 +84,40 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         gunList.add(AssaultRifle);
         Gun revolver = new Gun("Revolver", 0,0, gunPics.get(2), 10, 10, 6, 2, this);
         gunList.add(revolver);
+        Gun burst = new Gun("Burst Rifle", 0,0, gunPics.get(3), 7, 10, 6, 5, this);
+        gunList.add(burst);
+        Gun deagalGun = new Gun("Deagal Pistol", 0,0, gunPics.get(4), 10, 10, 3, 1, this);
+        gunList.add(deagalGun);
+        Gun stingerSMG = new Gun("Stinger Submachine Gun", 0,0, gunPics.get(5), 1, 5, 12, 15, this);
+        gunList.add(stingerSMG);
+        Gun machineGun = new Gun("Machine Gun", 0,0, gunPics.get(6), 1, 10, 20, 15, this);
+        gunList.add(machineGun);
+        //Gun greGun = new Gun("Revolver", 0,0, gunPics.get(7), 10, 10, 6, 2, this);
+        //gunList.add(greGun);
+        Gun hunterRifleGun = new Gun("Hunter Sniper Rifle", 0,0, gunPics.get(8), 10, 5, 1, 1, this);
+        gunList.add(hunterRifleGun);
+
+        Gun dmrRifle = new Gun("Designated Marksman Rifle", 0,0, gunPics.get(9), 4, 5, 3, 3, this);
+        gunList.add(dmrRifle);
+
+        Gun boltactioGun = new Gun("Bolt Action SNiper Rifle", 0,0, gunPics.get(10), 10, 7, 2, 2, this);
+        gunList.add(boltactioGun);
+
+        Gun machinePistolGun = new Gun("Machine Pistol Gun", 0,0, gunPics.get(11), 3, 4, 10, 3, this);
+        gunList.add(machinePistolGun);
+
+        //Gun pistol = new Gun("Designated Marksman Rifle", 0,0, gunPics.get(12), 4, 5, 3, 3, this);
+        //gunList.add(revolver);
+
+        Gun drumGun = new Gun("Drum Gun Assualt Rifle", 0,0, gunPics.get(13), 3, 5, 15, 5, this);
+        gunList.add(drumGun);
+
+        Gun dmrRifle = new Gun("Designated Marksman Rifle", 0,0, gunPics.get(14), 4, 5, 3, 3, this);
+        gunList.add(revolver);
+
+        
+
+
 
 
 
