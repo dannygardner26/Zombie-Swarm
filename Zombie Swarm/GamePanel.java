@@ -114,6 +114,13 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         hero = new Hero(100, 100, tempGP, pistol);
         this.add(hero);
         hero.setVisible(true);
+<<<<<<< HEAD
+
+        power = new PowerUps(200, 200, hero);
+        this.add(power);
+        power.setVisible(true);
+=======
+>>>>>>> 2f6d3f5a81413af79bfb8772f9f11640f9f533e6
         
 
        

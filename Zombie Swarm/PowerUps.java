@@ -29,6 +29,7 @@ public class PowerUps extends GameObject
                                        
                 break;
         }
+        this.setLocation(x,y);
 
        
 
