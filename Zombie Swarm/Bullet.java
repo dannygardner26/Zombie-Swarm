@@ -4,7 +4,7 @@ public class Bullet extends GameObject{
 
     private int damage;
     private ImageIcon iconBullet;
-    private int fireRate;
+    private double fireRate;
     private int bulletSpeed;
     private double dx;
     private double dy;
@@ -13,7 +13,7 @@ public class Bullet extends GameObject{
     private double movingX;
     private double movingY;
 
-    public Bullet(int x, int y, int damage, int fireRate, int mouseX, int mouseY, GamePanel gp)
+    public Bullet(int x, int y, int damage, double fireRate, int mouseX, int mouseY, GamePanel gp)
     {
         super(x,y);
         this.setSize(4,4);
@@ -75,13 +75,19 @@ public class Bullet extends GameObject{
     }
 
 
-
+    public int getDamage(){
+        return damage;
+    }
 
 
 
 
     public boolean isDone(){
         return done;
+    }
+
+    public void isDead(Boolean baka){
+        this.done = baka;
     }
 
 }

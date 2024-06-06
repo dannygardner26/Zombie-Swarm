@@ -13,9 +13,9 @@ public class Hero extends GameObject {
     private GamePanel gp;
     private Gun gun;
     private ArrayList<Gun> gunList;
-   
+    private int gunIndex;
 
-    public Hero(int x, int y, GamePanel gp, ArrayList<Gun> list) {
+    public Hero(int x, int y, GamePanel gp, Gun gun) {
         super(x, y);
         this.setSize(32, 36);
         direction = Direction.DOWN;
@@ -23,10 +23,12 @@ public class Hero extends GameObject {
         phaseCounter = 0;
         dx = 0;
         dy = 0;
-        this.gp = gp;
-        this.gunList = list;
-        this.gun = list.get(0);
+        gunIndex = 0;
 
+        this.gp = gp;
+        this.gunList = new ArrayList<Gun>();
+        gunList.add(gun);
+        this.gun = gunList.get(gunIndex);
         icons = new ImageIcon[4][3];
 
         for (int i = 0; i < icons.length; i++) {
@@ -102,8 +104,10 @@ public class Hero extends GameObject {
      * update the character's location and image based on the dx and dy
      */
     public void update() {
+        this.gun = gunList.get(gunIndex);
+
         gun.update();
-        
+
         if (dx != 0 || dy != 0) {
             if(this.getY()<=0 && dy<0){
                 this.setLocation(this.getX(),this.getY()- dy );
@@ -143,16 +147,64 @@ public class Hero extends GameObject {
     public int getAmmo(){
         return gun.getAmmo();
     }
+    public int getMaxAmmo(){
+        return gun.getMaxAmmo();
+    }
 
     public int useAmmo(){
         return gun.getAmmo();
     }
 
-    public int getFireRate(){
+    public String getName(){
+        return gun.getName();
+    }
+
+    public double getFireRate(){
         return gun.getFireRate();
     }
 
     public int getDamage(){
         return gun.getDamage();
     }
+
+    public void addGun(Gun gun){
+        gunList.add(gun);
+    }
+
+    public void gunRight(){
+        gunIndex = (gunIndex + 1) % gunList.size();
+        
+
+    }
+
+    public void gunLeft(){
+        gunIndex = (gunIndex - 1);
+        
+        if(gunIndex < 0){
+            gunIndex = gunList.size()-1;
+        }
+   }
+
+    public void reload(){
+        gun.reload();
+        gp.repaint();
+
+    }
+    public void fire(){
+        if (gun.getAmmo() > 0) {
+        gun.fire();
+        gp.repaint();
+        }
+    }
+
+    public double getReloadTime(){
+        if (gun.isReloading())
+            return (double) gun.getReloadTime() / 10.0;
+
+        else
+            return 0.0;
+
+    }
+
+
 }
