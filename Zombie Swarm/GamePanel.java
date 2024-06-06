@@ -84,7 +84,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
 
 
-
+        hero = new Hero(100, 100, tempGP, pistol);
+        this.add(hero);
+        hero.setVisible(true);
 
 
 
@@ -120,9 +122,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
         
 
-        hero = new Hero(100, 100, tempGP, pistol);
-        this.add(hero);
-        hero.setVisible(true);
+        
 
         
         
