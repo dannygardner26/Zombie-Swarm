@@ -151,6 +151,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                     case KeyEvent.VK_E:
                             hero.gunRight();
                         break;
+                    case KeyEvent.VK_R:
+                            hero.reload();
+                        break;
                              
                     
                 }
