@@ -11,6 +11,10 @@ public class Zombie extends GameObject {
     private Direction direction;
     private Boolean done;
     private Hero hero;
+    private double dx;
+    private double dy;
+    private double movingX;
+    private double movingY;
 
     public Zombie(int x, int y, Hero hero) { //this constructor provides the parameter to create a target
         super(x, y); 
@@ -21,6 +25,10 @@ public class Zombie extends GameObject {
         this.done = false;
         icons = new ImageIcon[4][3];
         this.hero = hero;
+        this.movingX = 0;
+        this.movingY = 0;
+        this.dy = 0;
+        this.dx = 0;
 
 
         for (int i = 0; i < icons.length; i++) {
@@ -40,12 +48,38 @@ public class Zombie extends GameObject {
         this.setIcon(icons[direction.getDirection()][animationCounter%3]);
 
 
-        if(Math.abs(hero.getX() - this.getX()) > Math.abs(hero.getY() - this.getY())){
-
-        }
+        
+        updateX();
+        updateY();
 
 
     }
+
+    public void updateX(){
+        movingX += dx;
+
+        
+        if((int)movingX!=0)
+        {
+            this.setLocation(this.getX() + (int)movingX, this.getY());
+            movingX = movingX - (int)movingX;
+        }
+    }
+    public void updateY(){
+        movingY += dy;
+        if((int)movingY!=0)
+        {
+            this.setLocation(this.getX(), this.getY() + (int)movingY);
+            movingY = movingY - (int)movingY;
+        }
+    }
+
+
+
+
+
+
+
     private void updateIcon() {
         animationCounter++;
     

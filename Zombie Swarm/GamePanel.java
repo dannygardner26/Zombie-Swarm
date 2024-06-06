@@ -187,7 +187,6 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
         
 
         coinTimer++;
-        System.out.println((coinTimer));
         if (coinTimer > 200){
             int rany = (int)(Math.random()*this.getHeight());
             int ranx = (int)(Math.random()*this.getWidth());

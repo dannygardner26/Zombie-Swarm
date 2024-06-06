@@ -23,7 +23,7 @@ public class Coin extends GameObject {
         for (int i = 0; i < 2; i++) {
             for(int j = 0; j<3; j++){
                 icons[i] = new ImageIcon("./Zombie Swarm/images/coin_" + i +"_" + j +".png");
-            }
+            } 
             
         }
 
