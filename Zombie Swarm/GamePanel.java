@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -350,3 +351,5 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         this.mouseY = e.getY();
     }
 }
+=======
+>>>>>>> 56619a705c945cf039d7b06b01bdacfc230c7c11
