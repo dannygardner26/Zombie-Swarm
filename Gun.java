@@ -14,6 +14,7 @@ public class Gun extends GameObject{
     private String name;
     private ArrayList<Bullet> bulletList;
     private int ammo;
+    private int maxAmmo;
     private int reloadTimer;
 
     public Gun(String name, int x, int y, ImageIcon icon, int damage, int reloadSpeed, int ammo, double fireRate){
@@ -28,6 +29,7 @@ public class Gun extends GameObject{
         this.ammo = ammo;
         this.reloadTimer = 0;
         this.fireRate = fireRate;
+        this.maxAmmo = ammo;
     }
 
     
@@ -38,7 +40,7 @@ public class Gun extends GameObject{
 
 
     public void reload(){
-
+        ammo = maxAmmo;
     }
 
     
@@ -54,8 +56,16 @@ public class Gun extends GameObject{
         return this.damage;
     }
 
+    public String getName(){
+        return this.name;
+    }
+
+    public void fire(){
+        ammo--;
+    }
     
     
 
     
 }
+

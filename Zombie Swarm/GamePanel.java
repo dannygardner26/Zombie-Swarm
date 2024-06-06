@@ -149,8 +149,14 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                         hero.setDirection(new Direction(Direction.RIGHT));
                         break;
 
-                    case KeyEvent.VK_SPACE:
-                        
+                    case KeyEvent.VK_Q:
+                            hero.gunLeft();
+                        break;
+                    case KeyEvent.VK_E:
+                            hero.gunRight();
+                        break;
+                    case KeyEvent.VK_R:
+                            hero.reload();
                         break;
                              
                     
@@ -178,6 +184,12 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                     case KeyEvent.VK_D:
                         hero.setDx(0);
                         hero.setIdle();
+                        break;
+                    case KeyEvent.VK_Q:
+                        
+                        break;
+                    case KeyEvent.VK_E:
+                        
                         break;
                 }
             }
@@ -224,11 +236,14 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
         if(firing){
             if(fireTimer > hero.getFireRate()){
+                if(hero.getAmmo() > 0){
                 fireTimer = 0;
                 Bullet temp = new Bullet(hero.getX(),hero.getY(), hero.getDamage(), hero.getFireRate(),  mouseX, mouseY, this);
                 this.add(temp);
                 bulletList.add(temp);
                 temp.setVisible(true);
+                hero.fire();
+                }
             } 
         }
         enemyTimer++;
@@ -312,7 +327,6 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
     @Override
     public void mousePressed(MouseEvent e) {  
-        System.out.println("held");
 
         firing = true;
 

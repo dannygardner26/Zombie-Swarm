@@ -163,4 +163,26 @@ public class Hero extends GameObject {
     public void addGun(Gun gun){
         gunList.add(gun);
     }
+
+    public void gunRight(){
+        gunIndex = (gunIndex + 1) % gunList.size();
+        
+
+    }
+
+    public void gunLeft(){
+        gunIndex = (gunIndex - 1);
+        
+        if(gunIndex < 0){
+            gunIndex = gunList.size()-1;
+        }
+   }
+
+    public void reload(){
+        gun.reload();
+    }
+    public void fire(){
+        gun.fire();
+    }
+
 }
