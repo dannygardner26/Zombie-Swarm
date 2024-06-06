@@ -250,7 +250,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         g.drawString(hero.getName(), 10, this.getHeight()-50);
         g.drawString("Ammo: " + hero.getAmmo() + "/" + hero.getMaxAmmo(), 10, this.getHeight()-10);
         g.drawString("Reload Time: " + hero.getReloadTime(), 10, this.getHeight()-30);
-        g.drawString("Score: " + (coins+timeAlive), this.getWidth()-100, 20);
+        g.drawString("Score: " + (coins*100 +timeAlive), this.getWidth()-100, 20);
         
 
     }
@@ -260,7 +260,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     public void actionPerformed(ActionEvent e) {
         hero.update();
         fireTimer++;
-
+        timeAlive++;
+        this.repaint();
         coinTimer++;
         if (coinTimer > 200){
             int rany = (int)(Math.random()*this.getHeight());
@@ -280,7 +281,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
             if(fireTimer > hero.getFireRate() * 5){
                 if(hero.getAmmo() > 0){
                 fireTimer = 0;
-                Bullet temp = new Bullet(hero.getX(),hero.getY(), hero.getDamage(), hero.getFireRate(),  mouseX, mouseY, this);
+                Bullet temp = new Bullet(hero.getX()+16,hero.getY()+18, hero.getDamage(), hero.getFireRate(),  mouseX, mouseY, this);
                 this.add(temp);
                 bulletList.add(temp);
                 temp.setVisible(true);
@@ -348,7 +349,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
     public void coinCollected()
     {
-        coins+= 100;
+        coins++;
     }
 
     @Override
