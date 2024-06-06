@@ -41,11 +41,18 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     private int coinTimer;
     private int healthMulti;
     private int fireTimer;
+<<<<<<< HEAD
+=======
+    private PowerUps power;
+>>>>>>> 91428fc486b75c061116958ac8bd21c933d706dc
     private int fireDelay;
     private Boolean firing;
     private int mouseX;
     private int mouseY;
+<<<<<<< HEAD
     private int coins;
+=======
+>>>>>>> 91428fc486b75c061116958ac8bd21c933d706dc
     
     /**
      
@@ -76,7 +83,10 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         mouseX = 0;
         mouseY = 0;
         this.addMouseMotionListener(this);
+<<<<<<< HEAD
         coins = 0;
+=======
+>>>>>>> 91428fc486b75c061116958ac8bd21c933d706dc
 
         URL imageURL = getClass().getResource("./images/backgrounddetailed2.png");
 
@@ -123,23 +133,39 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                 int code = e.getKeyCode();
                 switch (code) {
                     case KeyEvent.VK_W:
+<<<<<<< HEAD
                             hero.setDy(-5);
+=======
+                            hero.setDy(-2);
+>>>>>>> 91428fc486b75c061116958ac8bd21c933d706dc
                             hero.setDx(0); 
                         hero.setDirection(new Direction(Direction.UP));                     
                         break;
                     case KeyEvent.VK_A:
                             hero.setDy(0);
+<<<<<<< HEAD
                             hero.setDx(-5);
                         hero.setDirection(new Direction(Direction.LEFT));
                         break;
                     case KeyEvent.VK_S:                       
                             hero.setDy(5);
+=======
+                            hero.setDx(-2);
+                        hero.setDirection(new Direction(Direction.LEFT));
+                        break;
+                    case KeyEvent.VK_S:                       
+                            hero.setDy(2);
+>>>>>>> 91428fc486b75c061116958ac8bd21c933d706dc
                             hero.setDx(0);                      
                         hero.setDirection(new Direction(Direction.DOWN));
                         break;
                     case KeyEvent.VK_D:
                             hero.setDy(0);// moving up
+<<<<<<< HEAD
                             hero.setDx(5);// horizontal v Vertical mutually exclusive                              
+=======
+                            hero.setDx(2);// horizontal v Vertical mutually exclusive                              
+>>>>>>> 91428fc486b75c061116958ac8bd21c933d706dc
                         hero.setDirection(new Direction(Direction.RIGHT));
                         break;
 
@@ -207,7 +233,11 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         if (coinTimer > 200){
             int rany = (int)(Math.random()*this.getHeight());
             int ranx = (int)(Math.random()*this.getWidth());
+<<<<<<< HEAD
             Coin temp = new Coin(ranx,rany, hero, this);
+=======
+            Coin temp = new Coin(ranx,rany, hero);
+>>>>>>> 91428fc486b75c061116958ac8bd21c933d706dc
             coinList.add(temp);
             this.add(temp);
             temp.setVisible(true);
@@ -278,11 +308,14 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
     }
 
+<<<<<<< HEAD
     public void coinCollected()
     {
         coins++;
     }
 
+=======
+>>>>>>> 91428fc486b75c061116958ac8bd21c933d706dc
     @Override
     public void mouseClicked(MouseEvent e) {
         // if(fireTimer > hero.getFireRate()){
