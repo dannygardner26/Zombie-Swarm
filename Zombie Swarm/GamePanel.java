@@ -48,6 +48,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     private int coins;
     private int gunTimer;
     private PowerUps power;
+    private ImageIcon[] powerIcons;
+    private ArrayList<PowerUps> powerList;
     
     
     /**
@@ -59,6 +61,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         gunTimer = 0;
         this.fireDelay = 0;
         randomNumScramble();
+        powerList = new ArrayList<PowerUps>();
         firing = false;
         enemyTimer = 0;
         zombieList = new ArrayList<Zombie>();
@@ -90,8 +93,20 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
             e.printStackTrace();
         }
 
-        
-        power = new PowerUps(200, 200, hero);
+        powerIcons = new ImageIcon[3];
+
+
+        for(int i = 0; i < 3; i++){
+            ImageIcon tempImage = new ImageIcon("Zombie Swarm/images/power_" + i + ".png"); 
+            powerIcons[i] = tempImage;  
+        }
+        PowerUps speedBoost = new PowerUps(200, 200, hero, powerIcons[0], "Speed Boost", 0);
+        powerList.add(speedBoost);
+        PowerUps ammoBoost = new PowerUps(200, 200, hero, powerIcons[1], "Ammo Boost", 1);
+        powerList.add(ammoBoost);
+        PowerUps coinBoost = new PowerUps(200, 200, hero, powerIcons[2], "Coin Boost", 2);
+        powerList.add(coinBoost);
+
         this.add(power);
         power.setVisible(true);
         
