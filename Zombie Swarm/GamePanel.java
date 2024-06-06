@@ -47,6 +47,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     private int mouseY;
     private int coins;
     private int gunTimer;
+    private PowerUps power;
     
     /**
      
@@ -95,6 +96,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         hero = new Hero(100, 100, tempGP, pistol);
         this.add(hero);
         hero.setVisible(true);
+
+        power = new PowerUps(200, 200, hero);
+        this.add(power);
         
 
        
@@ -203,6 +207,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     @Override
     public void actionPerformed(ActionEvent e) {
         hero.update();
+        power.update();
         fireTimer++;
 
         coinTimer++;
