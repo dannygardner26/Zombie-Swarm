@@ -45,6 +45,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     private Boolean firing;
     private int mouseX;
     private int mouseY;
+    private int coins;
     
     /**
      
@@ -75,6 +76,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         mouseX = 0;
         mouseY = 0;
         this.addMouseMotionListener(this);
+        coins = 0;
 
         URL imageURL = getClass().getResource("./images/backgrounddetailed2.png");
 
@@ -205,7 +207,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         if (coinTimer > 200){
             int rany = (int)(Math.random()*this.getHeight());
             int ranx = (int)(Math.random()*this.getWidth());
-            Coin temp = new Coin(ranx,rany, hero);
+            Coin temp = new Coin(ranx,rany, hero, this);
             coinList.add(temp);
             this.add(temp);
             temp.setVisible(true);
@@ -274,6 +276,11 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         this.randomNum = (int)(Math.random()*100+100);
 
 
+    }
+
+    public void coinCollected()
+    {
+        coins++;
     }
 
     @Override
