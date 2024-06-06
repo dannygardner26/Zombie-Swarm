@@ -57,6 +57,7 @@ public class Gun extends GameObject{
         if(reloadTime > reloadSpeed){
         ammo = maxAmmo;
         reloadTime = 0;
+        
         }
         
     }

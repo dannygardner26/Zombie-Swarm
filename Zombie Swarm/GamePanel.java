@@ -263,7 +263,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
             powerList.get(i).update();
         }
 
-        if(firing || !reloading){
+        if(firing && !reloading){
             if(fireTimer > hero.getFireRate() * 5){
                 if(hero.getAmmo() > 0){
                 fireTimer = 0;
