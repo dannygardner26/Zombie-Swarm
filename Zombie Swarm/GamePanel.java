@@ -74,10 +74,21 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         for(int i = 0; i < 19; i++){
             gunPics.add(new ImageIcon("./images/realGun" + i + ".png"));
         }
-        Gun pistol = new Gun("pistol", 0, 0, gunPics.get(0), 5, 10, 8, 5);
+        Gun pistol = new Gun("Pistol", 0, 0, gunPics.get(0), 5, 10, 8, 5);
         gunList.add(pistol);
-        Gun AssaultRifle = new Gun("pistol", 0, 0, gunPics.get(1), 5, 10,  30, 20);
+        Gun AssaultRifle = new Gun("Assault Rifle", 0, 0, gunPics.get(1), 5, 10,  30, 20);
         gunList.add(AssaultRifle);
+        Gun revolver = new Gun("Revolver", 0,0, gunPics.get(2), 10, 10, 6, 2);
+        gunList.add(revolver);
+
+
+
+
+
+
+
+
+
         enemySpawnRate = 2;
         coinTimer = 0;
         mouseX = 0;
@@ -114,13 +125,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         hero = new Hero(100, 100, tempGP, pistol);
         this.add(hero);
         hero.setVisible(true);
-<<<<<<< HEAD
 
-        power = new PowerUps(200, 200, hero);
-        this.add(power);
-        power.setVisible(true);
-=======
->>>>>>> 2f6d3f5a81413af79bfb8772f9f11640f9f533e6
+        
         
 
        
