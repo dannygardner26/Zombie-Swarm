@@ -46,6 +46,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     private int mouseX;
     private int mouseY;
     private int coins;
+    private int gunTimer;
     
     /**
      
@@ -53,6 +54,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     public GamePanel() {
         this.setLayout(null);
         tempGP = this;
+        gunTimer = 0;
         this.fireDelay = 0;
         randomNumScramble();
         firing = false;
@@ -90,7 +92,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
         
 
-        hero = new Hero(100, 100, tempGP, gunList);
+        hero = new Hero(100, 100, tempGP, pistol);
         this.add(hero);
         hero.setVisible(true);
         
@@ -236,7 +238,11 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                 }
             }
 
-
+        gunTimer++;
+        if(gunTimer > 1000)
+            {
+                hero.addGun(gunList.get((int)(Math.random()*gunList.size())));
+            }
 
 
         for(int i = 0; i < bulletList.size(); i++){
