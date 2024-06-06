@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
  * hit by fireballs and removed from the game.
  */
 
-public class GamePanel extends JPanel implements ActionListener, MouseListener{
+public class GamePanel extends JPanel implements ActionListener, MouseListener, MouseMotionListener{
 
     private BufferedImage background;
     private Hero hero;
@@ -40,13 +41,20 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
     private int coinTimer;
     private int healthMulti;
     private int fireTimer;
+    private int fireDelay;
+    private Boolean firing;
+    private int mouseX;
+    private int mouseY;
+    
     /**
      
      */
     public GamePanel() {
         this.setLayout(null);
         tempGP = this;
+        this.fireDelay = 0;
         randomNumScramble();
+        firing = false;
         enemyTimer = 0;
         zombieList = new ArrayList<Zombie>();
         bulletList = new ArrayList<Bullet>();
@@ -58,12 +66,15 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
         for(int i = 0; i < 19; i++){
             gunPics.add(new ImageIcon("./images/realGun" + i + ".png"));
         }
-        Gun pistol = new Gun("pistol", 0, 0, gunPics.get(0), 5, 10, 8, 200);
+        Gun pistol = new Gun("pistol", 0, 0, gunPics.get(0), 5, 10, 8, 20);
         gunList.add(pistol);
-        Gun AssaultRifle = new Gun("pistol", 0, 0, gunPics.get(1), 5, 10,  30, 50);
+        Gun AssaultRifle = new Gun("pistol", 0, 0, gunPics.get(1), 5, 10,  30, 5);
         gunList.add(AssaultRifle);
         enemySpawnRate = 2;
         coinTimer = 0;
+        mouseX = 0;
+        mouseY = 0;
+        this.addMouseMotionListener(this);
 
         URL imageURL = getClass().getResource("./images/backgrounddetailed2.png");
 
@@ -202,7 +213,15 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
         }
 
 
-
+        if(firing){
+            if(fireTimer > hero.getFireRate()){
+                fireTimer = 0;
+                Bullet temp = new Bullet(hero.getX(),hero.getY(), hero.getDamage(), hero.getFireRate(),  mouseX, mouseY, this);
+                this.add(temp);
+                bulletList.add(temp);
+                temp.setVisible(true);
+            } 
+        }
         enemyTimer++;
         if(enemyTimer > 200)
             {
@@ -259,13 +278,13 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(fireTimer > hero.getFireRate()){
-            fireTimer = 0;
-            Bullet temp = new Bullet(hero.getX(),hero.getY(), hero.getDamage(), hero.getFireRate(),  e.getX(), e.getY(), this);
-            this.add(temp);
-            bulletList.add(temp);
-            temp.setVisible(true);
-        }
+        // if(fireTimer > hero.getFireRate()){
+        //     fireTimer = 0;
+        //     Bullet temp = new Bullet(hero.getX(),hero.getY(), hero.getDamage(), hero.getFireRate(),  e.getX(), e.getY(), this);
+        //     this.add(temp);
+        //     bulletList.add(temp);
+        //     temp.setVisible(true);
+        // }
 
 
 
@@ -274,11 +293,17 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {       
+    public void mousePressed(MouseEvent e) {  
+        System.out.println("held");
+
+        firing = true;
+
+            
     }
 
     @Override
-    public void mouseReleased(MouseEvent e) {       
+    public void mouseReleased(MouseEvent e) {   
+        firing = false;    
     }
 
     @Override
@@ -305,5 +330,16 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
         bulletList.remove(i);
         bullet.setVisible(false);
         remove(bullet);
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        mouseMoved(e);
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        this.mouseX = e.getX();
+        this.mouseY = e.getY();
     }
 }
