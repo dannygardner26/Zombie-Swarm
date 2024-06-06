@@ -118,7 +118,6 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         PowerUps coinBoost = new PowerUps(200, 200, hero, powerIcons[2], "Coin Boost", 2);
         powerList.add(coinBoost);
 
-        power.setVisible(true);
         
 
         hero = new Hero(100, 100, tempGP, pistol);
@@ -258,7 +257,10 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
             temp.setVisible(true);
             this.coinTimer = 0;
         }
-        power.update();
+        for(int i = 0; i < powerList.size(); i++)
+        {
+            powerList.get(i).update();
+        }
 
         if(firing){
             if(fireTimer > hero.getFireRate()){
