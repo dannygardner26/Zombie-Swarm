@@ -188,7 +188,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
 
         coinTimer++;
         System.out.println((coinTimer));
-        if (coinTimer > 25){
+        if (coinTimer > 200){
             int rany = (int)(Math.random()*this.getHeight());
             int ranx = (int)(Math.random()*this.getWidth());
             Coin temp = new Coin(ranx,rany, hero);
@@ -202,7 +202,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener{
 
 
         enemyTimer++;
-        if(enemyTimer > 50)
+        if(enemyTimer > 200)
             {
                 enemyTimer  = 0;
                 for (int i = 0; i < (int)(Math.random()*enemySpawnRate+1); i++){
