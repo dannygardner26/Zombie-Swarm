@@ -53,6 +53,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     private ImageIcon[] powerIcons;
     private ArrayList<PowerUps> powerList;
     private boolean reloading;
+    private int timeAlive;
     
     /**
      
@@ -61,6 +62,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         this.setLayout(null);
         tempGP = this;
         gunTimer = 0;
+        this.timeAlive = 0;
         this.fireDelay = 0;
         randomNumScramble();
         powerList = new ArrayList<PowerUps>();
@@ -279,10 +281,11 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
         g.setColor(Color.WHITE);
         g.setFont(new Font("Arial", Font.BOLD, 14));
-        g.drawString("Current Gun: " + hero.getName(), 10, 20);
-        g.drawString("Current Ammo: " + hero.getAmmo(), 10, 40);
-        g.drawString("Max Ammo: " + hero.getMaxAmmo(), 10, 60);
-        g.drawString("Reload Time: " + hero.getReloadTime(), 10, 80);
+        g.drawString(hero.getName(), 10, this.getHeight()-50);
+        g.drawString("Ammo: " + hero.getAmmo() + "/" + hero.getMaxAmmo(), 10, this.getHeight()-10);
+        g.drawString("Reload Time: " + hero.getReloadTime(), 10, this.getHeight()-30);
+        g.drawString("Score: " + (coins+timeAlive), this.getWidth()-100, 20);
+        
 
     }
 
@@ -379,7 +382,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
     public void coinCollected()
     {
-        coins++;
+        coins+= 100;
     }
 
     @Override
