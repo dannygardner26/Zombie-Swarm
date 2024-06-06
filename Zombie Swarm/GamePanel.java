@@ -118,7 +118,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         PowerUps coinBoost = new PowerUps(200, 200, hero, powerIcons[2], "Coin Boost", 2);
         powerList.add(coinBoost);
 
-        power.setVisible(true);
+        //power.setVisible(true);
         
 
         hero = new Hero(100, 100, tempGP, pistol);
