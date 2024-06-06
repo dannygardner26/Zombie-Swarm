@@ -9,14 +9,14 @@ public class Gun extends GameObject{
     private ImageIcon iconGun;
     private int damage;
     private int reloadSpeed;
-    private double fireRate;
+    private int fireRate;
     private boolean visible;
     private String name;
     private ArrayList<Bullet> bulletList;
     private int ammo;
     private int reloadTimer;
 
-    public Gun(String name, int x, int y, ImageIcon icon, int damage, int reloadSpeed, int ammo, double fireRate){
+    public Gun(String name, int x, int y, ImageIcon icon, int damage, int reloadSpeed, int ammo, int fireRate){
         super(x,y);
         this.setSize(15,20);
 
@@ -27,7 +27,6 @@ public class Gun extends GameObject{
         this.name = name;
         this.ammo = ammo;
         this.reloadTimer = 0;
-        this.fireRate = fireRate;
     }
 
     
@@ -46,8 +45,8 @@ public class Gun extends GameObject{
         return this.ammo;
     }
 
-    public double getFireRate(){
-        return this.fireRate;
+    public int getFireRate(){
+        return fireRate;
     }
 
     public int getDamage(){
