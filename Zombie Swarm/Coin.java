@@ -38,14 +38,14 @@ public class Coin extends GameObject {
         coinTimer = new Timer(100, new ActionListener() { 
             
             public void actionPerformed(ActionEvent e) {
-                animate();
+                updateIcon();
             }
         });
         coinTimer.start();
     }
 
    
-    private void animate() {
+    private void updateIcon() {
         phase = (phase + 1) % icons.length;
         this.setIcon(icons[phase]);
     }
