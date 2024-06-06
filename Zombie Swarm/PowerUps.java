@@ -13,6 +13,20 @@ public class PowerUps extends GameObject
     {
         super(x,y);
         this.hero = hero;
+        powerUps = new ArrayList<String>();
+
+
+
+   }
+
+   public String determinePower()
+   {
+        powerUps.add("SpeedBoost");
+        powerUps.add("AmmoBoost");
+        powerUps.add("Magnet");
+
+        int x = (int)(Math.random()* powerUps.size());
+        return powerUps.get(x);
 
 
    }
