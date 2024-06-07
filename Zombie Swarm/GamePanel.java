@@ -287,9 +287,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         g.drawString("Reload Time: " + hero.getReloadTime(), 10, this.getHeight()-30);
         g.drawString("Score: " + (coins*100 +timeAlive), this.getWidth()-100, 20);
 
-        for (PowerUps powerUp : powerList) {
-            powerUp.paint(g);
-        }
+        
         
 
     }
