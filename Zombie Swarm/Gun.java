@@ -75,6 +75,10 @@ public class Gun extends GameObject{
         return this.ammo;
     }
 
+    public ImageIcon getPng(){
+        return iconGun;
+    }
+
     public int getMaxAmmo(){
         return maxAmmo;
     }
