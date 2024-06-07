@@ -74,7 +74,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         coinList = new ArrayList<Coin>();
         gunList = new ArrayList<Gun>();
         this.healthMulti = 1;
-        this.fireTimer = 0;
+        this.fireTimer = 100;
         for(int i = 0; i < 19; i++){
             gunPics.add(new ImageIcon("./images/realGun" + i + ".png"));
         }
@@ -114,7 +114,6 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
         
 
-        
 
 
 
@@ -144,7 +143,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         }
 
         powerIcons = new ImageIcon[3];
-
+        powerList = new ArrayList<PowerUps>();
 
         for(int i = 0; i < 3; i++){
             ImageIcon tempImage = new ImageIcon("Zombie Swarm/images/power_" + i + ".png"); 
@@ -161,23 +160,6 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
         //power.setVisible(true);
         
-
-        
-
-        
-        
-
-       
-        
-        
-
-            
-        
-
-
-       
-
-
         this.addMouseListener(this);
     
         this.addKeyListener(new KeyListener() {
@@ -287,7 +269,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         g.drawString("Reload Time: " + hero.getReloadTime(), 10, this.getHeight()-30);
         g.drawString("Score: " + (coins*100 +timeAlive), this.getWidth()-100, 20);
 
-        
+
+        // g.drawImage(hero.getGunPng(), 40, 40);
         
 
     }
@@ -296,7 +279,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     @Override
     public void actionPerformed(ActionEvent e) {
         hero.update();
-        fireTimer++;
+        fireTimer-= hero.getFireRate();
         timeAlive++;
         this.repaint();
         coinTimer++;
@@ -315,9 +298,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         }
 
         if(firing && !reloading){
-            if(fireTimer > hero.getFireRate() * 5){
+            if(fireTimer < 0){
                 if(hero.getAmmo() > 0){
-                fireTimer = 0;
+                fireTimer = 100;
                 Bullet temp = new Bullet(hero.getX()+16,hero.getY()+18, hero.getDamage(), hero.getFireRate(),  mouseX, mouseY, this);
                 this.add(temp);
                 bulletList.add(temp);
@@ -339,7 +322,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
             }
 
         gunTimer++;
-        if(gunTimer > 1000)
+        if(gunTimer > 100)
             {
                 hero.addGun(gunList.get((int)(Math.random()*gunList.size())));
             }

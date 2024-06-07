@@ -180,6 +180,10 @@ public class Hero extends GameObject {
         gunList.add(gun);
     }
 
+    public ImageIcon getGunPng(){
+        return gun.getPng();
+    }
+
     public void gunRight(){
         gunIndex = (gunIndex + 1) % gunList.size();
         

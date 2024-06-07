@@ -15,6 +15,7 @@ public class PowerUps extends GameObject
         super(x,y);
         this.hero = hero;
         this.icon = icon;
+        this.setIcon(icon);
         this.name = name;
         this.id = id;
         
