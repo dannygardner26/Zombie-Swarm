@@ -88,9 +88,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         gunList.add(burst);
         Gun deagalGun = new Gun("Deagal Pistol", 0,0, gunPics.get(4), 10, 10, 3, 1, this);
         gunList.add(deagalGun);
-        Gun stingerSMG = new Gun("Stinger Submachine Gun", 0,0, gunPics.get(5), 1, 5, 12, 15, this);
+        Gun stingerSMG = new Gun("Stinger Submachine Gun", 0,0, gunPics.get(5), 1, 5, 12, 2, this);
         gunList.add(stingerSMG);
-        Gun machineGun = new Gun("Machine Gun", 0,0, gunPics.get(6), 1, 10, 20, 15, this);
+        Gun machineGun = new Gun("Machine Gun", 0,0, gunPics.get(6), 1, 10, 20, 1, this);
         gunList.add(machineGun);
         //Gun greGun = new Gun("Revolver", 0,0, gunPics.get(7), 10, 10, 6, 2, this);
         //gunList.add(greGun);
@@ -281,7 +281,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         g.drawImage(background, 0, 0, this.getWidth(), this.getHeight(), this);
 
         g.setColor(Color.WHITE);
-        g.setFont(new Font("Arial", Font.BOLD, 14));
+        g.setFont(new Font("Times New Roman", Font.BOLD, 14));
         g.drawString(hero.getName(), 10, this.getHeight()-50);
         g.drawString("Ammo: " + hero.getAmmo() + "/" + hero.getMaxAmmo(), 10, this.getHeight()-10);
         g.drawString("Reload Time: " + hero.getReloadTime(), 10, this.getHeight()-30);
