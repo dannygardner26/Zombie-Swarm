@@ -152,6 +152,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         }
         PowerUps speedBoost = new PowerUps(200, 200, hero, powerIcons[0], "Speed Boost", 0);
         powerList.add(speedBoost);
+        speedBoost.setVisible(true);
+        this.add(speedBoost);
         PowerUps ammoBoost = new PowerUps(200, 200, hero, powerIcons[1], "Ammo Boost", 1);
         powerList.add(ammoBoost);
         PowerUps coinBoost = new PowerUps(200, 200, hero, powerIcons[2], "Coin Boost", 2);
@@ -284,6 +286,10 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         g.drawString("Ammo: " + hero.getAmmo() + "/" + hero.getMaxAmmo(), 10, this.getHeight()-10);
         g.drawString("Reload Time: " + hero.getReloadTime(), 10, this.getHeight()-30);
         g.drawString("Score: " + (coins*100 +timeAlive), this.getWidth()-100, 20);
+
+        for (PowerUps powerUp : powerList) {
+            powerUp.paint(g);
+        }
         
 
     }

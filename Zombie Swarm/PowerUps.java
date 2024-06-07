@@ -18,18 +18,7 @@ public class PowerUps extends GameObject
         this.name = name;
         this.id = id;
         
-        switch (id) {
-            case 0:
-                                   
-                break;
-            case 1:
-                                       
-                break;
-            case 2:
-                                       
-                break;
-        }
-        this.setLocation(x,y);
+        
 
        
 
@@ -46,14 +35,13 @@ public class PowerUps extends GameObject
             
             switch (id) {
                 case 0:
-                        //what you do with speed boost after pickup DONT FORGET HOW LONG IT LASTS - one parameter for multi and one for lenth              
+                    hero.applySpeedBoost(2.0, 5000); 
                     break;
                 case 1:
-                        // what ytou do with ammo boost after pickup - method in hero class that sets maxAmmo to big ah number, then stops after a timer or a certain amount of ticks
-                        // measure ticks using for loops          AND LENGTH    
+                    hero.applyAmmoBoost(100, 5000); 
                     break;
                 case 2:
-                        // what you do with coin boost after pickup - add a coinMulti variable to multi coins on pickup in coin class/gamepanel AND LENGTH             
+                    hero.applyCoinBoost(2.0, 5000); 
                     break;
             }
     

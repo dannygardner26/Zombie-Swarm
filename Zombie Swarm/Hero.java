@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Timer;
+
 
 import javax.swing.ImageIcon;
 
@@ -14,6 +16,13 @@ public class Hero extends GameObject {
     private Gun gun;
     private ArrayList<Gun> gunList;
     private int gunIndex;
+
+    private Timer speedBoostTimer;
+    private Timer ammoBoostTimer;
+    private Timer coinBoostTimer;
+    private double speedMultiplier;
+    private int maxAmmo;
+    private double coinMultiplier;
 
     public Hero(int x, int y, GamePanel gp, Gun gun) {
         super(x, y);
@@ -205,6 +214,30 @@ public class Hero extends GameObject {
             return 0.0;
 
     }
+    public void applySpeedBoost(double multiplier, int duration) {
+        this.speedMultiplier = multiplier;
+        
+    }
 
+    private void resetSpeedBoost() {
+        this.speedMultiplier = 1.0;
+    }
 
+    public void applyAmmoBoost(int extraAmmo, int duration) {
+        this.maxAmmo += extraAmmo;
+        
+    }
+
+    private void resetAmmoBoost(int extraAmmo) {
+        this.maxAmmo -= extraAmmo;
+    }
+
+    public void applyCoinBoost(double multiplier, int duration) {
+        this.coinMultiplier = multiplier;
+        
+    }
+
+    private void resetCoinBoost() {
+        this.coinMultiplier = 1.0;
+    }
 }
