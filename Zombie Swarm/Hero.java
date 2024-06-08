@@ -129,7 +129,7 @@ public class Hero extends GameObject {
                 this.setLocation(this.getX(),this.getY()-dy);
 
             }
-            if(this.getX() + this.getWidth()>=gp.getWidth() && dx>0){
+            if(this.getX() + this.getWidth()-20>=gp.getWidth() && dx>0){
                 this.setLocation(this.getX()-dx, this.getY());
 
             }
