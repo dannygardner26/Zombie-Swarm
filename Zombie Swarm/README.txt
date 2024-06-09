@@ -28,6 +28,8 @@ Unimplemented features
 > similar to bullet type issues, but rewriting all our code for one gun didnt make sense (time)
 - gun attatchments
 > adding different attatchments to guns would not only be difficult to balance, but also difficult to setup (time and complexity)
+- certain guns
+> we felt certain guns were too similar to other guns, so we chose to simply leave them out
 
 Reflection
 - learned how to implement sound properly
