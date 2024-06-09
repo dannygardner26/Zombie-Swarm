@@ -89,7 +89,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         this.healthMulti = 10;
         this.fireTimer = 100;
         this.allMulti = 1;
-        this.coinThreshold = 15;
+        this.coinThreshold = 10;
 
 
         seGun = new Sounds();
@@ -101,44 +101,49 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         for(int i = 0; i < 19; i++){
             gunPics.add(new ImageIcon("./images/realGun" + i + ".png"));
         }
-        Gun pistol = new Gun("Pistol", 0, 0, gunPics.get(0), 5, 10, 8, 8, this);
+
+        int rany = (int)(Math.random()*this.getHeight());
+        int ranx = (int)(Math.random()*this.getWidth());
+
+
+        Gun pistol = new Gun("Pistol", (int)(Math.random()*this.getWidth()),(int)(Math.random()*this.getHeight()), gunPics.get(0), 5, 10, 8, 8, this);
         gunList.add(pistol);
-        Gun AssaultRifle = new Gun("Assault Rifle", 0, 0, gunPics.get(1), 5, 10,  30, 15, this);
+        Gun AssaultRifle = new Gun("Assault Rifle", (int)(Math.random()*this.getWidth()),(int)(Math.random()*this.getHeight()), gunPics.get(1), 5, 10,  30, 15, this);
         gunList.add(AssaultRifle);
-        Gun revolver = new Gun("Revolver", 0,0, gunPics.get(2), 10, 10, 6, 5, this);
+        Gun revolver = new Gun("Revolver", (int)(Math.random()*this.getWidth()),(int)(Math.random()*this.getHeight()), gunPics.get(2), 10, 10, 6, 5, this);
         gunList.add(revolver);
-        Gun burst = new Gun("Burst Rifle", 0,0, gunPics.get(3), 7, 10, 6, 8, this);
+        Gun burst = new Gun("Burst Rifle", (int)(Math.random()*this.getWidth()),(int)(Math.random()*this.getHeight()), gunPics.get(3), 7, 10, 6, 8, this);
         gunList.add(burst);
-        Gun deagalGun = new Gun("Deagal Pistol", 0,0, gunPics.get(4), 10, 10, 3, 3, this);
+        Gun deagalGun = new Gun("Deagal Pistol", (int)(Math.random()*this.getWidth()),(int)(Math.random()*this.getHeight()), gunPics.get(4), 10, 10, 3, 3, this);
         gunList.add(deagalGun);
-        Gun stingerSMG = new Gun("Stinger Submachine Gun", 0,0, gunPics.get(5), 3, 5, 24, 15, this);
+        Gun stingerSMG = new Gun("Stinger Submachine Gun", (int)(Math.random()*this.getWidth()),(int)(Math.random()*this.getHeight()), gunPics.get(5), 3, 5, 24, 15, this);
         gunList.add(stingerSMG);
-        Gun machineGun = new Gun("Machine Gun", 0,0, gunPics.get(6), 1, 30, 60, 30, this);
+        Gun machineGun = new Gun("Machine Gun", (int)(Math.random()*this.getWidth()),(int)(Math.random()*this.getHeight()), gunPics.get(6), 1, 30, 60, 30, this);
         gunList.add(machineGun);
-        //Gun greGun = new Gun("Revolver", 0,0, gunPics.get(7), 10, 10, 6, 2, this);
+        //Gun greGun = new Gun("Revolver", (int)(Math.random()*this.getWidth()),(int)(Math.random()*this.getHeight()), gunPics.get(7), 10, 10, 6, 2, this);
         //gunList.add(greGun);
-        Gun hunterRifleGun = new Gun("Hunter Sniper Rifle", 0,0, gunPics.get(8), 10, 5, 1, 1, this);
+        Gun hunterRifleGun = new Gun("Hunter Sniper Rifle", (int)(Math.random()*this.getWidth()),(int)(Math.random()*this.getHeight()), gunPics.get(8), 10, 5, 1, 1, this);
         gunList.add(hunterRifleGun);
 
-        Gun dmrRifle = new Gun("Designated Marksman Rifle", 0,0, gunPics.get(9), 4, 5, 3, 3, this);
+        Gun dmrRifle = new Gun("Designated Marksman Rifle", (int)(Math.random()*this.getWidth()),(int)(Math.random()*this.getHeight()), gunPics.get(9), 4, 5, 3, 3, this);
         gunList.add(dmrRifle);
 
-        Gun boltactioGun = new Gun("Bolt Action Sniper Rifle", 0,0, gunPics.get(10), 10, 7, 2, 2, this);
+        Gun boltactioGun = new Gun("Bolt Action Sniper Rifle", (int)(Math.random()*this.getWidth()),(int)(Math.random()*this.getHeight()), gunPics.get(10), 10, 7, 2, 2, this);
         gunList.add(boltactioGun);
 
-        Gun machinePistolGun = new Gun("Machine Pistol Gun", 0,0, gunPics.get(11), 3, 4, 10, 17, this);
+        Gun machinePistolGun = new Gun("Machine Pistol Gun", (int)(Math.random()*this.getWidth()),(int)(Math.random()*this.getHeight()), gunPics.get(11), 3, 4, 10, 17, this);
         gunList.add(machinePistolGun);
 
-        //Gun pistol = new Gun("Designated Marksman Rifle", 0,0, gunPics.get(12), 4, 5, 3, 3, this);
+        //Gun pistol = new Gun("Designated Marksman Rifle", (int)(Math.random()*this.getWidth()),(int)(Math.random()*this.getHeight()), gunPics.get(12), 4, 5, 3, 3, this);
         //gunList.add(revolver);
 
-        Gun drumGun = new Gun("Drum Gun Assualt Rifle", 0,0, gunPics.get(13), 3, 5, 15, 19, this);
+        Gun drumGun = new Gun("Drum Gun Assualt Rifle", (int)(Math.random()*this.getWidth()),(int)(Math.random()*this.getHeight()), gunPics.get(13), 3, 5, 15, 19, this);
         gunList.add(drumGun);
 
-        Gun starblasterGun = new Gun("Blaster Assualt Rifle", 0,0, gunPics.get(13), 5, 5, 14, 10, this);
+        Gun starblasterGun = new Gun("Blaster Assualt Rifle", (int)(Math.random()*this.getWidth()),(int)(Math.random()*this.getHeight()), gunPics.get(13), 5, 5, 14, 10, this);
         gunList.add(starblasterGun);
 
-        Gun submachineGun = new Gun("Submachine Gun", 0,0, gunPics.get(13), 2, 8, 30, 23, this);
+        Gun submachineGun = new Gun("Submachine Gun", (int)(Math.random()*this.getWidth()),(int)(Math.random()*this.getHeight()), gunPics.get(13), 2, 8, 30, 23, this);
         gunList.add(submachineGun);
         
 
@@ -437,13 +442,13 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                 }
             }
 
-        
-            
-        gunTimer++;
-        if(gunTimer > 100)
-            {
-                hero.addGun(gunList.get((int)(Math.random()*gunList.size())));
+        for(int i = 0; i < gunList.size(); i++){
+            if(gunList.get(i).getDone()){
+                
             }
+        }
+            
+       
 
 
         
@@ -500,7 +505,10 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         double coinPercent = coins / (double)coinThreshold;
         if(coinPercent > 1){
             coinThreshold = Math.pow(coinThreshold, 1.1);
+            coins = 0;
+            spawnGun();
         }
+
     }
 
     @Override
@@ -540,6 +548,17 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     @Override
     public void mouseExited(MouseEvent e) {     
     }
+
+    public void spawnGun(){
+
+
+
+        int random = (int)(Math.random()*gunList.size());
+        this.add(gunList.get(random));
+        (gunList.get(random)).setVisible(true);
+
+    }
+
 
     public void removeZombie(Zombie zombie, int i){
         zombieList.remove(i);
