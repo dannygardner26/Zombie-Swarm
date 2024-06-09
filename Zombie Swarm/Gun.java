@@ -23,15 +23,19 @@ public class Gun extends GameObject{
     private int reloadTime;
     private GamePanel gp;
     private boolean isReloading;
+    private boolean done;
+    private Hero hero;
 
-    public Gun(String name, int x, int y, ImageIcon icon, int damage, int reloadSpeed, int ammo, double fireRate, GamePanel gp){
+    public Gun(String name, int x, int y, ImageIcon icon, int damage, int reloadSpeed, int ammo, double fireRate, GamePanel gp, Hero hero){
         super(x,y);
         this.setSize(15,20);
         reloadTime = 0;
         this.visible = false;
         iconGun = icon;
         this.gp = gp;
+        this.hero = hero; 
         this.damage = damage;
+        System.out.println("damageGUN: " + damage);
         this.reloadSpeed = reloadSpeed;
         this.name = name;
         this.ammo = ammo;
@@ -39,7 +43,7 @@ public class Gun extends GameObject{
         this.fireRate = fireRate;
         this.maxAmmo = ammo;
         this.isReloading = false;
-        
+        this.done = false;
         reloadTimer = new Timer(100, new ActionListener() { 
             
             public void actionPerformed(ActionEvent e) {
@@ -52,10 +56,20 @@ public class Gun extends GameObject{
     @Override
     public void update() {
         if(reloadTime > reloadSpeed){
-            ammo = maxAmmo;
+            if(ammo<maxAmmo){
+                ammo = maxAmmo;
+            }
             reloadTime = 0;
             isReloading = false;
             reloadTimer.stop();
+            }
+
+
+            boolean collision = hero.hasCollidedWith(this);
+            if (collision) {
+                this.setVisible(false);
+                done = true;
+                hero.addGun(this);
             }
     }
 
@@ -104,7 +118,9 @@ public class Gun extends GameObject{
             reloadTime--;
         } else {
             reloadTimer.stop();
-            ammo = maxAmmo;
+            if(ammo<maxAmmo){
+                ammo = maxAmmo;
+            }
             reloadTime = 0;
             isReloading = false;
         }
@@ -122,6 +138,9 @@ public class Gun extends GameObject{
         this.ammo += ammo;
     }
 
+    public boolean getDone(){
+        return done;
+    }
     
 }
 
