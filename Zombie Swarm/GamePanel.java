@@ -82,10 +82,10 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
         seGun = new Sounds();
         sereloadGun = new Sounds();
-        
+
 
         gsound = "Zombie Swarm/images/12-Gauge-Pump-Action-Shotgun-Close-Gunshot-D-www.fesliyanstudios.com - Copy.wav";
-        reloads = 
+        reloads = "Zombie Swarm/images/1911-reload-6248.wav";
         for(int i = 0; i < 19; i++){
             gunPics.add(new ImageIcon("./images/realGun" + i + ".png"));
         }
@@ -225,6 +225,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                         break;
                     case KeyEvent.VK_R:
                             hero.reload();
+                            sereloadGun.play();
                         break;
                              
                     
@@ -303,7 +304,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         fireTimer-= hero.getFireRate();
         timeAlive++;
         this.repaint();
+
         seGun.setFile(gsound);
+        sereloadGun.setFile(reloads);
         coinTimer++;
         if (coinTimer > 200){
             int rany = (int)(Math.random()*this.getHeight());
