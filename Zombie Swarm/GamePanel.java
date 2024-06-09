@@ -34,14 +34,16 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     private int tickCounter;
     private int randomNum;
     private Gun gun;
-    private Coin coin;
+    
     private ArrayList<Bullet> bulletList;
     private ArrayList<ImageIcon> gunPics;
     private ArrayList<Coin> coinList;
+
     private int enemyTimer;
     private int enemySpawnRate;
     private int coinTimer;
     private int healthMulti;
+
     private int fireTimer;
     private int fireDelay;
     private Boolean firing;
@@ -49,14 +51,20 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     private int mouseY;
     private int coins;
     private int gunTimer;
+
+
     private PowerUps power;
     private ImageIcon[] powerIcons;
     private ArrayList<PowerUps> powerList;
     private boolean reloading;
     private int timeAlive;
+
+
     private Sounds seGun;
     private Sounds sereloadGun;
     private Sounds zombieDeath;
+    private Sounds coinPick;
+    private String coinse;
     private String gsound;
     private String reloads;
     private String zombieD;
@@ -85,26 +93,29 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         seGun = new Sounds();
         sereloadGun = new Sounds();
         zombieDeath =  new Sounds();
+        coinPick = new Sounds();
 
+
+        coinse = "Zombie Swarm/images/coin-donation-2-180438.wav";
         zombieD = "Zombie Swarm/images/zombie-death-2-95167.wav";
         gsound = "Zombie Swarm/images/12-Gauge-Pump-Action-Shotgun-Close-Gunshot-D-www.fesliyanstudios.com - Copy.wav";
         reloads = "Zombie Swarm/images/1911-reload-6248.wav";
         for(int i = 0; i < 19; i++){
             gunPics.add(new ImageIcon("./images/realGun" + i + ".png"));
         }
-        Gun pistol = new Gun("Pistol", 0, 0, gunPics.get(0), 5, 10, 8, 5, this);
+        Gun pistol = new Gun("Pistol", 0, 0, gunPics.get(0), 5, 10, 8, 8, this);
         gunList.add(pistol);
-        Gun AssaultRifle = new Gun("Assault Rifle", 0, 0, gunPics.get(1), 5, 10,  30, 20, this);
+        Gun AssaultRifle = new Gun("Assault Rifle", 0, 0, gunPics.get(1), 5, 10,  30, 15, this);
         gunList.add(AssaultRifle);
-        Gun revolver = new Gun("Revolver", 0,0, gunPics.get(2), 10, 10, 6, 2, this);
+        Gun revolver = new Gun("Revolver", 0,0, gunPics.get(2), 10, 10, 6, 5, this);
         gunList.add(revolver);
-        Gun burst = new Gun("Burst Rifle", 0,0, gunPics.get(3), 7, 10, 6, 5, this);
+        Gun burst = new Gun("Burst Rifle", 0,0, gunPics.get(3), 7, 10, 6, 8, this);
         gunList.add(burst);
-        Gun deagalGun = new Gun("Deagal Pistol", 0,0, gunPics.get(4), 10, 10, 3, 1, this);
+        Gun deagalGun = new Gun("Deagal Pistol", 0,0, gunPics.get(4), 10, 10, 3, 3, this);
         gunList.add(deagalGun);
-        Gun stingerSMG = new Gun("Stinger Submachine Gun", 0,0, gunPics.get(5), 1, 5, 12, 2, this);
+        Gun stingerSMG = new Gun("Stinger Submachine Gun", 0,0, gunPics.get(5), 1, 5, 12, 15, this);
         gunList.add(stingerSMG);
-        Gun machineGun = new Gun("Machine Gun", 0,0, gunPics.get(6), 1, 10, 20, 1, this);
+        Gun machineGun = new Gun("Machine Gun", 0,0, gunPics.get(6), 1, 10, 20, 30, this);
         gunList.add(machineGun);
         //Gun greGun = new Gun("Revolver", 0,0, gunPics.get(7), 10, 10, 6, 2, this);
         //gunList.add(greGun);
@@ -123,7 +134,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         //Gun pistol = new Gun("Designated Marksman Rifle", 0,0, gunPics.get(12), 4, 5, 3, 3, this);
         //gunList.add(revolver);
 
-        Gun drumGun = new Gun("Drum Gun Assualt Rifle", 0,0, gunPics.get(13), 3, 5, 15, 5, this);
+        Gun drumGun = new Gun("Drum Gun Assualt Rifle", 0,0, gunPics.get(13), 3, 5, 15, 19, this);
         gunList.add(drumGun);
 
         
@@ -311,6 +322,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         seGun.setFile(gsound);
         sereloadGun.setFile(reloads);
         zombieDeath.setFile(zombieD);
+        coinPick.setFile(coinse);
+        
 
         coinTimer++;
         if (coinTimer > 200){
@@ -454,6 +467,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     public void removeCoin(Coin coin, int i){
         coinList.remove(i);
         coin.setVisible(false);
+        coinPick.play();
         remove(coin);
     }
 
