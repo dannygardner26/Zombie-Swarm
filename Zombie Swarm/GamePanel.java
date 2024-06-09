@@ -57,7 +57,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     private Boolean firing;
     private int mouseX;
     private int mouseY;
-    private double coins;
+    private int coins;
     private int gunTimer;
     private double coinThreshold;
 
@@ -121,7 +121,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         hero.setVisible(true);
 
         Gun pistol = new Gun("Pistol", 0, 0, gunPics.get(0), 5, 10, 8, 8, this, hero);
-        gunList.add(pistol);
+        // gunList.add(pistol);
         hero.addGun(pistol);
         gunListUpdate.add(pistol);
 
@@ -400,6 +400,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         g.drawRect(10, 10, 100, 10);
 
 
+
+
         double coinPercent = coins / (double)coinThreshold;
         int currentCoinWidth = (int) ((coinPercent) * 100);
 //note note note
@@ -415,9 +417,22 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         {
             spawnGun();
         }
-        }
 
-    
+
+            int gunImgWidth =  hero.getGunPng().getIconWidth();
+            int gunImgHeight = hero.getGunPng().getIconHeight();
+            int xPos = this.getWidth() - gunImgWidth - 5;
+            int yPos = this.getHeight() - gunImgHeight - 5;
+
+            
+
+            g.drawImage(hero.getGunPng().getImage(), 0, this.getHeight()-120, this);
+
+
+
+        
+
+    }   
 
 
     @Override
@@ -500,7 +515,10 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         //     }
         // }
         for(int i = 0; i < gunList.size(); i++){
-            if(gunList.get(i).getDone()){
+            // if(gunList.get(i).getDone()){
+                if(hero.hasCollidedWith(gunList.get(i))){
+
+
                 System.out.println("gun is done");
                 hero.addGun(gunList.get(i));
                 gunList.get(i).setVisible(false);
