@@ -35,7 +35,7 @@ public class Zombie extends GameObject {
         this.movingY = 0;
         this.dy = 0;
         this.dx = 0;
-        this.hp = healthMulti * 10;
+        this.hp = healthMulti;
         this.bulletList = bulletList;
 
 

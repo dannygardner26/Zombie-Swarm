@@ -52,6 +52,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     private int coins;
     private int gunTimer;
 
+    private double allMulti;
 
     
     private ImageIcon[] powerIcons;
@@ -84,8 +85,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         gunPics = new ArrayList<ImageIcon>();
         coinList = new ArrayList<Coin>();
         gunList = new ArrayList<Gun>();
-        this.healthMulti = 1;
+        this.healthMulti = 10;
         this.fireTimer = 100;
+        this.allMulti = 1;
 
         seGun = new Sounds();
         coinse = "Zombie Swarm/images/coin-donation-2-180438.wav";
@@ -320,7 +322,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         timeAlive++;
         this.repaint();
 
-        
+        allMulti += 0.0002;
         
         
 
@@ -358,6 +360,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
             {
                 enemyTimer  = 0;
                 for (int i = 0; i < (int)(Math.random()*enemySpawnRate+1); i++){
+                    healthMulti = (int)(allMulti * healthMulti);
                     Zombie temp = new Zombie((int)(Math.random()*this.getWidth()), (int)(Math.random()*this.getHeight()), hero, healthMulti, bulletList);
                     zombieList.add(temp);
                     this.add(temp);
