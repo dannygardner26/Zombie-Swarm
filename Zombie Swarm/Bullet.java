@@ -22,6 +22,7 @@ public class Bullet extends GameObject{
         this.setIcon(iconBullet);
         
         this.damage = damage;
+        
         this.fireRate = fireRate;
         this.done = false;
         

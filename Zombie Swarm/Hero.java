@@ -25,7 +25,7 @@ public class Hero extends GameObject {
     private double maxHealth;
     private double health;
 
-    public Hero(int x, int y, GamePanel gp, Gun gun) {
+    public Hero(int x, int y, GamePanel gp) {
         super(x, y);
         this.setSize(32, 36);
         direction = Direction.DOWN;
@@ -35,14 +35,13 @@ public class Hero extends GameObject {
         dy = 0;
         gunIndex = 0;
         speedMultiplier = 0.0;
-
+        this.gun = null;
         maxHealth = 10;
         health = 10;
 
         this.gp = gp;
         this.gunList = new ArrayList<Gun>();
-        gunList.add(gun);
-        this.gun = gunList.get(gunIndex);
+        
         icons = new ImageIcon[4][3];
 
         for (int i = 0; i < icons.length; i++) {
@@ -118,6 +117,7 @@ public class Hero extends GameObject {
      * update the character's location and image based on the dx and dy
      */
     public void update() {
+    if(gunList.size() > 0)
         this.gun = gunList.get(gunIndex);
 
         gun.update();
@@ -151,26 +151,37 @@ public class Hero extends GameObject {
         return direction;
     }
 
-    public void gunPickup(Gun gun)
-    {
-        this.gun = gun;
-    }
+    
     
     
 
     public int getAmmo(){
-        return gun.getAmmo();
+        
+        if(gun != null){
+            return gun.getAmmo();
+            }
+            else
+                return 0;
     }
     public int getMaxAmmo(){
-        return gun.getMaxAmmo();
-    }
+        if(gun != null){
+            return gun.getMaxAmmo();
+            }
+            else
+                return 0;
+        }
+    
 
     public int useAmmo(){
         return gun.getAmmo();
     }
 
     public String getName(){
+        if(gun != null){
         return gun.getName();
+        }
+        else
+            return "null";
     }
 
     public double getFireRate(){
@@ -178,11 +189,14 @@ public class Hero extends GameObject {
     }
 
     public int getDamage(){
+        System.out.println("damage: " + gun.getDamage());
         return gun.getDamage();
     }
 
     public void addGun(Gun gun){
         gunList.add(gun);
+
+        this.gun = gunList.get(gunIndex);
     }
 
     public ImageIcon getGunPng(){
@@ -216,11 +230,14 @@ public class Hero extends GameObject {
     }
 
     public double getReloadTime(){
+        if(gun!= null){
         if (gun.isReloading())
             return (double) gun.getReloadTime() / 10.0;
 
         else
             return 0.0;
+        }
+        return 0;
 
     }
     public boolean applySpeedBoost() {

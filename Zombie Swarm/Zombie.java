@@ -80,6 +80,7 @@ public class Zombie extends GameObject {
             if(this.hasCollidedWith(bulletList.get(i))){
                 bulletList.get(i).isDead(true);
                 hp = hp - bulletList.get(i).getDamage();
+                System.out.println("zombieHP: " + hp);
                 if(hp <= 0){
                     
                     this.die();
