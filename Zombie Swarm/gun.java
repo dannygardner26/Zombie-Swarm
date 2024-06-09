@@ -40,7 +40,7 @@ public class Gun extends GameObject{
         this.fireRate = fireRate;
         this.maxAmmo = ammo;
         this.isReloading = false;
-        this.done = false
+        this.done = false;
         reloadTimer = new Timer(100, new ActionListener() { 
             
             public void actionPerformed(ActionEvent e) {
