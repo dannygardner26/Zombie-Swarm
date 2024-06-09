@@ -49,9 +49,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     private Boolean firing;
     private int mouseX;
     private int mouseY;
-    private int coins;
+    private double coins;
     private int gunTimer;
-    private int coinThreshold;
+    private double coinThreshold;
 
     private double allMulti;
 
@@ -351,7 +351,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         g.drawRect(10, 10, 100, 10);
 
 
-        double coinPercent = coins / coinThreshold;
+        double coinPercent = coins / (double)coinThreshold;
         int currentCoinWidth = (int) ((coinPercent) * 100);
 
 
@@ -359,9 +359,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         g.fillRect(10,30, 100, 10);
         g.setColor(Color.YELLOW);
         g.fillRect(10, 30, currentCoinWidth, 10);
-        g.setColor(Color.WHITE);
+        g.setColor(Color.BLACK);
         g.drawRect(10, 30, 100, 10);
-         }
+        }
 
     
 
@@ -491,7 +491,16 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     public void coinCollected()
     {
         coins++;
+
+        System.out.println("collceted");
+        System.out.println(coins);
         repaint();
+
+
+        double coinPercent = coins / (double)coinThreshold;
+        if(coinPercent > 1){
+            coinThreshold = Math.pow(coinThreshold, 1.1);
+        }
     }
 
     @Override
