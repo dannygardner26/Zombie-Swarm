@@ -111,9 +111,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         gunList.add(burst);
         Gun deagalGun = new Gun("Deagal Pistol", 0,0, gunPics.get(4), 10, 10, 3, 3, this);
         gunList.add(deagalGun);
-        Gun stingerSMG = new Gun("Stinger Submachine Gun", 0,0, gunPics.get(5), 3, 5, 24, 15, this);
+        Gun stingerSMG = new Gun("Stinger Submachine Gun", 0,0, gunPics.get(5), 4, 5, 12, 15, this);
         gunList.add(stingerSMG);
-        Gun machineGun = new Gun("Machine Gun", 0,0, gunPics.get(6), 1, 30, 60, 30, this);
+        Gun machineGun = new Gun("Machine Gun", 0,0, gunPics.get(6), 1, 10, 20, 30, this);
         gunList.add(machineGun);
         //Gun greGun = new Gun("Revolver", 0,0, gunPics.get(7), 10, 10, 6, 2, this);
         //gunList.add(greGun);
@@ -135,10 +135,10 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         Gun drumGun = new Gun("Drum Gun Assualt Rifle", 0,0, gunPics.get(13), 3, 5, 15, 19, this);
         gunList.add(drumGun);
 
-        Gun starblasterGun = new Gun("Blaster Assualt Rifle", 0,0, gunPics.get(13), 5, 5, 14, 10, this);
+        Gun starblasterGun = new Gun("Blaster Assualt Rifle", 0,0, gunPics.get(13), 5, 5, 14, 13, this);
         gunList.add(starblasterGun);
 
-        Gun submachineGun = new Gun("Submachine Gun", 0,0, gunPics.get(13), 2, 8, 30, 23, this);
+        Gun submachineGun = new Gun("Submachine Gun", 0,0, gunPics.get(13), 4, 8, 30, 23, this);
         gunList.add(submachineGun);
         
 
@@ -218,31 +218,60 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                     case KeyEvent.VK_W:
                             
                             if(hero.applySpeedBoost()) {
-                                hero.setDy(-10);
+                                hero.setDy(-7);
                                 hero.setDx(0);
 
                                 
                             }
                             else{
                                 hero.setDy(-5);
-                            hero.setDx(0);
+                                hero.setDx(0);
                             }
                             
                         hero.setDirection(new Direction(Direction.UP));                     
                         break;
                     case KeyEvent.VK_A:
-                            hero.setDy(0);
-                            hero.setDx(-5);
+                           
+                            if(hero.applySpeedBoost()) {
+                                hero.setDy(0);
+                                hero.setDx(-7);
+
+                                
+                            }
+                            else{
+                                hero.setDy(0);
+                                hero.setDx(-5);
+                            }
                         hero.setDirection(new Direction(Direction.LEFT));
                         break;
                     case KeyEvent.VK_S:                       
                             hero.setDy(5);
-                            hero.setDx(0);                      
+                            hero.setDx(0);
+                            if(hero.applySpeedBoost()) {
+                                hero.setDy(7);
+                                hero.setDx(0);
+
+                                
+                            }
+                            else{
+                                hero.setDy(5);
+                                hero.setDx(0);
+                            }
+                                                
                         hero.setDirection(new Direction(Direction.DOWN));
                         break;
                     case KeyEvent.VK_D:
-                            hero.setDy(0);// moving up
-                            hero.setDx(5);// horizontal v Vertical mutually exclusive                              
+                            
+                            if(hero.applySpeedBoost()) {
+                                hero.setDy(0);
+                                hero.setDx(7);
+
+                                
+                            }
+                            else{
+                                hero.setDy(0);
+                                hero.setDx(5);
+                            }                             
                         hero.setDirection(new Direction(Direction.RIGHT));
                         break;
 
@@ -338,9 +367,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
         // g.drawImage(hero.getGunPng(), 40, 40);
          // Example: Draw power-ups
-         
-        double healthPercent = hero.getHealth() / hero.getMaxHealth();
-        int currentWidth = (int) ((healthPercent) * 100);
+
+        int currentWidth = (int) ((hero.getHealth() / (double) hero.getMaxHealth()) * 100);
 
 
         g.setColor(Color.RED);
@@ -351,16 +379,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         g.drawRect(10, 10, 100, 10);
 
 
-        double coinPercent = coins / coinThreshold;
-        int currentCoinWidth = (int) ((coinPercent) * 100);
 
-
-        g.setColor(Color.RED);
-        g.fillRect(10,20, 100, 10);
-        g.setColor(Color.GREEN);
-        g.fillRect(10, 20, currentCoinWidth, 10);
-        g.setColor(Color.WHITE);
-        g.drawRect(10, 20, 100, 10);
          }
 
     
@@ -415,7 +434,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         if(enemyTimer > 200)
             {
                 enemyTimer  = 0;
-                for (int i = 0; i < (int)(Math.random()*enemySpawnRate*allMulti+1); i++){
+                for (int i = 0; i < (int)(Math.random()*enemySpawnRate+1); i++){
                     healthMulti = (int)(allMulti * healthMulti);
                     Zombie temp = new Zombie((int)(Math.random()*this.getWidth()), (int)(Math.random()*this.getHeight()), hero, healthMulti, bulletList, this);
                     zombieList.add(temp);
@@ -424,7 +443,6 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                 }
             }
 
-        
             
         gunTimer++;
         if(gunTimer > 100)
