@@ -60,6 +60,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     private ArrayList<PowerUps> powerList;
     private boolean reloading;
     private int timeAlive;
+    private int powerUptimer;
 
 
     private Sounds seGun;
@@ -185,7 +186,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         powerList.add(ammoBoost);
         powerList.get(0).setVisible(true); 
         this.add(ammoBoost); 
-        //powerList.add(speedBoost);
+        
         
 
         PowerUps speedBoost = new PowerUps(200, 200, hero, powerIcons[1], "Speed Boost", 1);
@@ -193,10 +194,10 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         ammoBoost.setVisible(true); 
         this.add(speedBoost); 
 
-        PowerUps coinBoost = new PowerUps(20, 200, hero, powerIcons[2], "Coin Boost", 2);
-        powerList.add(coinBoost);
-        coinBoost.setVisible(true); 
-        this.add(coinBoost); 
+        PowerUps healthBoost = new PowerUps(100, 200, hero, powerIcons[2], "Health Boost", 2);
+        powerList.add(healthBoost);
+        healthBoost.setVisible(true); 
+        this.add(healthBoost); 
         
         
         this.addMouseListener(this);
@@ -217,7 +218,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                 switch (code) {
                     case KeyEvent.VK_W:
                             
-                            if(hero.applySpeedBoost()) {
+                            if(!hero.applySpeedBoost()) {
                                 hero.setDy(-7);
                                 hero.setDx(0);
 
@@ -232,7 +233,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                         break;
                     case KeyEvent.VK_A:
                            
-                            if(hero.applySpeedBoost()) {
+                            if(!hero.applySpeedBoost()) {
                                 hero.setDy(0);
                                 hero.setDx(-7);
 
@@ -247,7 +248,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                     case KeyEvent.VK_S:                       
                             hero.setDy(5);
                             hero.setDx(0);
-                            if(hero.applySpeedBoost()) {
+                            if(!hero.applySpeedBoost()) {
                                 hero.setDy(7);
                                 hero.setDx(0);
 
@@ -262,7 +263,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                         break;
                     case KeyEvent.VK_D:
                             
-                            if(hero.applySpeedBoost()) {
+                            if(!hero.applySpeedBoost()) {
                                 hero.setDy(0);
                                 hero.setDx(7);
 
@@ -379,11 +380,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         g.drawRect(10, 10, 100, 10);
 
 
-<<<<<<< HEAD
-=======
         double coinPercent = coins / (double)coinThreshold;
         int currentCoinWidth = (int) ((coinPercent) * 100);
->>>>>>> 35b7ffb4444c1a1ff4707b2ca439dff9ce4248e7
 
 
         g.setColor(Color.WHITE);
@@ -412,6 +410,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                 i--;
             }
         }
+
+        
+
 
         coinTimer++;
         if (coinTimer > 200){
@@ -474,6 +475,16 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
             {
                 hero.addGun(gunList.get((int)(Math.random()*gunList.size())));
             }
+        powerUptimer++;
+        if(powerUptimer>600){
+            PowerUps temprandomPowerUp = powerList.get((int) (Math.random() * powerList.size()));
+            int X = (int) (Math.random() * (this.getWidth() ));
+            int Y = (int) (Math.random() * (this.getHeight() ));
+            //temprandomPowerUp.setBounds(X, Y, temprandomPowerUprandomPowerUp.getWidth(), randomPowerUp.getHeight());
+            this.add(temprandomPowerUp);
+            temprandomPowerUp.setVisible(true);
+            powerUptimer = 0;
+        }
 
 
         
