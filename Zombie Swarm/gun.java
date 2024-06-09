@@ -24,15 +24,16 @@ public class Gun extends GameObject{
     private GamePanel gp;
     private boolean isReloading;
     private boolean done;
+    private Hero hero;
 
-    public Gun(String name, int x, int y, ImageIcon icon, int damage, int reloadSpeed, int ammo, double fireRate, GamePanel gp){
+    public Gun(String name, int x, int y, ImageIcon icon, int damage, int reloadSpeed, int ammo, double fireRate, GamePanel gp, Hero hero){
         super(x,y);
         this.setSize(15,20);
         reloadTime = 0;
         this.visible = false;
         iconGun = icon;
         this.gp = gp;
-        this.damage = damage;
+        this.hero = hero; 
         this.reloadSpeed = reloadSpeed;
         this.name = name;
         this.ammo = ammo;
@@ -62,9 +63,7 @@ public class Gun extends GameObject{
 
             boolean collision = hero.hasCollidedWith(this);
             if (collision) {
-                coinCount++;
                 this.setVisible(false);
-                coinTimer.stop();
                 done = true;
                 hero.addGun(this);
             }
