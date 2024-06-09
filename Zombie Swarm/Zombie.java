@@ -19,10 +19,10 @@ public class Zombie extends GameObject {
     private double movingY;
     private double hp;
     private ArrayList<Bullet> bulletList;
+    private GamePanel gp;
 
 
-
-    public Zombie(int x, int y, Hero hero, int healthMulti, ArrayList<Bullet> bulletList) { //this constructor provides the parameter to create a target
+    public Zombie(int x, int y, Hero hero, int healthMulti, ArrayList<Bullet> bulletList, GamePanel gp) { //this constructor provides the parameter to create a target
         super(x, y); 
         this.phase = 0;
         this.setSize(32, 28);
@@ -31,6 +31,7 @@ public class Zombie extends GameObject {
         this.done = false;
         icons = new ImageIcon[4][3];
         this.hero = hero;
+        this.gp = gp;
         this.movingX = 0;
         this.movingY = 0;
         this.dy = 0;
@@ -72,6 +73,12 @@ public class Zombie extends GameObject {
                     this.die();
                 }
             }
+        }
+
+        if(this.hasCollidedWith(hero))
+        {
+            hero.hurt(1);
+            gp.repaint();
         }
 
 

@@ -17,12 +17,13 @@ public class Hero extends GameObject {
     private ArrayList<Gun> gunList;
     private int gunIndex;
 
-    private Timer speedBoostTimer;
-    private Timer ammoBoostTimer;
-    private Timer coinBoostTimer;
+    
     private double speedMultiplier;
     private int maxAmmo;
     private double coinMultiplier;
+
+    private double maxHealth;
+    private double health;
 
     public Hero(int x, int y, GamePanel gp, Gun gun) {
         super(x, y);
@@ -33,6 +34,9 @@ public class Hero extends GameObject {
         dx = 0;
         dy = 0;
         gunIndex = 0;
+
+        maxHealth = 0;
+        health = 0;
 
         this.gp = gp;
         this.gunList = new ArrayList<Gun>();
@@ -244,4 +248,30 @@ public class Hero extends GameObject {
     private void resetCoinBoost() {
         this.coinMultiplier = 1.0;
     }
+
+
+    public void hurt(int dmg){
+        health -= dmg;
+        if(health < 0)
+        {
+            gp.lose();
+        }
+    }
+    public void heal(int heal) {
+        health += heal;
+        if (health > maxHealth) {
+                health = maxHealth;
+        }
+    }
+
+
+    public double getHealth(){
+        return health;
+    }
+
+    public double getMaxHealth(){
+        return maxHealth;
+    }
+
+
 }
