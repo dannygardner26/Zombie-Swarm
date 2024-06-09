@@ -56,8 +56,10 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     private int timeAlive;
     private Sounds seGun;
     private Sounds sereloadGun;
+    private Sounds zombieDeath;
     private String gsound;
     private String reloads;
+    private String zombieD;
 
     /**
      
@@ -82,8 +84,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
         seGun = new Sounds();
         sereloadGun = new Sounds();
+        zombieDeath =  new Sounds();
 
-
+        zombieD = "Zombie Swarm/images/zombie-death-2-95167.wav";
         gsound = "Zombie Swarm/images/12-Gauge-Pump-Action-Shotgun-Close-Gunshot-D-www.fesliyanstudios.com - Copy.wav";
         reloads = "Zombie Swarm/images/1911-reload-6248.wav";
         for(int i = 0; i < 19; i++){
@@ -307,6 +310,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
         seGun.setFile(gsound);
         sereloadGun.setFile(reloads);
+        zombieDeath.setFile(zombieD);
+
         coinTimer++;
         if (coinTimer > 200){
             int rany = (int)(Math.random()*this.getHeight());
@@ -346,6 +351,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                 }
             }
 
+            
         gunTimer++;
         if(gunTimer > 100)
             {
@@ -439,7 +445,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
     public void removeZombie(Zombie zombie, int i){
         zombieList.remove(i);
+        zombieDeath.play();
         zombie.setVisible(false);
+
         remove(zombie);
     }
 
