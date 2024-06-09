@@ -24,6 +24,8 @@ public class Gun extends GameObject{
     private boolean isReloading;
     private boolean done;
     private Hero hero;
+    private boolean exists;
+    private int testTick;
 
     public Gun(String name, int x, int y, ImageIcon icon, int damage, int reloadSpeed, int ammo, double fireRate, GamePanel gp, Hero hero){
         super(x,y);
@@ -32,6 +34,7 @@ public class Gun extends GameObject{
         this.setVisible(false);
         iconGun = icon;
         this.gp = gp;
+        testTick = 0;
         this.hero = hero; 
         this.damage = damage;
         this.reloadSpeed = reloadSpeed;
@@ -39,6 +42,7 @@ public class Gun extends GameObject{
         this.ammo = ammo;
         this.reloadTime = 0;
         this.fireRate = fireRate;
+        this.exists = false;
         this.maxAmmo = ammo;
         this.isReloading = false;
         this.done = false;
@@ -54,6 +58,9 @@ public class Gun extends GameObject{
     
     @Override
     public void update() {
+
+
+
         if(reloadTime > reloadSpeed){
             if(ammo<maxAmmo){
                 ammo = maxAmmo;
@@ -61,12 +68,21 @@ public class Gun extends GameObject{
             reloadTime = 0;
             isReloading = false;
             reloadTimer.stop();
-                }
+            }
 
-                
-
+            
+            
             boolean collision = hero.hasCollidedWith(this);
-            if (collision && isVisible()) {
+            
+            testTick++;
+            if(testTick>30){
+            System.out.println("Collision" + collision);
+            System.out.println("Visible" + exists);
+            testTick = 0;
+            }
+
+
+            if (collision && this.isVisible()) {
                 done = true;
                 System.out.println("collidedANDvisible");
                 
@@ -142,5 +158,9 @@ public class Gun extends GameObject{
         return done;
     }
     
+    public void exists(boolean exists){
+        this.exists = exists;
+    }
+
 }
 

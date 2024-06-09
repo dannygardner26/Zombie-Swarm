@@ -31,6 +31,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     private Hero hero;
     private static GamePanel tempGP;
     private ArrayList<Gun> gunList;
+    private ArrayList<Gun> gunListUpdate;
+
     private ArrayList<Zombie> zombieList;
     private int tickCounter;
     private int randomNum;
@@ -43,6 +45,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     private ArrayList<Bullet> bulletList;
     private ArrayList<ImageIcon> gunPics;
     private ArrayList<Coin> coinList;
+    
 
     private int enemyTimer;
     private int enemySpawnRate;
@@ -92,10 +95,13 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         gunPics = new ArrayList<ImageIcon>();
         coinList = new ArrayList<Coin>();
         gunList = new ArrayList<Gun>();
+        gunListUpdate = new ArrayList<Gun>();
+
         this.healthMulti = 10;
         this.fireTimer = 100;
         this.allMulti = 1;
         this.coinThreshold = 1;
+
 
 
         seGun = new Sounds();
@@ -117,7 +123,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         Gun pistol = new Gun("Pistol", 0, 0, gunPics.get(0), 5, 10, 8, 8, this, hero);
         gunList.add(pistol);
         hero.addGun(pistol);
-
+        gunListUpdate.add(pistol);
 
         Gun AssaultRifle = new Gun("Assault Rifle", 0, 0, gunPics.get(1), 5, 10,  30, 15, this, hero);
         gunList.add(AssaultRifle);
@@ -485,17 +491,25 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                 }
             }
 
-        for(int i = 0; i < gunList.size(); i++){
-            if(gunList.get(i).getDone()){
-                (gunList.get(i)).setVisible(false);
-                hero.addGun(gunList.get(i));
-                System.out.println("addedToHero");
-                gunList.remove(i);
+        // for(int i = 0; i < gunList.size(); i++){
+        //     if(gunList.get(i).getDone()){
+        //         (gunList.get(i)).setVisible(false);
+        //         hero.addGun(gunList.get(i));
+        //         System.out.println("addedToHero");
+        //         gunList.remove(i);
+        //         i--;
+
+        //     }
+        // }
+        for(int i = 0; i < gunListUpdate.size(); i++){
+            if(gunListUpdate.get(i).getDone()){
+                // (gunListUpdate.get(i)).setVisible(false);
+                hero.addGun(gunListUpdate.get(i));
+                gunListUpdate.remove(i);
                 i--;
 
             }
         }
-            
        
         
             
@@ -607,15 +621,15 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     }
 
     public void spawnGun(){
-        System.out.println("spawnGun");
+        System.out.println("spawnedGun");
         coins = 0;
         Gun random = gunList.get((int)(Math.random()*gunList.size()));
-        System.out.println(random.getName());
-
+        gunListUpdate.add(random);
         random.setLocation((int)(Math.random()*getWidth()), (int)(Math.random()*getHeight()));
-        System.out.println(random.getName() + "=== " + random.getX() + ", " + random.getY());
 
         random.setVisible(true);
+        random.exists(true);
+        this.add(random);
 
     }
 
