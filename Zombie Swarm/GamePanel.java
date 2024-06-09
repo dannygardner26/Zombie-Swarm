@@ -114,11 +114,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
             gunPics.add(new ImageIcon("./Zombie Swarm/images/realGun" + i + ".png"));
         }
         
-<<<<<<< HEAD
                                        
-=======
                                   
->>>>>>> 027bc661c6f8df22c9ac49e424b0a3d8341aa9e0
         int rany = (int)(Math.random()*this.getHeight());
         int ranx = (int)(Math.random()*this.getWidth());
 
