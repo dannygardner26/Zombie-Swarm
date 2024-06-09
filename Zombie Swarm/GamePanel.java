@@ -417,7 +417,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     public void mousePressed(MouseEvent e) {  
 
         firing = true;
+        if(hero.getAmmo()>0){
         seGun.play();
+        }
 
             
     }
