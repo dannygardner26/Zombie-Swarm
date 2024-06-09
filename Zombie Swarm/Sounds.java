@@ -22,12 +22,10 @@ public class Sounds {
     }
 
     public void play(){
-        if (sss != null) {
+       
             sss.setFramePosition(0);
             sss.start();
-        } else {
-            System.err.println("Clip is null, cannot play sound.");
-        }
+        
     }
     
 }
