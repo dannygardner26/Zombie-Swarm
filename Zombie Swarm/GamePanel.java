@@ -504,12 +504,13 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         
         powerUptimer++;
         if(powerUptimer>600){
-            PowerUps temprandomPowerUp = powerList.get((int) (Math.random() * powerList.size()-1));
+            PowerUps temprandomPowerUp = powerList.get((int) (Math.random() * powerList.size()));
             this.add(temprandomPowerUp);
             temprandomPowerUp.setVisible(true);
             powerUptimer = 0;
         }
 
+    
 
         
 
