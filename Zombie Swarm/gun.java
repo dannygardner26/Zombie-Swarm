@@ -67,7 +67,7 @@ public class Gun extends GameObject{
                 }
 
 
-
+            this.setLocation(this.getX(),this.getY());
 
 
             boolean collision = hero.hasCollidedWith(this);
