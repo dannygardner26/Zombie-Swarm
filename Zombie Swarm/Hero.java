@@ -17,10 +17,7 @@ public class Hero extends GameObject {
     private ArrayList<Gun> gunList;
     private int gunIndex;
 
-<<<<<<< HEAD
-=======
     
->>>>>>> 8313b4525a00db38c21c80930f68de9d895d68c6
     private double speedMultiplier;
     private int maxAmmo;
     private double coinMultiplier;
@@ -268,12 +265,15 @@ public class Hero extends GameObject {
 
 
     public void hurt(int dmg){
-        health -= dmg;
-        if(health < 0)
+        if(health - dmg < 0)
         {
             gp.lose();
+            System.out.println("LOSS");
         }
-        System.out.println("health: " + health);
+        else
+        {
+            health -= dmg;
+        }
     }
     public void heal(int heal) {
         health += heal;
