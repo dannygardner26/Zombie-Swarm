@@ -333,6 +333,19 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
         // g.drawImage(hero.getGunPng(), 40, 40);
          // Example: Draw power-ups
+
+        int currentWidth = (int) ((hero.getHealth() / (double) hero.getMaxHealth()) * 100);
+
+
+        g.setColor(Color.RED);
+        g.fillRect(10,10, 100, 10);
+        g.setColor(Color.GREEN);
+        g.fillRect(10, 10, currentWidth, 10);
+        g.setColor(Color.WHITE);
+        g.drawRect(10, 10, 100, 10);
+
+
+
          }
 
     
@@ -389,7 +402,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                 enemyTimer  = 0;
                 for (int i = 0; i < (int)(Math.random()*enemySpawnRate+1); i++){
                     healthMulti = (int)(allMulti * healthMulti);
-                    Zombie temp = new Zombie((int)(Math.random()*this.getWidth()), (int)(Math.random()*this.getHeight()), hero, healthMulti, bulletList);
+                    Zombie temp = new Zombie((int)(Math.random()*this.getWidth()), (int)(Math.random()*this.getHeight()), hero, healthMulti, bulletList, this);
                     zombieList.add(temp);
                     this.add(temp);
                     temp.setVisible(true);
@@ -527,7 +540,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         this.reloading = reloading;
     }
 
-    
+    public void lose(){
+        //TODO when this method runs make it bring back to main menu
+    }
     
 
 }
