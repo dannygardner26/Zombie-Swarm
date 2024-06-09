@@ -107,8 +107,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         for(int i = 0; i < 19; i++){
             gunPics.add(new ImageIcon("./Zombie Swarm/images/realGun" + i + ".png"));
         }
-        int rany = (int)(Math.random()*this.getHeight());
-        int ranx = (int)(Math.random()*this.getWidth());
+        
 
         hero = new Hero(100, 100, tempGP);
         this.add(hero);
@@ -196,22 +195,20 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         
         
         
-        PowerUps ammoBoost = new PowerUps(400,300, hero, powerIcons[0], "Ammo Boost", 0);
+        PowerUps ammoBoost = new PowerUps((int) (Math.random() * this.getWidth()), (int) (Math.random() * this.getHeight()), hero, powerIcons[0], "Ammo Boost", 0);
         powerList.add(ammoBoost);
-        powerList.get(0).setVisible(true); 
-        this.add(ammoBoost); 
-        
-        
+        this.add(ammoBoost);
+        ammoBoost.setVisible(true);
 
-        PowerUps speedBoost = new PowerUps(200, 200, hero, powerIcons[1], "Speed Boost", 1);
+        PowerUps speedBoost = new PowerUps((int) (Math.random() * this.getWidth()), (int) (Math.random() * this.getHeight()), hero, powerIcons[1], "Speed Boost", 1);
         powerList.add(speedBoost);
-        ammoBoost.setVisible(true); 
-        this.add(speedBoost); 
+        this.add(speedBoost);
+        speedBoost.setVisible(true);
 
-        PowerUps healthBoost = new PowerUps(100, 200, hero, powerIcons[2], "Health Boost", 2);
+        PowerUps healthBoost = new PowerUps((int) (Math.random() * this.getWidth()), (int) (Math.random() * this.getHeight()), hero, powerIcons[2], "Health Boost", 2);
         powerList.add(healthBoost);
-        healthBoost.setVisible(true); 
-        this.add(healthBoost); 
+        this.add(healthBoost);
+        healthBoost.setVisible(true);
         
         
         this.addMouseListener(this);
@@ -500,7 +497,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         
         powerUptimer++;
         if(powerUptimer>450){
+            
             PowerUps temprandomPowerUp = powerList.get((int) (Math.random() * powerList.size()));
+
             this.add(temprandomPowerUp);
             temprandomPowerUp.setVisible(true);
             powerUptimer = 0;

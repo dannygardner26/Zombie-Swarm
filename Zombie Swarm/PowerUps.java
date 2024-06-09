@@ -17,17 +17,19 @@ public class PowerUps extends GameObject
         super(x,y);
         this.hero = hero;
         this.icon = icon;
-        this.setBounds(x, y, icon.getIconWidth(), icon.getIconHeight());
+        
         this.name = name;
         this.id = id;
         this.done = false;
+        this.setBounds(x, y, icon.getIconWidth(), icon.getIconHeight());
         this.setIcon(icon);
-
+       
        
 
 
 
    }
+  
 
     
     public void update()

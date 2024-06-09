@@ -24,7 +24,7 @@ public class Main {
         
         JFrame frame = new JFrame("Shooting Targets");
         frame.setBounds(50, 50, 500, 500);
-        frame.add(titlescreen);
+        
 
         // makes it impossible to resize the frame
         frame.setResizable(false);
@@ -33,6 +33,7 @@ public class Main {
         GamePanel gamePanel = new GamePanel();
 
         frame.add(gamePanel);
+        
 
         
 
