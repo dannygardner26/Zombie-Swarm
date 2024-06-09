@@ -119,7 +119,7 @@ public class Hero extends GameObject {
     public void update() {
     if(gunList.size() > 0)
         this.gun = gunList.get(gunIndex);
-
+        if(gun != null)
         gun.update();
 
         if (dx != 0 || dy != 0) {
@@ -185,7 +185,9 @@ public class Hero extends GameObject {
     }
 
     public double getFireRate(){
+        if(gun != null)
         return gun.getFireRate();
+        return 0;
     }
 
     public int getDamage(){

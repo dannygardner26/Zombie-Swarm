@@ -95,7 +95,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         this.healthMulti = 10;
         this.fireTimer = 100;
         this.allMulti = 1;
-        this.coinThreshold = 15;
+        this.coinThreshold = 3;
 
 
         seGun = new Sounds();
@@ -165,9 +165,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
 
 
-        hero = new Hero(100, 100, tempGP);
-        this.add(hero);
-        hero.setVisible(true);
+       
 
 
 
