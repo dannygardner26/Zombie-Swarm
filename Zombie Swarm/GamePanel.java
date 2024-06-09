@@ -216,13 +216,18 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                 int code = e.getKeyCode();
                 switch (code) {
                     case KeyEvent.VK_W:
-                            hero.setDy(-5);
-                            hero.setDx(0);
+                            
                             if(hero.applySpeedBoost()) {
-                                hero.setDx((int)-5*(int)-hero.getMultiplier());
+                                hero.setDy(-10);
+                                hero.setDx(0);
 
                                 
                             }
+                            else{
+                                hero.setDy(-5);
+                            hero.setDx(0);
+                            }
+                            
                         hero.setDirection(new Direction(Direction.UP));                     
                         break;
                     case KeyEvent.VK_A:

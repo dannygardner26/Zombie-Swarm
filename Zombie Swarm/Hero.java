@@ -226,9 +226,9 @@ public class Hero extends GameObject {
     public boolean applySpeedBoost() {
         
         if(speedMultiplier!=0 ){
-            return true;
+            return false;
         }
-        return false;
+        return true;
 
         
     }
