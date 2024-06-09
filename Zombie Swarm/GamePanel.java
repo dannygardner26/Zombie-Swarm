@@ -117,6 +117,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                                        
                                   
         
+        int rany = (int)(Math.random()*this.getHeight());
+        int ranx = (int)(Math.random()*this.getWidth());
 
 
         hero = new Hero(100, 100, tempGP);
@@ -220,7 +222,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         
         
         this.addMouseListener(this);
-    
+    // this key listener handles all key inputs
         this.addKeyListener(new KeyListener() {
 
             @Override
@@ -235,7 +237,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
                 int code = e.getKeyCode();
                 switch (code) {
-                    case KeyEvent.VK_W:
+                    case KeyEvent.VK_W: //handles movement up, while accounting for speed boost
                             
                             if(!hero.applySpeedBoost()) {
                                 hero.setDy(-7);
@@ -250,7 +252,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                             
                         hero.setDirection(new Direction(Direction.UP));                     
                         break;
-                    case KeyEvent.VK_A:
+                    case KeyEvent.VK_A://handles movement left, while accounting for speed boost
                            
                             if(!hero.applySpeedBoost()) {
                                 hero.setDy(0);
@@ -264,7 +266,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                             }
                         hero.setDirection(new Direction(Direction.LEFT));
                         break;
-                    case KeyEvent.VK_S:                       
+                    case KeyEvent.VK_S:       //handles movement down, while accounting for speed boost                
                             hero.setDy(5);
                             hero.setDx(0);
                             if(!hero.applySpeedBoost()) {
@@ -280,7 +282,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                                                 
                         hero.setDirection(new Direction(Direction.DOWN));
                         break;
-                    case KeyEvent.VK_D:
+                    case KeyEvent.VK_D://handles movement right, while accounting for speed boost
                             
                             if(!hero.applySpeedBoost()) {
                                 hero.setDy(0);
@@ -295,22 +297,22 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                         hero.setDirection(new Direction(Direction.RIGHT));
                         break;
 
-                    case KeyEvent.VK_Q:
+                    case KeyEvent.VK_Q: //switches the gun 1 to the left
                             hero.gunLeft();
                         break;
-                    case KeyEvent.VK_E:
+                    case KeyEvent.VK_E: //switches the gun 1 to the right
                             hero.gunRight();
                         break;
-                    case KeyEvent.VK_R:
+                    case KeyEvent.VK_R: // reloads gun
                             // hero.reload();
                             // seGun.setFile(reloads);
                             // seGun.play();
-                            if (!reloading) { 
+                            if (!reloading) { //the !reloading is used to make sure that you cant spam reloading
                                 reloading = true; 
                                 hero.reload();
                                 seGun.setFile(reloads);
                                 seGun.play();
-                                Timer reloadTimer = new Timer((int)(hero.getReloadTime() * 1000), new ActionListener() {
+                                Timer reloadTimer = new Timer((int)(hero.getReloadTime() * 1000), new ActionListener() { //this timer 
                                     @Override
                                     public void actionPerformed(ActionEvent e) {
                                         reloading = false; // Reset the reloading flag
