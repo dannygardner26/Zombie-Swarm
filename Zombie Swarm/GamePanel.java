@@ -243,9 +243,24 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                             hero.gunRight();
                         break;
                     case KeyEvent.VK_R:
-                            hero.reload();
-                            seGun.setFile(reloads);
-                            seGun.play();
+                            // hero.reload();
+                            // seGun.setFile(reloads);
+                            // seGun.play();
+                            if (!reloading) { 
+                                reloading = true; 
+                                hero.reload();
+                                seGun.setFile(reloads);
+                                seGun.play();
+                                Timer reloadTimer = new Timer((int)(hero.getReloadTime() * 1000), new ActionListener() {
+                                    @Override
+                                    public void actionPerformed(ActionEvent e) {
+                                        reloading = false; // Reset the reloading flag
+                                        ((Timer)e.getSource()).stop();
+                                    }
+                                });
+                                reloadTimer.setRepeats(false);
+                                reloadTimer.start();
+                            }
                         break;
                              
                     
@@ -289,7 +304,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
 
         // create and start the game timer. This gamepanel is passed
-        // as the action listener which will be triggered every 17 milliseconds
+        // as the action listener which will be triggered every 10 milliseconds
         Timer gameLoop = new Timer(10, this);
         gameLoop.start();
 
@@ -382,6 +397,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
             {
                 hero.addGun(gunList.get((int)(Math.random()*gunList.size())));
             }
+
+
+        
 
 
         for(int i = 0; i < bulletList.size(); i++){
