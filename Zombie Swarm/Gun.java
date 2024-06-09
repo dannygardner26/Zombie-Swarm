@@ -49,7 +49,6 @@ public class Gun extends GameObject{
             }
         });
         this.setIcon(icon);
-        this.setLocation(x,y);
     }
 
     
@@ -64,13 +63,9 @@ public class Gun extends GameObject{
             reloadTimer.stop();
                 }
 
-
-            this.setLocation(this.getX(),this.getY());
-            System.out.println(this.getX() + ", " + this.getY());
+                
 
             boolean collision = hero.hasCollidedWith(this);
-            if(collision)
-                System.out.println("collision");
             if (collision && isVisible()) {
                 done = true;
                 System.out.println("collidedANDvisible");
