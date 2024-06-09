@@ -151,10 +151,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         Gun drumGun = new Gun("Drum Gun Assualt Rifle", 0, 0, gunPics.get(13), 3, 5, 15, 19, this,hero);
         gunList.add(drumGun);
 
-        Gun starblasterGun = new Gun("Blaster Assualt Rifle", 0, 0, gunPics.get(13), 5, 5, 14, 10, this,hero);
         gunList.add(starblasterGun);
 
-        Gun submachineGun = new Gun("Submachine Gun", 0, 0, gunPics.get(13), 2, 8, 30, 23, this,hero);
         gunList.add(submachineGun);
         
         for(int i = 0 ; i < gunList.size(); i++){
@@ -487,7 +485,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
         for(int i = 0; i < gunList.size(); i++){
             if(gunList.get(i).getDone()){
-                gunList.get(i).setVisible(false);
+                (gunList.get(i)).setVisible(false);
                 hero.addGun(gunList.get(i));
                 System.out.println("addedToHero");
                 gunList.remove(i);
@@ -501,7 +499,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
             
         
         powerUptimer++;
-        if(powerUptimer>600){
+        if(powerUptimer>450){
             PowerUps temprandomPowerUp = powerList.get((int) (Math.random() * powerList.size()));
             this.add(temprandomPowerUp);
             temprandomPowerUp.setVisible(true);
@@ -612,8 +610,23 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         Gun random = gunList.get((int)(Math.random()*gunList.size()));
         System.out.println(random.getName());
 
+<<<<<<< HEAD
         random.setLocation((int)(Math.random()*getWidth()), (int)(Math.random()*getHeight()));
         System.out.println(random.getName() + "=== " + random.getX() + ", " + random.getY());
+=======
+        int random = (int)(Math.random()*gunList.size());
+        Gun current = gunList.get(random);
+        
+        (current).setVisible(true);
+    
+        int rany = (int)(Math.random()*this.getHeight());
+        int ranx = (int)(Math.random()*this.getWidth());
+        current.setLocation(ranx, rany);
+        System.out.println(ranx + " " + rany + "LOCATION OF GUN");
+        this.add(current);
+        System.out.println("NAME OF GUN" + current.getName());
+        repaint();
+>>>>>>> d9bf0c4b508084c2e4750b1d6ad5eab8d867170a
 
         random.setVisible(true);
 
