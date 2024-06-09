@@ -346,7 +346,16 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         g.drawRect(10, 10, 100, 10);
 
 
+        double coinPercent = coins / coinThreshold;
+        int currentCoinWidth = (int) ((coinPercent) * 100);
 
+
+        g.setColor(Color.RED);
+        g.fillRect(10,20, 100, 10);
+        g.setColor(Color.GREEN);
+        g.fillRect(10, 20, currentCoinWidth, 10);
+        g.setColor(Color.WHITE);
+        g.drawRect(10, 20, 100, 10);
          }
 
     
