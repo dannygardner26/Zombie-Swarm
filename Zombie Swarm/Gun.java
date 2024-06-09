@@ -14,7 +14,6 @@ public class Gun extends GameObject{
     private int damage;
     private int reloadSpeed;
     private double fireRate;
-    private boolean visible;
     private String name;
     private ArrayList<Bullet> bulletList;
     private int ammo;
@@ -28,9 +27,9 @@ public class Gun extends GameObject{
 
     public Gun(String name, int x, int y, ImageIcon icon, int damage, int reloadSpeed, int ammo, double fireRate, GamePanel gp, Hero hero){
         super(x,y);
-        this.setSize(40,40);
+        this.setSize(80,40);
         reloadTime = 0;
-        this.visible = false;
+        this.setVisible(false);
         iconGun = icon;
         this.gp = gp;
         this.hero = hero; 
@@ -50,8 +49,7 @@ public class Gun extends GameObject{
             }
         });
         this.setIcon(icon);
-
-
+        this.setLocation(x,y);
     }
 
     
@@ -68,13 +66,15 @@ public class Gun extends GameObject{
 
 
             this.setLocation(this.getX(),this.getY());
-
+            System.out.println(this.getX() + ", " + this.getY());
 
             boolean collision = hero.hasCollidedWith(this);
             if(collision)
                 System.out.println("collision");
             if (collision && isVisible()) {
                 done = true;
+                System.out.println("collidedANDvisible");
+                
             }
     }
 
