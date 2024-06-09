@@ -34,6 +34,8 @@ public class Gun extends GameObject{
         iconGun = icon;
         this.gp = gp;
         this.hero = hero; 
+        this.damage = damage;
+        System.out.println("damageGUN: " + damage);
         this.reloadSpeed = reloadSpeed;
         this.name = name;
         this.ammo = ammo;
@@ -54,7 +56,9 @@ public class Gun extends GameObject{
     @Override
     public void update() {
         if(reloadTime > reloadSpeed){
-            ammo = maxAmmo;
+            if(ammo<maxAmmo){
+                ammo = maxAmmo;
+            }
             reloadTime = 0;
             isReloading = false;
             reloadTimer.stop();
@@ -114,7 +118,9 @@ public class Gun extends GameObject{
             reloadTime--;
         } else {
             reloadTimer.stop();
-            ammo = maxAmmo;
+            if(ammo<maxAmmo){
+                ammo = maxAmmo;
+            }
             reloadTime = 0;
             isReloading = false;
         }
