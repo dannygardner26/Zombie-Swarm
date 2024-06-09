@@ -78,9 +78,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     private String zombieD;
 
     /**
-     
+     basic constructor and setup of fields to be used by GamePanel
      */
-    public GamePanel() {
+    public GamePanel() { 
         this.setLayout(null);
         tempGP = this;
         gunTimer = 0;
@@ -90,7 +90,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         powerList = new ArrayList<PowerUps>();
         firing = false;
         enemyTimer = 0;
-        zombieList = new ArrayList<Zombie>();
+        zombieList = new ArrayList<Zombie>(); 
         bulletList = new ArrayList<Bullet>();
         gunPics = new ArrayList<ImageIcon>();
         coinList = new ArrayList<Coin>();
@@ -116,12 +116,12 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         int rany = (int)(Math.random()*this.getHeight());
         int ranx = (int)(Math.random()*this.getWidth());
 
+
         hero = new Hero(100, 100, tempGP);
         this.add(hero);
         hero.setVisible(true);
-
+        //creation of all our guns
         Gun pistol = new Gun("Pistol", 0, 0, gunPics.get(0), 5, 10, 8, 8, this, hero);
-        // gunList.add(pistol);
         hero.addGun(pistol);
         gunListUpdate.add(pistol);
 
@@ -137,8 +137,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         gunList.add(stingerSMG);
         Gun machineGun = new Gun("Machine Gun", 0,0, gunPics.get(6), 1, 10, 20, 30, this, hero);
         gunList.add(machineGun);
-        //Gun greGun = new Gun("Revolver", 0, 0, gunPics.get(7), 10, 10, 6, 2, this,hero);
-        //gunList.add(greGun);
+       
         Gun hunterRifleGun = new Gun("Hunter Sniper Rifle", 0, 0, gunPics.get(8), 10, 5, 1, 1, this,hero);
         gunList.add(hunterRifleGun);
 
