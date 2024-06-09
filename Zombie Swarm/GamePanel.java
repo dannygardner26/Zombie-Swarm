@@ -113,7 +113,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         gunList.add(burst);
         Gun deagalGun = new Gun("Deagal Pistol", 0,0, gunPics.get(4), 10, 10, 3, 3, this);
         gunList.add(deagalGun);
-        Gun stingerSMG = new Gun("Stinger Submachine Gun", 0,0, gunPics.get(5), 1, 5, 12, 15, this);
+        Gun stingerSMG = new Gun("Stinger Submachine Gun", 0,0, gunPics.get(5), 4, 5, 12, 15, this);
         gunList.add(stingerSMG);
         Gun machineGun = new Gun("Machine Gun", 0,0, gunPics.get(6), 1, 10, 20, 30, this);
         gunList.add(machineGun);
@@ -125,10 +125,10 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         Gun dmrRifle = new Gun("Designated Marksman Rifle", 0,0, gunPics.get(9), 4, 5, 3, 3, this);
         gunList.add(dmrRifle);
 
-        Gun boltactioGun = new Gun("Bolt Action SNiper Rifle", 0,0, gunPics.get(10), 10, 7, 2, 2, this);
+        Gun boltactioGun = new Gun("Bolt Action Sniper Rifle", 0,0, gunPics.get(10), 10, 7, 2, 2, this);
         gunList.add(boltactioGun);
 
-        Gun machinePistolGun = new Gun("Machine Pistol Gun", 0,0, gunPics.get(11), 3, 4, 10, 3, this);
+        Gun machinePistolGun = new Gun("Machine Pistol Gun", 0,0, gunPics.get(11), 3, 4, 10, 17, this);
         gunList.add(machinePistolGun);
 
         //Gun pistol = new Gun("Designated Marksman Rifle", 0,0, gunPics.get(12), 4, 5, 3, 3, this);
@@ -137,6 +137,11 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         Gun drumGun = new Gun("Drum Gun Assualt Rifle", 0,0, gunPics.get(13), 3, 5, 15, 19, this);
         gunList.add(drumGun);
 
+        Gun starblasterGun = new Gun("Blaster Assualt Rifle", 0,0, gunPics.get(13), 5, 5, 14, 13, this);
+        gunList.add(starblasterGun);
+
+        Gun submachineGun = new Gun("Submachine Gun", 0,0, gunPics.get(13), 4, 8, 30, 23, this);
+        gunList.add(submachineGun);
         
 
 
