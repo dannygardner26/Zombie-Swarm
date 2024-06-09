@@ -28,7 +28,6 @@ public class Gun extends GameObject{
 
     public Gun(String name, int x, int y, ImageIcon icon, int damage, int reloadSpeed, int ammo, double fireRate, GamePanel gp, Hero hero){
         super(x,y);
-        System.out.println("x:" + x + ", Y:" + y);
         this.setSize(40,40);
         reloadTime = 0;
         this.visible = false;
@@ -36,7 +35,6 @@ public class Gun extends GameObject{
         this.gp = gp;
         this.hero = hero; 
         this.damage = damage;
-        System.out.println("damageGUN: " + damage);
         this.reloadSpeed = reloadSpeed;
         this.name = name;
         this.ammo = ammo;
@@ -68,7 +66,7 @@ public class Gun extends GameObject{
             reloadTimer.stop();
                 }
 
-                
+
 
 
 
