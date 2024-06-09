@@ -163,9 +163,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         Gun submachineGun = new Gun("Submachine Gun", 0, 0, gunPics.get(15), 2, 8, 30, 23, this,hero);
         gunList.add(submachineGun);
         
-        for(int i = 0 ; i < gunList.size(); i++){
-            gunList.get(i).setVisible(false);
-        }
+        
 
 
 
@@ -501,11 +499,13 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
         //     }
         // }
-        for(int i = 0; i < gunListUpdate.size(); i++){
-            if(gunListUpdate.get(i).getDone()){
-                // (gunListUpdate.get(i)).setVisible(false);
-                hero.addGun(gunListUpdate.get(i));
-                gunListUpdate.remove(i);
+        for(int i = 0; i < gunList.size(); i++){
+            if(gunList.get(i).getDone()){
+                System.out.println("gun is done");
+                hero.addGun(gunList.get(i));
+                gunList.get(i).setVisible(false);
+                this.repaint();
+                gunList.remove(i);
                 i--;
 
             }
@@ -624,12 +624,16 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         System.out.println("spawnedGun");
         coins = 0;
         Gun random = gunList.get((int)(Math.random()*gunList.size()));
-        gunListUpdate.add(random);
-        random.setLocation((int)(Math.random()*getWidth()), (int)(Math.random()*getHeight()));
+        // gunListUpdate.add(random);
+        // random.setLocation((int)(Math.random()*getWidth()), (int)(Math.random()*getHeight()));
 
         random.setVisible(true);
-        random.exists(true);
+        random.spawned(true);
+        random.setLocation(200,200);
+
         this.add(random);
+        random.setVisible(true);
+
 
     }
 
