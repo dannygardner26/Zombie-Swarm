@@ -24,6 +24,7 @@ public class Gun extends GameObject{
     private boolean isReloading;
     private boolean done;
     private Hero hero;
+    private boolean spawned;
     private int testTick;
 
     public Gun(String name, int x, int y, ImageIcon icon, int damage, int reloadSpeed, int ammo, double fireRate, GamePanel gp, Hero hero){
