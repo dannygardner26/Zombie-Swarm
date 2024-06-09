@@ -55,7 +55,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
     private double allMulti;
 
-    private PowerUps power;
+    
     private ImageIcon[] powerIcons;
     private ArrayList<PowerUps> powerList;
     private boolean reloading;
@@ -63,7 +63,6 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
 
     private Sounds seGun;
-    
     private String coinse;
     private String gsound;
     private String reloads;
@@ -182,20 +181,19 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         }
         
         
-        PowerUps speedBoost = new PowerUps(300, 200, hero, powerIcons[0], "Speed Boost", 0);
-        powerList.add(speedBoost);
-        
+        PowerUps ammoBoost = new PowerUps(400,300, hero, powerIcons[0], "Ammo Boost", 0);
+        powerList.add(ammoBoost);
         powerList.get(0).setVisible(true); 
-        this.add(speedBoost); 
+        this.add(ammoBoost); 
         //powerList.add(speedBoost);
         
 
-        PowerUps ammoBoost = new PowerUps(200, 200, hero, powerIcons[1], "Ammo Boost", 1);
+        PowerUps sppedBoost = new PowerUps(200, 200, hero, powerIcons[1], "Speed Boost", 1);
         powerList.add(ammoBoost);
         ammoBoost.setVisible(true); 
-        this.add(ammoBoost); 
+        this.add(sppedBoost); 
 
-        PowerUps coinBoost = new PowerUps(200, 200, hero, powerIcons[2], "Coin Boost", 2);
+        PowerUps coinBoost = new PowerUps(400, 200, hero, powerIcons[2], "Coin Boost", 2);
         powerList.add(coinBoost);
         coinBoost.setVisible(true); 
         this.add(coinBoost); 
