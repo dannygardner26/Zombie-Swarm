@@ -23,6 +23,7 @@ public class Gun extends GameObject{
     private int reloadTime;
     private GamePanel gp;
     private boolean isReloading;
+    private boolean done;
 
     public Gun(String name, int x, int y, ImageIcon icon, int damage, int reloadSpeed, int ammo, double fireRate, GamePanel gp){
         super(x,y);
@@ -39,7 +40,7 @@ public class Gun extends GameObject{
         this.fireRate = fireRate;
         this.maxAmmo = ammo;
         this.isReloading = false;
-        
+        this.done = false
         reloadTimer = new Timer(100, new ActionListener() { 
             
             public void actionPerformed(ActionEvent e) {
@@ -56,6 +57,16 @@ public class Gun extends GameObject{
             reloadTime = 0;
             isReloading = false;
             reloadTimer.stop();
+            }
+
+
+            boolean collision = hero.hasCollidedWith(this);
+            if (collision) {
+                coinCount++;
+                this.setVisible(false);
+                coinTimer.stop();
+                done = true;
+                hero.addGun(this);
             }
     }
 
@@ -122,6 +133,9 @@ public class Gun extends GameObject{
         this.ammo += ammo;
     }
 
+    public boolean getDone(){
+        return done;
+    }
     
 }
 
