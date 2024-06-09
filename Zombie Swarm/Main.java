@@ -4,14 +4,13 @@ import javax.swing.JFrame;
 public class Main {
     
 
-    private static JFrame gameFrame;
-
+    String sound;
    
     public static void main(String[] args) {
 
         
         
-        
+       
 
         JFrame frame = new JFrame("Shooting Targets");
         frame.setBounds(50, 50, 500, 500);
@@ -32,4 +31,6 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
+
+    
 }
