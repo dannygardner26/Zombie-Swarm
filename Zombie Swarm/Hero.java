@@ -17,10 +17,7 @@ public class Hero extends GameObject {
     private ArrayList<Gun> gunList;
     private int gunIndex;
 
-<<<<<<< HEAD
-=======
     
->>>>>>> 8313b4525a00db38c21c80930f68de9d895d68c6
     private double speedMultiplier;
     private int maxAmmo;
     private double coinMultiplier;
@@ -229,9 +226,9 @@ public class Hero extends GameObject {
     public boolean applySpeedBoost() {
         
         if(speedMultiplier!=0 ){
-            return true;
+            return false;
         }
-        return false;
+        return true;
 
         
     }
