@@ -189,7 +189,6 @@ public class Hero extends GameObject {
     }
 
     public int getDamage(){
-        System.out.println("damage: " + gun.getDamage());
         return gun.getDamage();
     }
 

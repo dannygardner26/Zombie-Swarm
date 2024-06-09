@@ -28,7 +28,8 @@ public class Gun extends GameObject{
 
     public Gun(String name, int x, int y, ImageIcon icon, int damage, int reloadSpeed, int ammo, double fireRate, GamePanel gp, Hero hero){
         super(x,y);
-        this.setSize(15,20);
+        System.out.println("x:" + x + ", Y:" + y);
+        this.setSize(40,40);
         reloadTime = 0;
         this.visible = false;
         iconGun = icon;
@@ -50,6 +51,9 @@ public class Gun extends GameObject{
                 reloadTick();
             }
         });
+        this.setIcon(icon);
+
+
     }
 
     
@@ -62,14 +66,17 @@ public class Gun extends GameObject{
             reloadTime = 0;
             isReloading = false;
             reloadTimer.stop();
-            }
+                }
+
+                
+
 
 
             boolean collision = hero.hasCollidedWith(this);
-            if (collision) {
-                this.setVisible(false);
+            if(collision)
+                System.out.println("collision");
+            if (collision && isVisible()) {
                 done = true;
-                hero.addGun(this);
             }
     }
 

@@ -17,6 +17,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * This class will house all game objects which are part of the
@@ -35,6 +36,10 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     private int randomNum;
     private Gun gun;
     
+        private Random random = new Random();
+
+
+
     private ArrayList<Bullet> bulletList;
     private ArrayList<ImageIcon> gunPics;
     private ArrayList<Coin> coinList;
@@ -99,9 +104,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         reloads = "Zombie Swarm/images/1911-reload-6248.wav";
 
         for(int i = 0; i < 19; i++){
-            gunPics.add(new ImageIcon("./images/realGun" + i + ".png"));
+            gunPics.add(new ImageIcon("./Zombie Swarm/images/realGun" + i + ".png"));
         }
-
         int rany = (int)(Math.random()*this.getHeight());
         int ranx = (int)(Math.random()*this.getWidth());
 
@@ -528,8 +532,6 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     {
         coins++;
 
-        System.out.println("collceted");
-        System.out.println(coins);
         repaint();
 
 
@@ -582,12 +584,36 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
     public void spawnGun(){
 
-        System.out.println("gun spawned");
+        // System.out.println("spawning gun");
+        // int random = (int)(Math.random()*gunList.size());
+        // this.add(gunList.get(random));
+        // (gunList.get(random)).setVisible(true);
 
-        int random = (int)(Math.random()*gunList.size());
-        this.add(gunList.get(random));
-        (gunList.get(random)).setVisible(true);
 
+        int randomIndex = random.nextInt(gunList.size());
+
+        // Get the gun from the list
+        Gun randomGun = gunList.get(randomIndex);
+
+        // Check if the gun is already visible
+        if (!randomGun.isVisible()) {
+            // Set a random position within the panel bounds
+            int randomX = random.nextInt(this.getWidth() - randomGun.getWidth());
+            int randomY = random.nextInt(this.getHeight() - randomGun.getHeight());
+            randomGun.setLocation(randomX, randomY);
+
+            // Add the gun to the panel and make it visible
+            this.add(randomGun);
+            randomGun.setVisible(true);
+
+            // Repaint the panel to reflect changes
+            this.repaint();
+
+            System.out.println("Gun spawned at: (" + randomX + ", " + randomY + ")");
+        } else {
+            System.out.println("Gun is already visible, spawning another one.");
+        }
+    
     }
 
 
@@ -633,5 +659,12 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         //TODO when this method runs make it bring back to main menu
     }
     
+    public void makeCoin (int x, int y){
+        Coin temp = new Coin(x,y, hero, this);
+        coinList.add(temp);
+            this.add(temp);
+            temp.setVisible(true);
+    }
+
 
 }
