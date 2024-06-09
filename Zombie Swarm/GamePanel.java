@@ -61,9 +61,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
 
     private Sounds seGun;
-    private Sounds sereloadGun;
-    private Sounds zombieDeath;
-    private Sounds coinPick;
+    
     private String coinse;
     private String gsound;
     private String reloads;
@@ -91,13 +89,11 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         this.fireTimer = 100;
 
         seGun = new Sounds();
-       
-
-
         coinse = "Zombie Swarm/images/coin-donation-2-180438.wav";
         zombieD = "Zombie Swarm/images/zombie-death-2-95167.wav";
         gsound = "Zombie Swarm/images/12-Gauge-Pump-Action-Shotgun-Close-Gunshot-D-www.fesliyanstudios.com - Copy.wav";
         reloads = "Zombie Swarm/images/1911-reload-6248.wav";
+
         for(int i = 0; i < 19; i++){
             gunPics.add(new ImageIcon("./images/realGun" + i + ".png"));
         }
@@ -174,17 +170,20 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         powerList = new ArrayList<PowerUps>();
 
         
-
+        //Zombie Swarm/images/power_2.png
         for (int i = 0; i < 3; i++) {
-            ImageIcon tempImage = new ImageIcon("./Zombie Swarm/images/power_" + i + ".png");
+            ImageIcon tempImage = new ImageIcon("Zombie Swarm/images/power_" + i + ".png");
             powerIcons[i] = tempImage;
         }
         
         
         PowerUps speedBoost = new PowerUps(300, 200, hero, powerIcons[0], "Speed Boost", 0);
         powerList.add(speedBoost);
+        
         powerList.get(0).setVisible(true); 
-        this.add(powerList.get(0)); 
+        this.add(speedBoost); 
+        //powerList.add(speedBoost);
+        
 
         PowerUps ammoBoost = new PowerUps(200, 200, hero, powerIcons[1], "Ammo Boost", 1);
         powerList.add(ammoBoost);
@@ -195,7 +194,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         powerList.add(coinBoost);
         coinBoost.setVisible(true); 
         this.add(coinBoost); 
-        //power.setVisible(true);
+        
         
         this.addMouseListener(this);
     
