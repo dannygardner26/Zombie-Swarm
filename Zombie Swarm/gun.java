@@ -118,6 +118,9 @@ public class Gun extends GameObject{
     public boolean isReloading(){
         return isReloading;
     }
+    public void gunsetAmmo(int ammo){
+        this.ammo += ammo;
+    }
 
     
 }
