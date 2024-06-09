@@ -15,11 +15,11 @@ public class PowerUps extends GameObject
         super(x,y);
         this.hero = hero;
         this.icon = icon;
-        this.setIcon(icon);
+        
         this.name = name;
         this.id = id;
         
-        
+        this.setIcon(icon);
 
        
 
@@ -27,9 +27,10 @@ public class PowerUps extends GameObject
 
    }
 
-   
+    
     public void update()
     {
+        /* 
         boolean collision = this.hasCollidedWith(hero);
         if (collision) {
             this.setVisible(false);
@@ -47,10 +48,12 @@ public class PowerUps extends GameObject
             }
     
         }
+            */
 
         
 
     }
+    
 
     }
 

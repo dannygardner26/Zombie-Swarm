@@ -145,19 +145,28 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         powerIcons = new ImageIcon[3];
         powerList = new ArrayList<PowerUps>();
 
-        for(int i = 0; i < 3; i++){
-            ImageIcon tempImage = new ImageIcon("Zombie Swarm/images/power_" + i + ".png"); 
-            powerIcons[i] = tempImage;  
+        
+
+        for (int i = 0; i < 3; i++) {
+            ImageIcon tempImage = new ImageIcon("./Zombie Swarm/images/power_" + i + ".png");
+            powerIcons[i] = tempImage;
         }
-        PowerUps speedBoost = new PowerUps(200, 200, hero, powerIcons[0], "Speed Boost", 0);
+        
+        
+        PowerUps speedBoost = new PowerUps(300, 200, hero, powerIcons[0], "Speed Boost", 0);
         powerList.add(speedBoost);
-        speedBoost.setVisible(true);
-        this.add(speedBoost);
+        powerList.get(0).setVisible(true); 
+        this.add(powerList.get(0)); 
+
         PowerUps ammoBoost = new PowerUps(200, 200, hero, powerIcons[1], "Ammo Boost", 1);
         powerList.add(ammoBoost);
+        ammoBoost.setVisible(true); 
+        this.add(ammoBoost); 
+
         PowerUps coinBoost = new PowerUps(200, 200, hero, powerIcons[2], "Coin Boost", 2);
         powerList.add(coinBoost);
-
+        coinBoost.setVisible(true); 
+        this.add(coinBoost); 
         //power.setVisible(true);
         
         this.addMouseListener(this);
@@ -271,9 +280,10 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
 
         // g.drawImage(hero.getGunPng(), 40, 40);
-        
+         // Example: Draw power-ups
+         }
 
-    }
+    
 
 
     @Override
