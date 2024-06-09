@@ -119,7 +119,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         hero.addGun(pistol);
 
 
-        Gun AssaultRifle = new Gun("Assault Rifle", 0, 0, gunPics.get(1), 5, 10,  30, 15, this, hero);
+        Gun AssaultRifle = new Gun("Assault Rifle", 200, 200, gunPics.get(1), 5, 10,  30, 15, this, hero);
         gunList.add(AssaultRifle);
         Gun revolver = new Gun("Revolver", 0, 0, gunPics.get(2), 10, 10, 6, 5, this ,hero);
         gunList.add(revolver);
@@ -484,7 +484,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
         for(int i = 0; i < gunList.size(); i++){
             if(gunList.get(i).getDone()){
-                (gunList.get(i)).setVisible(false);
+                gunList.get(i).setVisible(false);
                 hero.addGun(gunList.get(i));
                 System.out.println("addedToHero");
                 gunList.remove(i);
@@ -608,17 +608,18 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         coins = 0;
         
 
-        int random = (int)(Math.random()*gunList.size());
-        Gun current = gunList.get(random);
+        // int random = (int)(Math.random()*gunList.size());
+        // Gun current = gunList.get(random);
+        Gun current = gunList.get(1);
         
         (current).setVisible(true);
     
-        int rany = (int)(Math.random()*this.getHeight());
-        int ranx = (int)(Math.random()*this.getWidth());
-        current.setLocation(ranx, rany);
-        System.out.println(ranx + " " + rany + "LOCATION OF GUN");
+        // int rany = (int)(Math.random()*this.getHeight());
+        // int ranx = (int)(Math.random()*this.getWidth());
+        
+        // System.out.println(ranx + " " + rany + "LOCATION OF GUN");
         this.add(current);
-        System.out.println("NAME OF GUN" + current.getName());
+        System.out.println("NAME OF GUN" + current.getName() + current.getX() + ", " + current.getY());
         repaint();
 
 
