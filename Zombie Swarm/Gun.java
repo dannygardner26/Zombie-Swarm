@@ -24,14 +24,12 @@ public class Gun extends GameObject{
     private boolean isReloading;
     private boolean done;
     private Hero hero;
-    private boolean exists;
     private int testTick;
 
     public Gun(String name, int x, int y, ImageIcon icon, int damage, int reloadSpeed, int ammo, double fireRate, GamePanel gp, Hero hero){
         super(x,y);
         this.setSize(80,40);
         reloadTime = 0;
-        this.setVisible(false);
         iconGun = icon;
         this.gp = gp;
         testTick = 0;
@@ -42,7 +40,7 @@ public class Gun extends GameObject{
         this.ammo = ammo;
         this.reloadTime = 0;
         this.fireRate = fireRate;
-        this.exists = false;
+        this.spawned = false;
         this.maxAmmo = ammo;
         this.isReloading = false;
         this.done = false;
@@ -72,18 +70,16 @@ public class Gun extends GameObject{
 
             
             
-            boolean collision = hero.hasCollidedWith(this);
+            boolean collision = this.hasCollidedWith(hero);
             
-            testTick++;
-            if(testTick>30){
-            System.out.println("Collision" + collision);
-            System.out.println("Visible" + exists);
-            testTick = 0;
-            }
+           if(spawned){
+            this.setVisible(true);
+           }
 
 
-            if (collision && this.isVisible()) {
+            if (collision && spawned) {
                 done = true;
+                spawned = false;
                 System.out.println("collidedANDvisible");
                 
             }
@@ -158,9 +154,10 @@ public class Gun extends GameObject{
         return done;
     }
     
-    public void exists(boolean exists){
-        this.exists = exists;
+    public void spawned(boolean spawned){
+        this.spawned = spawned;
     }
 
+    
 }
 
