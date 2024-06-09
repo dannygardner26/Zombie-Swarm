@@ -21,11 +21,14 @@ public class Zombie extends GameObject {
     private ArrayList<Bullet> bulletList;
     private GamePanel gp;
     private int phaseCounter;
-
+    private boolean readyToHit;
+    private int hitTimer;
 
     public Zombie(int x, int y, Hero hero, int healthMulti, ArrayList<Bullet> bulletList, GamePanel gp) { //this constructor provides the parameter to create a target
         super(x, y); 
         this.phase = 0;
+        this.hitTimer = 0;
+        this.readyToHit = true;
         this.setSize(32, 28);
         this.animationCounter = 0;
         this.direction = new Direction(0);
@@ -64,7 +67,6 @@ public class Zombie extends GameObject {
         this.setIcon(icons[direction.getDirection()][animationCounter/10]);
 
 
-
         double angle = Math.atan2(hero.getY() - this.getY(),hero.getX() - this.getX() );
 
         this.dx = (  Math.cos(angle));//find a way to add decimals and make it so that the horiz/vert movement is seperates
@@ -72,6 +74,7 @@ public class Zombie extends GameObject {
 
         updateX();
         updateY();
+
 
         for(int i = 0; i < bulletList.size(); i++){
             if(this.hasCollidedWith(bulletList.get(i))){
@@ -84,10 +87,16 @@ public class Zombie extends GameObject {
             }
         }
 
-        if(this.hasCollidedWith(hero))
+        hitTimer++;
+        if(hitTimer > 50)
+            readyToHit = true;
+
+        if(this.hasCollidedWith(hero) && readyToHit)
         {
             hero.hurt(1);
             gp.repaint();
+            hitTimer = 0;
+            readyToHit = false;
         }
 
 

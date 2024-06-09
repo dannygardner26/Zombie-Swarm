@@ -35,8 +35,8 @@ public class Hero extends GameObject {
         dy = 0;
         gunIndex = 0;
 
-        maxHealth = 0;
-        health = 0;
+        maxHealth = 10;
+        health = 10;
 
         this.gp = gp;
         this.gunList = new ArrayList<Gun>();
@@ -256,6 +256,7 @@ public class Hero extends GameObject {
         {
             gp.lose();
         }
+        System.out.println("health: " + health);
     }
     public void heal(int heal) {
         health += heal;
