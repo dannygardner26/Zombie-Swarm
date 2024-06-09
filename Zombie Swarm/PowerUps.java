@@ -39,10 +39,10 @@ public class PowerUps extends GameObject
             this.isDone(true);
             switch (id) {
                 case 0:
-                    hero.applySpeedBoost(2.0, 5000); 
+                    hero.setMultiplier(2.0); 
                     break;
                 case 1:
-                    hero.applyAmmoBoost(100, 5000); 
+                    hero.applyAmmoBoost(20); 
                     break;
                 case 2:
                     hero.applyCoinBoost(2.0, 5000); 

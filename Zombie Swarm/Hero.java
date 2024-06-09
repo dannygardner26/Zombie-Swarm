@@ -17,7 +17,10 @@ public class Hero extends GameObject {
     private ArrayList<Gun> gunList;
     private int gunIndex;
 
+<<<<<<< HEAD
+=======
     
+>>>>>>> 8313b4525a00db38c21c80930f68de9d895d68c6
     private double speedMultiplier;
     private int maxAmmo;
     private double coinMultiplier;
@@ -34,6 +37,7 @@ public class Hero extends GameObject {
         dx = 0;
         dy = 0;
         gunIndex = 0;
+        speedMultiplier = 0.0;
 
         maxHealth = 10;
         health = 10;
@@ -222,21 +226,34 @@ public class Hero extends GameObject {
             return 0.0;
 
     }
-    public void applySpeedBoost(double multiplier, int duration) {
-        this.speedMultiplier = multiplier;
+    public boolean applySpeedBoost() {
+        
+        if(speedMultiplier!=0 ){
+            return true;
+        }
+        return false;
+
         
     }
+    public void setMultiplier(double multiplier)
+    {
+        speedMultiplier = multiplier;
+    }   
+ public double getMultiplier(){
+        
+        return speedMultiplier;
+    }
 
-    private void resetSpeedBoost() {
+    public void resetSpeedBoost() {
         this.speedMultiplier = 1.0;
     }
 
-    public void applyAmmoBoost(int extraAmmo, int duration) {
-        this.maxAmmo += extraAmmo;
+    public void applyAmmoBoost(int extraAmmo) {
+        gun.gunsetAmmo(extraAmmo);
         
     }
 
-    private void resetAmmoBoost(int extraAmmo) {
+    public void resetAmmoBoost(int extraAmmo) {
         this.maxAmmo -= extraAmmo;
     }
 
