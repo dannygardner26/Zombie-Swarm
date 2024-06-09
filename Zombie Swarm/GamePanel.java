@@ -612,23 +612,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         Gun random = gunList.get((int)(Math.random()*gunList.size()));
         System.out.println(random.getName());
 
-<<<<<<< HEAD
         random.setLocation((int)(Math.random()*getWidth()), (int)(Math.random()*getHeight()));
         System.out.println(random.getName() + "=== " + random.getX() + ", " + random.getY());
-=======
-        int random = (int)(Math.random()*gunList.size());
-        Gun current = gunList.get(random);
-        
-        (current).setVisible(true);
-    
-        int rany = (int)(Math.random()*this.getHeight());
-        int ranx = (int)(Math.random()*this.getWidth());
-        current.setLocation(ranx, rany);
-        System.out.println(ranx + " " + rany + "LOCATION OF GUN");
-        this.add(current);
-        System.out.println("NAME OF GUN" + current.getName());
-        repaint();
->>>>>>> d9bf0c4b508084c2e4750b1d6ad5eab8d867170a
 
         random.setVisible(true);
 
