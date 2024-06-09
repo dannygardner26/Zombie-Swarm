@@ -95,7 +95,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         this.healthMulti = 10;
         this.fireTimer = 100;
         this.allMulti = 1;
-        this.coinThreshold = 3;
+        this.coinThreshold = 1;
 
 
         seGun = new Sounds();
@@ -106,7 +106,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
         for(int i = 0; i < 19; i++){
             gunPics.add(new ImageIcon("./Zombie Swarm/images/realGun" + i + ".png"));
-        }
+        }                               
         int rany = (int)(Math.random()*this.getHeight());
         int ranx = (int)(Math.random()*this.getWidth());
 
@@ -119,7 +119,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         hero.addGun(pistol);
 
 
-        Gun AssaultRifle = new Gun("Assault Rifle", 200, 200, gunPics.get(1), 5, 10,  30, 15, this, hero);
+        Gun AssaultRifle = new Gun("Assault Rifle", 0, 0, gunPics.get(1), 5, 10,  30, 15, this, hero);
         gunList.add(AssaultRifle);
         Gun revolver = new Gun("Revolver", 0, 0, gunPics.get(2), 10, 10, 6, 5, this ,hero);
         gunList.add(revolver);
@@ -157,7 +157,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         Gun submachineGun = new Gun("Submachine Gun", 0, 0, gunPics.get(13), 2, 8, 30, 23, this,hero);
         gunList.add(submachineGun);
         
-
+        for(int i = 0 ; i < gunList.size(); i++){
+            gunList.get(i).setVisible(false);
+        }
 
 
 
@@ -605,26 +607,16 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     }
 
     public void spawnGun(){
-
+        System.out.println("spawnGun");
         coins = 0;
-        
+        Gun random = gunList.get((int)(Math.random()*gunList.size()));
+        System.out.println(random.getName());
 
-        // int random = (int)(Math.random()*gunList.size());
-        // Gun current = gunList.get(random);
-        Gun current = gunList.get(1);
-        
-        (current).setVisible(true);
-    
-        // int rany = (int)(Math.random()*this.getHeight());
-        // int ranx = (int)(Math.random()*this.getWidth());
-        
-        // System.out.println(ranx + " " + rany + "LOCATION OF GUN");
-        this.add(current);
-        System.out.println("NAME OF GUN" + current.getName() + current.getX() + ", " + current.getY());
-        repaint();
+        random.setLocation((int)(Math.random()*getWidth()), (int)(Math.random()*getHeight()));
+        System.out.println(random.getName() + "=== " + random.getX() + ", " + random.getY());
 
+        random.setVisible(true);
 
-       
     }
 
 
