@@ -1,72 +1,49 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 
-public class Main extends JFrame {
+import java.awt.Color;
 
-    private JPanel menuPanel;
-    private GamePanel gamePanel;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-    public Main() {
-        setTitle("Shooting Targets");
-        setBounds(50, 50, 500, 500);
-        setResizable(false);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+public class Main {
+    
 
-        // Initialize the menu panel
-        menuPanel = new JPanel();
-        menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
-        menuPanel.setBackground(Color.DARK_GRAY);
-
-        JLabel titleLabel = new JLabel("Zombie Swarm");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 30));
-        titleLabel.setForeground(Color.WHITE);
-        titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        JButton startButton = new JButton("Start Game");
-        startButton.setFont(new Font("Arial", Font.BOLD, 20));
-        startButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        startButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                startGame();
-            }
-        });
-
-        menuPanel.add(Box.createVerticalGlue());
-        menuPanel.add(titleLabel);
-        menuPanel.add(Box.createRigidArea(new Dimension(0, 20)));
-        menuPanel.add(startButton);
-        menuPanel.add(Box.createVerticalGlue());
-
-        // Add menu panel to the frame
-        add(menuPanel);
-
-        setVisible(true);
-    }
-
-    private void startGame() {
-        remove(menuPanel);
-        gamePanel = new GamePanel();
-        add(gamePanel);
-        revalidate();
-        repaint();
-        gamePanel.requestFocusInWindow(); // Ensure the game panel gets focus for key events
-    }
-
+    
+   
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new Main();
-            }
-        });
+
+        JPanel menu = new JPanel();
+        menu.setBackground(Color.DARK_GRAY);
+        
+
+
+        
+       
+        JPanel titlescreen = new JPanel();
+        titlescreen.setBounds(100,100,500,200);
+        titlescreen.setBackground(Color.CYAN);
+        
+        JFrame frame = new JFrame("Shooting Targets");
+        frame.setBounds(50, 50, 500, 500);
+        frame.add(titlescreen);
+
+        // makes it impossible to resize the frame
+        frame.setResizable(false);
+        frame.add(menu);
+
+        GamePanel gamePanel = new GamePanel();
+
+        frame.add(gamePanel);
+
+        
+
+
+        frame.setVisible(true);
+
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
     }
+
+ 
+    
 }

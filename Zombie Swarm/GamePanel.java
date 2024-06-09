@@ -91,9 +91,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         this.fireTimer = 100;
 
         seGun = new Sounds();
-        sereloadGun = new Sounds();
-        zombieDeath =  new Sounds();
-        coinPick = new Sounds();
+       
 
 
         coinse = "Zombie Swarm/images/coin-donation-2-180438.wav";
@@ -244,7 +242,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                         break;
                     case KeyEvent.VK_R:
                             hero.reload();
-                            sereloadGun.play();
+                            seGun.setFile(reloads);
+                            seGun.play();
                         break;
                              
                     
@@ -324,10 +323,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         timeAlive++;
         this.repaint();
 
-        seGun.setFile(gsound);
-        sereloadGun.setFile(reloads);
-        zombieDeath.setFile(zombieD);
-        coinPick.setFile(coinse);
+        
+        
         
 
         coinTimer++;
@@ -354,6 +351,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                 bulletList.add(temp);
                 temp.setVisible(true);
                 hero.fire();
+                seGun.setFile(gsound);
+                seGun.play();
                 }
             } 
         }
@@ -441,9 +440,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     public void mousePressed(MouseEvent e) {  
 
         firing = true;
-        if(hero.getAmmo()>0){
-        seGun.play();
-        }
+        
 
             
     }
@@ -463,7 +460,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
     public void removeZombie(Zombie zombie, int i){
         zombieList.remove(i);
-        zombieDeath.play();
+        seGun.setFile(zombieD);
+        seGun.play();
         zombie.setVisible(false);
 
         remove(zombie);
@@ -472,7 +470,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     public void removeCoin(Coin coin, int i){
         coinList.remove(i);
         coin.setVisible(false);
-        coinPick.play();
+        seGun.setFile(coinse);
+        seGun.play();
         remove(coin);
     }
 
