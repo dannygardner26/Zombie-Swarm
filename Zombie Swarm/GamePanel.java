@@ -350,12 +350,12 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         int currentCoinWidth = (int) ((coinPercent) * 100);
 
 
-        g.setColor(Color.RED);
-        g.fillRect(10,20, 100, 10);
-        g.setColor(Color.GREEN);
-        g.fillRect(10, 20, currentCoinWidth, 10);
         g.setColor(Color.WHITE);
-        g.drawRect(10, 20, 100, 10);
+        g.fillRect(10,30, 100, 10);
+        g.setColor(Color.YELLOW);
+        g.fillRect(10, 30, currentCoinWidth, 10);
+        g.setColor(Color.WHITE);
+        g.drawRect(10, 30, 100, 10);
          }
 
     
@@ -387,6 +387,19 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
             temp.setVisible(true);
             this.coinTimer = 0;
         }
+
+        for(int i = 0; i < coinList.size(); i++){
+            if(coinList.get(i).isDone())
+            {
+                coinList.get(i).setVisible(false);
+                coinList.remove(i);
+                i--;
+
+
+            }
+        }
+
+
         for(int i = 0; i < powerList.size(); i++)
         {
             powerList.get(i).update();
@@ -473,6 +486,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     public void coinCollected()
     {
         coins++;
+        repaint();
     }
 
     @Override
