@@ -34,7 +34,7 @@ public class PowerUps extends GameObject
     {
         
         boolean collision = this.hasCollidedWith(hero);
-        if (collision) {
+        if (collision && isVisible()) {
             this.setVisible(false);
             this.isDone(true);
             switch (id) {

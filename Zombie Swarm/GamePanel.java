@@ -422,12 +422,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
         allMulti += 0.0002;
         
-        for(int i = 0; i < powerList.size(); i++){
-            if(powerList.get(i).getDone()){
-                powerList.remove(i);
-                i--;
-            }
-        }
+       
 
         
 
