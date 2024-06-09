@@ -71,19 +71,7 @@ public class Gun extends GameObject{
 
             
             
-            boolean collision = this.hasCollidedWith(hero);
             
-           if(spawned){
-            this.setVisible(true);
-           }
-
-
-            if (collision && spawned) {
-                done = true;
-                spawned = false;
-                System.out.println("collidedANDvisible");
-                
-            }
     }
 
 
