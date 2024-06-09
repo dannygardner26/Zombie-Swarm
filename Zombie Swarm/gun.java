@@ -24,14 +24,16 @@ public class Gun extends GameObject{
     private boolean isReloading;
     private boolean done;
     private Hero hero;
+    private boolean spawned;
+    private int testTick;
 
     public Gun(String name, int x, int y, ImageIcon icon, int damage, int reloadSpeed, int ammo, double fireRate, GamePanel gp, Hero hero){
         super(x,y);
         this.setSize(80,40);
         reloadTime = 0;
-        this.setVisible(false);
         iconGun = icon;
         this.gp = gp;
+        testTick = 0;
         this.hero = hero; 
         this.damage = damage;
         this.reloadSpeed = reloadSpeed;
@@ -39,6 +41,7 @@ public class Gun extends GameObject{
         this.ammo = ammo;
         this.reloadTime = 0;
         this.fireRate = fireRate;
+        this.spawned = false;
         this.maxAmmo = ammo;
         this.isReloading = false;
         this.done = false;
@@ -49,12 +52,14 @@ public class Gun extends GameObject{
             }
         });
         this.setIcon(icon);
-        this.setLocation(x,y);
     }
 
     
     @Override
     public void update() {
+
+
+
         if(reloadTime > reloadSpeed){
             if(ammo<maxAmmo){
                 ammo = maxAmmo;
@@ -62,20 +67,11 @@ public class Gun extends GameObject{
             reloadTime = 0;
             isReloading = false;
             reloadTimer.stop();
-                }
-
-
-            this.setLocation(this.getX(),this.getY());
-            System.out.println(this.getX() + ", " + this.getY());
-
-            boolean collision = hero.hasCollidedWith(this);
-            if(collision)
-                System.out.println("collision");
-            if (collision && isVisible()) {
-                done = true;
-                System.out.println("collidedANDvisible");
-                
             }
+
+            
+            
+            
     }
 
 
@@ -146,6 +142,11 @@ public class Gun extends GameObject{
     public boolean getDone(){
         return done;
     }
+    
+    public void spawned(boolean spawned){
+        this.spawned = spawned;
+    }
+
     
 }
 
