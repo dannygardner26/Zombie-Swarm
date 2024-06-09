@@ -20,6 +20,7 @@ public class Zombie extends GameObject {
     private double hp;
     private ArrayList<Bullet> bulletList;
     private GamePanel gp;
+    private int phaseCounter;
 
 
     public Zombie(int x, int y, Hero hero, int healthMulti, ArrayList<Bullet> bulletList, GamePanel gp) { //this constructor provides the parameter to create a target
@@ -29,6 +30,7 @@ public class Zombie extends GameObject {
         this.animationCounter = 0;
         this.direction = new Direction(0);
         this.done = false;
+        this.phaseCounter = 0;
         icons = new ImageIcon[4][3];
         this.hero = hero;
         this.gp = gp;
@@ -54,7 +56,14 @@ public class Zombie extends GameObject {
     public void update() {
         updateIcon();
         animationCounter++;
-        this.setIcon(icons[direction.getDirection()][animationCounter%3]);
+
+        animationCounter++;
+        if (animationCounter >= icons[0].length * 10) { 
+            animationCounter = 0;
+        }
+        this.setIcon(icons[direction.getDirection()][animationCounter/10]);
+
+
 
         double angle = Math.atan2(hero.getY() - this.getY(),hero.getX() - this.getX() );
 
@@ -111,8 +120,23 @@ public class Zombie extends GameObject {
 
 
     private void updateIcon() {
-        animationCounter++;
-    
+            if (Math.abs(dx) > Math.abs(dy)) {
+                if (dx > 0) {
+                    this.direction = new Direction(Direction.RIGHT);
+                } 
+                else {
+                    this.direction = new Direction(Direction.LEFT);
+                    }
+            } 
+            else {
+                if (dy > 0) {
+                    this.direction = new Direction(Direction.DOWN);
+                } 
+                else {
+                    this.direction = new Direction(Direction.UP);
+                }
+        }
+        
         }
     
     public boolean isDone(){
