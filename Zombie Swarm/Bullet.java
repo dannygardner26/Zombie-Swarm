@@ -12,7 +12,16 @@ public class Bullet extends GameObject{
     private GamePanel gp;
     private double movingX;
     private double movingY;
-
+    /**
+     * 
+     * @param x bullet startring x
+     * @param y bullet starting y
+     * @param damage bullet damage
+     * @param fireRate firerate of the gun thats shooting the bullet
+     * @param mouseX bullet ending X
+     * @param mouseY bullet ending Y
+     * @param gp gamepanel
+     */
     public Bullet(int x, int y, int damage, double fireRate, int mouseX, int mouseY, GamePanel gp)
     {
         super(x,y);
@@ -27,10 +36,10 @@ public class Bullet extends GameObject{
         this.done = false;
         
 
-        double angle = Math.atan2(mouseY - y, mouseX - x);
-
-        this.dx = (5 * Math.cos(angle));//find a way to add decimals and make it so that the horiz/vert movement is seperates
-        this.dy = (5 * Math.sin(angle));// this will allow for it to shoot left and right fast, but up and down slow in certain cases
+        double angle = Math.atan2(mouseY - y, mouseX - x); //gets the angle of launch for the bullet
+        //calculates dx and dy exactly by using the Math.tan from above
+        this.dx = (5 * Math.cos(angle)); 
+        this.dy = (5 * Math.sin(angle));
         this.gp = gp;
         this.movingX = 0;
         this.movingY = 0;
@@ -38,10 +47,10 @@ public class Bullet extends GameObject{
 
     @Override
     public void update() {
-
+        //updates x and y independently
         updateX();
         updateY();
-
+        //destorys the bullet once it leaves the screen
         if(this.getY()<=0 && dy<0){
             done = true;
         }
@@ -55,7 +64,11 @@ public class Bullet extends GameObject{
             done = true;
         }
     }
-
+    /**
+     * this was one of the first problems we encountered while coding this project
+     * dy and dx being integer values would cause bullets shot at certain angles to "snap" and only shoot at like 30, 60, 90 degrees etc and not shoot true to the mouse
+     * to counteract that, instead of trying to move 0.5 pixels every time, which gets shortened to 0, it iterates through movingX and increases it until its 1 at least
+     */
     public void updateX(){
         movingX += dx;
 
@@ -87,8 +100,8 @@ public class Bullet extends GameObject{
         return done;
     }
 
-    public void isDead(Boolean baka){
-        this.done = baka;
+    public void isDead(Boolean done){
+        this.done = done;
     }
 
 }

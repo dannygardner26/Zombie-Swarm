@@ -616,7 +616,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         
     }
 
-    public void increaseThreshold(){
+    public void increaseThreshold(){ //thsi code is used to independently make it harder to get guns each individual time
         double coinPercent = coins / (double)coinThreshold;
         if(coinPercent > 1){
             coinThreshold = Math.pow(coinThreshold, 1.1);
@@ -665,7 +665,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
     }
 
-
+// this code is used to play sounds whenever a zombie gets removed
     public void removeZombie(Zombie zombie, int i){
         zombieList.remove(i);
         seGun.setFile(zombieD);
@@ -674,6 +674,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
         remove(zombie);
     }
+// this code is used to play sounds whenever a coin gets picked up
 
     public void removeCoin(Coin coin, int i){
         coinList.remove(i);
@@ -682,32 +683,32 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         seGun.play();
         remove(coin);
     }
-
+// this code is used to remove a bullet whenever it hits something
     public void removeBullet(Bullet bullet, int i){
         bulletList.remove(i);
         bullet.setVisible(false);
         remove(bullet);
     }
 
-    @Override
+    @Override //this code is used to update MouseX and MouseY whenever the mouse is moved
     public void mouseDragged(MouseEvent e) {
         mouseMoved(e);
     }
 
-    @Override
+    @Override //actually updates the mouse position
     public void mouseMoved(MouseEvent e) {
         this.mouseX = e.getX();
         this.mouseY = e.getY();
     }
     
-    public void reloading(boolean reloading){
+    public void reloading(boolean reloading){ //this code is used to set the reloading status
         this.reloading = reloading;
     }
 
-    public void lose(){
+    public void lose(){// this code is used to bring the player back to the main menu
         //TODO when this method runs make it bring back to main menu
     }
-    
+    //this code is used to randomly make coins and add them to a list - isDone template
     public void makeCoin (int x, int y){
         Coin temp = new Coin(x,y, hero, this);
         coinList.add(temp);
