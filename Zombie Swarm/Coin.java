@@ -74,10 +74,17 @@ public class Coin extends GameObject {
         }
     }
     //Checks to see if coin is invisbile, then removed to prevent lag 
+    /** 
+     * returns a boolean value to see if it has collided or not with hero and is not visible 
+     * 
+     */
     public boolean isDone() {
         return done;
     }
     //Return coin amount
+    /** 
+     * Return coin amount collected by hero
+     * */
     public int getCoins(){
         return coinCount;
     }

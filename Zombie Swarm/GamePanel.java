@@ -23,35 +23,35 @@ import java.util.Random;
 
 public class GamePanel extends JPanel implements ActionListener, MouseListener, MouseMotionListener{
 
-    private BufferedImage background;
-    private Hero hero;
-    private static GamePanel tempGP;
-    private ArrayList<Gun> gunList  = new ArrayList<Gun>();
-    private ArrayList<Gun> gunListUpdate;
+    private BufferedImage background;// image background
+    private Hero hero; //hero, the person we move with WASD
+    private static GamePanel tempGP;  // temporary gamepanel with same properties as this one 
+    private ArrayList<Gun> gunList  = new ArrayList<Gun>();//gun list 
+    private ArrayList<Gun> gunListUpdate; 
 
-    private ArrayList<Zombie> zombieList;
+    private ArrayList<Zombie> zombieList; //list of zombies to acess
     private int tickCounter;
     private int randomNum;
     private Gun gun;
-    private Timer gameLoop;
+    private Timer gameLoop; // timer for the game, helps with animations and movement 
     
         private Random random = new Random();
 
 
 
-    private ArrayList<Bullet> bulletList;
-    private ArrayList<ImageIcon> gunPics;
-    private ArrayList<Coin> coinList;
+    private ArrayList<Bullet> bulletList; //array list of the bullets 
+    private ArrayList<ImageIcon> gunPics;// image icons of all guns 
+    private ArrayList<Coin> coinList; //list of coins to access
     
 
-    private int enemyTimer;
+    private int enemyTimer; //ticks and determines how often a zombie spawns 
     private int enemySpawnRate;
-    private int coinTimer;
-    private int healthMulti;
+    private int coinTimer;//ticks and determines how often a coin spawns
+    private int healthMulti;// controls health of hero 
 
-    private int fireTimer;
+    private int fireTimer; //fire rate 
     private int fireDelay;
-    private Boolean firing;
+    private Boolean firing; //determines hero if firing 
     private int mouseX;
     private int mouseY;
     private int coins;
@@ -68,7 +68,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     private int powerUptimer;//the counter used to indicate when powerup spawns, resets once spawned
 
 
-    private Sounds seGun;
+    private Sounds seGun; //sound clip for all sounds 
+    //String sound names 
     private String coinse;
     private String gsound;
     private String reloads;
@@ -304,7 +305,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                             if (!reloading) { //the !reloading is used to make sure that you cant spam reloading
                                 reloading = true; 
                                 hero.reload();
-                                seGun.setFile(reloads);
+                                seGun.setFile(reloads);//set file of sound then plays 
                                 seGun.play();
                                 Timer reloadTimer = new Timer((int)(hero.getReloadTime() * 1000), new ActionListener() { //this timer 
                                     @Override

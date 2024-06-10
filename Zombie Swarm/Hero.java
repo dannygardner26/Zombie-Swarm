@@ -221,7 +221,7 @@ public class Hero extends GameObject {
         gp.repaint();
         }
     }
-
+    //getter reload time
     public double getReloadTime(){
         if(gun!= null){
         if (gun.isReloading())
@@ -233,6 +233,7 @@ public class Hero extends GameObject {
         return 0;
 
     }
+    //speed boost to see if hero collided with speed boost powerwup 
     public boolean applySpeedBoost() {
         
         if(speedMultiplier!=0 ){
@@ -242,6 +243,9 @@ public class Hero extends GameObject {
 
         
     }
+   /*
+    * @parameter multiplier changes speed
+    */
     public void setMultiplier(double multiplier)
     {
         speedMultiplier = multiplier;
@@ -254,7 +258,7 @@ public class Hero extends GameObject {
     public void resetSpeedBoost() {
         this.speedMultiplier = 1.0;
     }
-
+//adds extra ammo to hero's gun 
     public void applyAmmoBoost(int extraAmmo) {
         gun.gunsetAmmo(extraAmmo);
         
@@ -264,15 +268,9 @@ public class Hero extends GameObject {
         this.maxAmmo -= extraAmmo;
     }
 
-    public void applyCoinBoost(double multiplier, int duration) {
-        this.coinMultiplier = multiplier;
-        
-    }
+   
 
-    private void resetCoinBoost() {
-        this.coinMultiplier = 1.0;
-    }
-
+   
     //this code is used to hurt the hero whenever a zombie hits him
     // if the hero gets below 0 health the game is over and gets taken back to the main menu
     public void hurt(int dmg){
@@ -293,7 +291,7 @@ public class Hero extends GameObject {
         }
     }
 
-
+    //getters
     public double getHealth(){
         return health;
     }
