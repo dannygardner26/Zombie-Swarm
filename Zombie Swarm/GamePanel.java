@@ -415,7 +415,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
 
         //this code is used to spawn a gun whenever the bar fills up (past 100%)
-        if(coinPercent > 1)
+        if(coinPercent >= 1)
         {
             spawnGun();
             increaseThreshold();
@@ -613,7 +613,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
     public void increaseThreshold(){ //thsi code is used to independently make it harder to get guns each individual time
         double coinPercent = coins / (double)coinThreshold;
-        if(coinPercent > 1){
+        if(coinPercent >= 1){
             coinThreshold = Math.pow(coinThreshold, 1.1);
         }
     
