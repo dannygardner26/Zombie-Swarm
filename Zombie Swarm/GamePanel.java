@@ -138,10 +138,10 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         Gun hunterRifleGun = new Gun("Hunter Sniper Rifle", 0, 0, gunPics.get(8), 10, 5, 1, 1, this,hero);
         gunList.add(hunterRifleGun);
 
-        Gun dmrRifle = new Gun("Designated Marksman Rifle", 0, 0, gunPics.get(9), 4, 5, 3, 3, this,hero);
+        Gun dmrRifle = new Gun("Designated Marksman Rifle", 0, 0, gunPics.get(9), 12, 5, 3, 3, this,hero);
         gunList.add(dmrRifle);
 
-        Gun boltactioGun = new Gun("Bolt Action Sniper Rifle", 0, 0, gunPics.get(10), 10, 7, 2, 2, this,hero);
+        Gun boltactioGun = new Gun("Bolt Action Sniper Rifle", 0, 0, gunPics.get(10), 20, 7, 2, 2, this,hero);
         gunList.add(boltactioGun);
 
         Gun machinePistolGun = new Gun("Machine Pistol Gun", 0, 0, gunPics.get(11), 3, 4, 10, 17, this,hero);

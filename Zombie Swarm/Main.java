@@ -15,7 +15,8 @@ public class Main implements ActionListener {
     private JButton playButton;
 
     public static void main(String[] args) {
-        new Main().menu();
+        Main main = new Main();
+        main.menu();
     }
 
     public void menu() {
