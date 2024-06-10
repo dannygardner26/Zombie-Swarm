@@ -38,4 +38,5 @@ Reflection
 - learned how to implement sound properly
 - learned how to implement timers better
 - learned how to use Sin and Cos and use movement at all angles
+- learned how deal with several lag errors
 Overall we are very happy with our selection for this project, as the skills we have used we will be able to apply in all areas of coding no matter what field we go into.

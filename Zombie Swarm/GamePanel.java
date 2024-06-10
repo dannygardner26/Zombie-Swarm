@@ -116,9 +116,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                                        
                                   
         
-        int rany = (int)(Math.random()*this.getHeight());
-        int ranx = (int)(Math.random()*this.getWidth());
-
+       
 
         hero = new Hero(100, 100, tempGP);
         this.add(hero);

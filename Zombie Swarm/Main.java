@@ -1,70 +1,71 @@
-
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.text.JTextComponent;
+import java.awt.Font;
 
-public class Main implements ActionListener{
-    
+public class Main implements ActionListener {
 
-    
-   
+    private JFrame frame;
+    private JPanel titlescreen;
+    private JButton playButton;
+
     public static void main(String[] args) {
+        new Main().menu();
+    }
 
+    public void menu() {
         
-        
-
-
-        
-       
-        JPanel titlescreen = new JPanel();
-        titlescreen.setBounds(100,100,500,200);
+        titlescreen = new JPanel();
+        titlescreen.setBounds(100, 100, 500, 200);
         titlescreen.setBackground(Color.CYAN);
-        
-        JFrame frame = new JFrame("Shooting Targets");
+
+       
+        frame = new JFrame("Shooting Targets");
         frame.setBounds(50, 50, 500, 500);
 
-        
+        JLabel titleLabel = new JLabel("Zombie Swarm");
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 24)); 
+        titleLabel.setBounds(170, 100, 200, 100);
+        titlescreen.add(titleLabel);
 
-        JButton playButton =  new JButton("Play");
-        playButton.setLayout(null);
-        playButton.setBounds(250,300,100,100);
-        playButton.setLocation(200,200);
+        playButton = new JButton("Play");
+        titlescreen.setLayout(null);
+        playButton.setBounds(200, 200, 100, 50);
         playButton.setBackground(Color.RED);
-        
+        playButton.addActionListener(this);  
 
+        
         titlescreen.add(playButton);
+
+        
         frame.add(titlescreen);
 
-
-        // makes it impossible to resize the frame
+        
         frame.setResizable(false);
-       
-
-        GamePanel gamePanel = new GamePanel();
-        frame.add(gamePanel);
-        
 
         
-
-
         frame.setVisible(true);
 
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
         
-        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
- 
     
-}
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == playButton) {
+            GamePanel gamePanel = new GamePanel();
+            frame.getContentPane().removeAll();
+            frame.add(gamePanel);
+            frame.revalidate();
+            frame.repaint();
+            gamePanel.requestFocusInWindow();
+
+            
+        }
+    }
+  }
