@@ -1,18 +1,20 @@
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Main {
+public class Main implements ActionListener{
     
 
     
    
     public static void main(String[] args) {
 
-        JPanel menu = new JPanel();
-        menu.setBackground(Color.DARK_GRAY);
+        
         
 
 
@@ -24,14 +26,25 @@ public class Main {
         
         JFrame frame = new JFrame("Shooting Targets");
         frame.setBounds(50, 50, 500, 500);
+
         
+
+        JButton playButton =  new JButton("Play");
+        playButton.setLayout(null);
+        playButton.setBounds(250,300,100,100);
+        playButton.setLocation(200,200);
+        playButton.setBackground(Color.RED);
+        
+
+        titlescreen.add(playButton);
+        frame.add(titlescreen);
+
 
         // makes it impossible to resize the frame
         frame.setResizable(false);
-        frame.add(menu);
+       
 
         GamePanel gamePanel = new GamePanel();
-
         frame.add(gamePanel);
         
 
@@ -43,6 +56,13 @@ public class Main {
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        
+        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
     }
 
  

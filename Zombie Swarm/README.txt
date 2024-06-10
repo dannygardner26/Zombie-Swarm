@@ -20,6 +20,9 @@ Problems encountered
 - animating the way at which the zombie is facing and making sure they are always facing/running towards the humans
 > solved movement by the same logic by which the bullet shoots. Using Cos and Sin to calculate where the zombie needs to go
 > solved animation by comparing dx and dy to find where the zombie is actually running
+- The hero boundaries was not working as intended because the actual image had a little room around it
+> solved by using resources to figure out how to slice a image to be just the hero
+ 
 
 Unimplemented features
 - different projectile speed/types
