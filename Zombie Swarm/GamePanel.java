@@ -91,7 +91,10 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         coinList = new ArrayList<Coin>();
         gunList = new ArrayList<Gun>();
         gunListUpdate = new ArrayList<Gun>();
-
+        
+        Gun revolver = new Gun("Revolver", 0, 0, gunPics.get(2), 10, 10, 6, 5, this ,hero);
+        gunList.add(revolver);
+        
         this.healthMulti = 10;
         this.fireTimer = 100;
         this.allMulti = 1;
@@ -124,8 +127,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
         Gun AssaultRifle = new Gun("Assault Rifle", 0, 0, gunPics.get(1), 5, 10,  30, 15, this, hero);
         gunList.add(AssaultRifle);
-        Gun revolver = new Gun("Revolver", 0, 0, gunPics.get(2), 10, 10, 6, 5, this ,hero);
-        gunList.add(revolver);
+        
         Gun burst = new Gun("Burst Rifle", 0, 0, gunPics.get(3), 7, 20, 30, 8, this,hero);
         gunList.add(burst);
         Gun deagalGun = new Gun("Deagal Pistol", 0, 0, gunPics.get(4), 20, 15, 3, 3, this ,hero);
