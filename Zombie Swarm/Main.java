@@ -42,17 +42,9 @@ public class Main implements ActionListener {
 
         
         titlescreen.add(playButton);
-
-        
-        frame.add(titlescreen);
-
-        
-        frame.setResizable(false);
-
-        
+        frame.add(titlescreen); 
+        frame.setResizable(false); 
         frame.setVisible(true);
-
-        
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
@@ -65,8 +57,6 @@ public class Main implements ActionListener {
             frame.revalidate();
             frame.repaint();
             gamePanel.requestFocusInWindow();
-
-            
-        }
+           }
     }
   }

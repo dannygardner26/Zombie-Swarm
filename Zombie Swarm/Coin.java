@@ -53,10 +53,14 @@ public class Coin extends GameObject {
     }
 
    
-    private void updateIcon() {
+    public  void updateIcon() {
         phase = (phase + 1) % icons.length;
         this.setIcon(icons[phase]);
     }
+
+    public void coinTimer(){
+        coinTimer.stop();
+    } 
 
     public void update() {
         boolean collision = hero.hasCollidedWith(this);
