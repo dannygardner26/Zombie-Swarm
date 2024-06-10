@@ -279,7 +279,6 @@ public class Hero extends GameObject {
         if(health - dmg < 0)
         {
             gp.lose();
-            System.out.println("LOSS");
         }
         else
         {

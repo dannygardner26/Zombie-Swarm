@@ -530,7 +530,6 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                 if(hero.hasCollidedWith(gunList.get(i))){
 
 
-                System.out.println("gun is done");
                 hero.addGun(gunList.get(i));
                 gunList.get(i).setVisible(false);
                 this.repaint();
@@ -644,7 +643,6 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     }
 
     public void spawnGun(){ // spawns a gun whenever the coin bar is full, picks a random gun and spawns it at a random point
-        System.out.println("spawnedGun");
         coins = 0;
         Gun random = gunList.get((int)(Math.random()*gunList.size()));
       
