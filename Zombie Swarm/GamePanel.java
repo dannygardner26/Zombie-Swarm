@@ -56,16 +56,16 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     private int mouseY;
     private int coins;
     private int gunTimer;
-    private double coinThreshold;
+    private double coinThreshold;//amount of coins before new gun spawns 
 
     private double allMulti;
 
     
-    private ImageIcon[] powerIcons;
-    private ArrayList<PowerUps> powerList;
+    private ImageIcon[] powerIcons; //powerups array of images 
+    private ArrayList<PowerUps> powerList;//list of powerups to be randomly picked to spawn from holes 
     private boolean reloading;
     private int timeAlive;
-    private int powerUptimer;
+    private int powerUptimer;//the counter used to indicate when powerup spawns, resets once spawned
 
 
     private Sounds seGun;
@@ -101,7 +101,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         this.coinThreshold = 5;
 
 
-
+        //sound implementation, intilaized sounds class then had diffrent sounds to use at various parts of code by using setFile method 
         seGun = new Sounds();
         coinse = "Zombie Swarm/images/coin-donation-2-180438.wav";
         zombieD = "Zombie Swarm/images/zombie-death-2-95167.wav";
@@ -200,7 +200,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         }
         
         
-        
+        //Creates powerup spawn points, there are holes in the ground that randomly spawn 
         PowerUps ammoBoost = new PowerUps(400, 300, hero, powerIcons[0], "Ammo Boost", 0);
         powerList.add(ammoBoost);
         this.add(ammoBoost);
