@@ -26,7 +26,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     private BufferedImage background;
     private Hero hero;
     private static GamePanel tempGP;
-    private ArrayList<Gun> gunList;
+    private ArrayList<Gun> gunList  = new ArrayList<Gun>();
     private ArrayList<Gun> gunListUpdate;
 
     private ArrayList<Zombie> zombieList;
@@ -89,12 +89,11 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         bulletList = new ArrayList<Bullet>();
         gunPics = new ArrayList<ImageIcon>();
         coinList = new ArrayList<Coin>();
-        gunList = new ArrayList<Gun>();
+        // gunList = new ArrayList<Gun>();
         gunListUpdate = new ArrayList<Gun>();
         
-        Gun revolver = new Gun("Revolver", 0, 0, gunPics.get(2), 10, 10, 6, 5, this ,hero);
-        gunList.add(revolver);
         
+
         this.healthMulti = 10;
         this.fireTimer = 100;
         this.allMulti = 1;
@@ -112,7 +111,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
             gunPics.add(new ImageIcon("./Zombie Swarm/images/realGun" + i + ".png"));
         }
         
-                                       
+                             
                                   
         
        
@@ -127,8 +126,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
         Gun AssaultRifle = new Gun("Assault Rifle", 0, 0, gunPics.get(1), 5, 10,  30, 15, this, hero);
         gunList.add(AssaultRifle);
-        
-        Gun burst = new Gun("Burst Rifle", 0, 0, gunPics.get(3), 7, 20, 30, 8, this,hero);
+        Gun revolver = new Gun("Revolver", 0, 0, gunPics.get(2), 10, 10, 6, 5, this ,hero);
+        gunList.add(revolver);  
+        Gun burst = new Gun("Burst Rifle", 0, 0, gunPics.get(3), 15, 20, 30, 5, this,hero);
         gunList.add(burst);
         Gun deagalGun = new Gun("Deagal Pistol", 0, 0, gunPics.get(4), 20, 15, 3, 3, this ,hero);
         gunList.add(deagalGun);
@@ -646,7 +646,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
     public void spawnGun(){ // spawns a gun whenever the coin bar is full, picks a random gun and spawns it at a random point
         coins = 0;
-        Gun random = gunList.get((int)(Math.random()*gunList.size()));
+        int ran = (int)(Math.random()*gunList.size());
+        System.out.println(ran + "   " + gunList.size());
+        Gun random = gunList.get(ran);
       
 
         random.setVisible(true);
