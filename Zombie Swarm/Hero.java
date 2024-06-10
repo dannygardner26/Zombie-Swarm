@@ -273,7 +273,8 @@ public class Hero extends GameObject {
         this.coinMultiplier = 1.0;
     }
 
-
+    //this code is used to hurt the hero whenever a zombie hits him
+    // if the hero gets below 0 health the game is over and gets taken back to the main menu
     public void hurt(int dmg){
         if(health - dmg < 0)
         {
@@ -285,6 +286,7 @@ public class Hero extends GameObject {
             health -= dmg;
         }
     }
+    //this code is used to heal the hero whenever they pickup a powerup
     public void heal(int heal) {
         health += heal;
         if (health > maxHealth) {
