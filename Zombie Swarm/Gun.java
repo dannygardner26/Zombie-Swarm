@@ -26,7 +26,19 @@ public class Gun extends GameObject{
     private Hero hero;
     private boolean spawned;
     private int testTick;
-
+    /**
+     * 
+     * @param name the name of the gun
+     * @param x x of the gun pickup
+     * @param y y of the gun pickup
+     * @param icon icon of the gun pickup/display icon
+     * @param damage damage of the gun 
+     * @param reloadSpeed reloadSpeed of the gun
+     * @param ammo max ammo of the gun
+     * @param fireRate firerate of the gun
+     * @param gp gamepanel
+     * @param hero hero
+     */
     public Gun(String name, int x, int y, ImageIcon icon, int damage, int reloadSpeed, int ammo, double fireRate, GamePanel gp, Hero hero){
         super(x,y);
         this.setSize(80,40);
@@ -59,7 +71,7 @@ public class Gun extends GameObject{
     public void update() {
 
 
-
+        //this code handles the reload and making sure that it displays the time properly/reloads properly
         if(reloadTime > reloadSpeed){
             if(ammo<maxAmmo){
                 ammo = maxAmmo;
@@ -74,7 +86,7 @@ public class Gun extends GameObject{
             
     }
 
-
+    //another class helping indicate that the gun is reloading to prevent shooting while reloading
     public void reload(){
         if(!isReloading){
         isReloading = true;
@@ -85,7 +97,7 @@ public class Gun extends GameObject{
         
     }
 
-    
+    //getters and setters
     public int getAmmo(){
         return this.ammo;
     }
@@ -109,11 +121,11 @@ public class Gun extends GameObject{
     public String getName(){
         return this.name;
     }
-
+    //removes 1 ammo everytime the gun is fired
     public void fire(){
-        ammo--;
+        ammo--; 
     }
-    
+    //counts how long inbetween each reload, and helps display it on the screen
     public void reloadTick(){
         if (reloadTime > 0) {
             reloadTime--;
