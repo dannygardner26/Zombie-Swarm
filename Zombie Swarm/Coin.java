@@ -15,10 +15,11 @@ public class Coin extends GameObject {
     
 /**
  * 
- * @param x
- * @param y
- * @param hero
- * @param gp
+ * @param x x-position
+ * @param y y-position
+ * @param hero hero object for collison 
+ * @param gp gamepanel to make accesibile 
+ * icon array is intilized through for loop, multiple imges for the animation, timer is for animation
  */
     public Coin(int x, int y, Hero hero, GamePanel gp) {
         super(x, y);
@@ -52,16 +53,16 @@ public class Coin extends GameObject {
         coinTimer.start();
     }
 
-   
+   //Animate coin using same logic as hero to make coin spin using images
     public  void updateIcon() {
         phase = (phase + 1) % icons.length;
         this.setIcon(icons[phase]);
     }
-
+    //For the loss() in gamePanel to stop animation after hero is dead
     public void coinTimer(){
         coinTimer.stop();
     } 
-
+    //This is for the coin collison should disappear once coin is collected, timer also stops
     public void update() {
         boolean collision = hero.hasCollidedWith(this);
         if (collision) {
@@ -72,11 +73,11 @@ public class Coin extends GameObject {
             gp.coinCollected();
         }
     }
-
+    //Checks to see if coin is invisbile, then removed to prevent lag 
     public boolean isDone() {
         return done;
     }
-
+    //Return coin amount
     public int getCoins(){
         return coinCount;
     }

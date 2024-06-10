@@ -14,12 +14,12 @@ public class PowerUps extends GameObject
     private boolean done;
 /**
  * 
- * @param x
- * @param y
- * @param hero
- * @param icon
- * @param name
- * @param id
+ * @param x x-position of the powerup
+ * @param y y-position of the powerup
+ * @param hero hero object for the collison 
+ * @param icon passes a random image and sets it 
+ * @param name name of the power up, indicator of what it does
+ * @param id num value of power up to be handled in catch loop
  */
     public PowerUps(int x, int y, Hero hero, ImageIcon icon, String name, int id)
     {
@@ -40,7 +40,7 @@ public class PowerUps extends GameObject
    }
   
 
-    
+    //Method to make powerup disapper after hero collsion, id is used to call hero method to handle hero changes after powerup collision 
     public void update()
     {
         
@@ -68,13 +68,14 @@ public class PowerUps extends GameObject
 
     }
 
+    //Checks to see if power is invisbile, then removed to prevent lag 
     public void isDone(boolean done){
         this.done = done;
     }
-
-    public boolean getDone(){
-        return done;
-    }
+    
+    //public boolean getDone(){
+      //  return done;
+    //}
 
     
 

@@ -5,8 +5,8 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
 public class Sounds {
-    Clip sss;
-
+    Clip sss; // audio pre-loaded data 
+    // path or filename of the sound file is argument, create an audio clip object using the AudioSystem class
     public void setFile(String soundfileName)
     {
         try{
@@ -20,7 +20,7 @@ public class Sounds {
 
         }
     }
-
+//play the sound
     public void play(){
        
             sss.setFramePosition(0);
