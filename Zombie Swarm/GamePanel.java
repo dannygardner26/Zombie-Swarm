@@ -33,6 +33,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     private int tickCounter;
     private int randomNum;
     private Gun gun;
+    private Timer gameLoop;
     
         private Random random = new Random();
 
@@ -358,7 +359,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
 
       
-        Timer gameLoop = new Timer(10, this);
+         gameLoop = new Timer(10, this);
         gameLoop.start();
 
         
@@ -703,6 +704,10 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
     public void lose(){// this code is used to bring the player back to the main menu
         //TODO when this method runs make it bring back to main menu
+        gameLoop.stop();
+        for(int i = 0; i<coinList.size(); i++){
+            coinList.get(i).coinTimer();
+        }
     }
     //this code is used to randomly make coins and add them to a list - isDone template
     public void makeCoin (int x, int y){
