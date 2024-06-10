@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
+
 public class PowerUps extends GameObject
 {
 
@@ -11,7 +12,15 @@ public class PowerUps extends GameObject
     private String name;
     private int id;
     private boolean done;
-
+/**
+ * 
+ * @param x
+ * @param y
+ * @param hero
+ * @param icon
+ * @param name
+ * @param id
+ */
     public PowerUps(int x, int y, Hero hero, ImageIcon icon, String name, int id)
     {
         super(x,y);

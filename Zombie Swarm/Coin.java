@@ -13,7 +13,13 @@ public class Coin extends GameObject {
     private Timer coinTimer;
     private GamePanel gp;
     
-
+/**
+ * 
+ * @param x
+ * @param y
+ * @param hero
+ * @param gp
+ */
     public Coin(int x, int y, Hero hero, GamePanel gp) {
         super(x, y);
         this.setSize(16, 16);

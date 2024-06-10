@@ -19,11 +19,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
 
-/**
- * This class will house all game objects which are part of the
- * simulation. You must add several targets which can be
- * hit by fireballs and removed from the game.
- */
+
 
 public class GamePanel extends JPanel implements ActionListener, MouseListener, MouseMotionListener{
 
