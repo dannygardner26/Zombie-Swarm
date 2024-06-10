@@ -86,7 +86,6 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         gunTimer = 0;
         this.timeAlive = 0;
         this.fireDelay = 0;
-        randomNumScramble();
         powerList = new ArrayList<PowerUps>();
         firing = false;
         enemyTimer = 0;
@@ -100,7 +99,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         this.healthMulti = 10;
         this.fireTimer = 100;
         this.allMulti = 1;
-        this.coinThreshold = 1;
+        this.coinThreshold = 5;
 
 
 
@@ -304,9 +303,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                             hero.gunRight();
                         break;
                     case KeyEvent.VK_R: // reloads gun
-                            // hero.reload();
-                            // seGun.setFile(reloads);
-                            // seGun.play();
+                            
                             if (!reloading) { //the !reloading is used to make sure that you cant spam reloading
                                 reloading = true; 
                                 hero.reload();
@@ -330,7 +327,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
             
 
             @Override
-            public void keyReleased(KeyEvent e) {
+            public void keyReleased(KeyEvent e) { //handles the stopping of movement whenever keys are released
                 int code = e.getKeyCode();
                 switch (code) {
                     case KeyEvent.VK_W:
@@ -364,8 +361,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
        
 
 
-        // create and start the game timer. This gamepanel is passed
-        // as the action listener which will be triggered every 10 milliseconds
+      
         Timer gameLoop = new Timer(10, this);
         gameLoop.start();
 
@@ -373,6 +369,15 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         this.setFocusable(true);
         this.requestFocusInWindow();
     }
+
+
+    /**
+     * the code below is whats used to display information on the screen
+     * the reload time ammo and gun are all displayed
+     * this is constantly updated by using the repaint() method
+     */
+
+
 
     @Override
     public void paintComponent(Graphics g) {
@@ -387,8 +392,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         g.drawString("Score: " + (coins*100 +timeAlive), this.getWidth()-100, 20);
 
 
-        // g.drawImage(hero.getGunPng(), 40, 40);
-         // Example: Draw power-ups
+       
 
         int currentWidth = (int) ((hero.getHealth() / (double) hero.getMaxHealth()) * 100);
 
@@ -405,7 +409,6 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
         double coinPercent = coins / (double)coinThreshold;
         int currentCoinWidth = (int) ((coinPercent) * 100);
-//note note note
 
         g.setColor(Color.WHITE);
         g.fillRect(10,30, 100, 10);
@@ -414,9 +417,12 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         g.setColor(Color.BLACK);
         g.drawRect(10, 30, 100, 10);
 
+
+        //this code is used to spawn a gun whenever the bar fills up (past 100%)
         if(coinPercent > 1)
         {
             spawnGun();
+            increaseThreshold();
         }
 
 
@@ -435,9 +441,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
     }   
 
-
+    //main timer which loops through all updates and code
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e) { 
         hero.update();
         fireTimer-= hero.getFireRate();
         timeAlive++;
@@ -448,7 +454,12 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
        
 
         
-
+        /**
+         * this is a good example of the template we used to create things like powerups, coins, zombies, and guns on the screen
+         * we called this template the isDone template
+         * first, the code creates coins by using coinTimer, this creates a coin at a random point on the screen and makes it appear, as well as storing it into an arrayList
+         * then, the code checks if any of the coins in the arrayList are "done", meaning they need to be removed from the screen
+         */
 
         coinTimer++;
         if (coinTimer > 200){
@@ -472,12 +483,19 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
             }
         }
 
-
+        //update loop
         for(int i = 0; i < powerList.size(); i++)
         {
             powerList.get(i).update();
         }
 
+
+        /**this is the code we used to implement a "hold to fire" shooting technique
+         * first the code checks if the gun is firing and not reloading - this prevents it from shooting while reloading
+         * then, the code checks if the gun CAN shoot, and then generates a bullet as such
+         * this bullet is displayed and added to an arrayList as part of the "isDone" template"
+         * 
+        */
         if(firing && !reloading){
             if(fireTimer < 0){
                 if(hero.getAmmo() > 0){
@@ -492,11 +510,18 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                 }
             } 
         }
+
+
+        /**
+         * another example of the "isDone" template
+         * spawns random zombies in random ammounts
+         */
+
         enemyTimer++;
         if(enemyTimer > 200)
             {
                 enemyTimer  = 0;
-                for (int i = 0; i < (int)(Math.random()*enemySpawnRate+1); i++){
+                for (int i = 0; i < (int)(Math.random()+1); i++){
                     healthMulti = (int)(allMulti * healthMulti);
                     Zombie temp = new Zombie((int)(Math.random()*this.getWidth()), (int)(Math.random()*this.getHeight()), hero, healthMulti, bulletList, this);
                     zombieList.add(temp);
@@ -505,18 +530,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                 }
             }
 
-        // for(int i = 0; i < gunList.size(); i++){
-        //     if(gunList.get(i).getDone()){
-        //         (gunList.get(i)).setVisible(false);
-        //         hero.addGun(gunList.get(i));
-        //         System.out.println("addedToHero");
-        //         gunList.remove(i);
-        //         i--;
-
-        //     }
-        // }
+        //this code is the collision check for the gun pickups
+        //when a gun gets picked up it gets added to the hero and removed from the screen
         for(int i = 0; i < gunList.size(); i++){
-            // if(gunList.get(i).getDone()){
                 if(hero.hasCollidedWith(gunList.get(i))){
 
 
@@ -532,7 +548,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
        
         
             
-        
+        //another example of the "isDone" coding, randomyl spawning powerups across the screen
         powerUptimer++;
         if(powerUptimer>450){
             
@@ -545,7 +561,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     
 
         
-
+        //"isDone" coding, removing bullets if they have collided with a zombie, and updating them if not
 
         for(int i = 0; i < bulletList.size(); i++){
             if(bulletList.get(i).isDone())
@@ -559,6 +575,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
             }
         }
 
+
+        //update loops and "isDone" coding for zombie
+
         for(int i = 0; i < zombieList.size(); i++){
             zombieList.get(i).update();
             if(zombieList.get(i).isDone())
@@ -567,6 +586,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
                 i--;
             }
         }
+
+        //"isDone" coding for coin and updates
 
         for (int i = 0; i < coinList.size(); i++){
             coinList.get(i).update(); 
@@ -582,12 +603,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
     
 
-
-    public void randomNumScramble(){
-        this.randomNum = (int)(Math.random()*100+100);
-
-
-    }
+    
+    //code for when a coin is collected, also calculates how many coins are needed each time to get a new gun
 
     public void coinCollected()
     {
@@ -596,39 +613,31 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         repaint();
 
 
+        
+    }
+
+    public void increaseThreshold(){
         double coinPercent = coins / (double)coinThreshold;
         if(coinPercent > 1){
             coinThreshold = Math.pow(coinThreshold, 1.1);
         }
+    
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        // if(fireTimer > hero.getFireRate()){
-        //     fireTimer = 0;
-        //     Bullet temp = new Bullet(hero.getX(),hero.getY(), hero.getDamage(), hero.getFireRate(),  e.getX(), e.getY(), this);
-        //     this.add(temp);
-        //     bulletList.add(temp);
-        //     temp.setVisible(true);
-        // }
-
-
-
-
-
+      
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {  
+    public void mousePressed(MouseEvent e) {  //whenever mouse is pressed, the gun tries to fire
 
         firing = true;
-        
-
-            
+           
     }
 
     @Override
-    public void mouseReleased(MouseEvent e) {   
+    public void mouseReleased(MouseEvent e) {   //whenever mouse ISNT pressed, gun doesnt fire
         firing = false;    
     }
 
@@ -640,16 +649,15 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     public void mouseExited(MouseEvent e) {     
     }
 
-    public void spawnGun(){
+    public void spawnGun(){ // spawns a gun whenever the coin bar is full, picks a random gun and spawns it at a random point
         System.out.println("spawnedGun");
         coins = 0;
         Gun random = gunList.get((int)(Math.random()*gunList.size()));
-        // gunListUpdate.add(random);
-        // random.setLocation((int)(Math.random()*getWidth()), (int)(Math.random()*getHeight()));
+      
 
         random.setVisible(true);
         random.spawned(true);
-        random.setLocation(200,200);
+        random.setLocation((int)((Math.random()*(getWidth()-160))+80), (int)((Math.random()*(getHeight()-80))+40));
 
         this.add(random);
         random.setVisible(true);
