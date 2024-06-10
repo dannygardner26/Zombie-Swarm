@@ -73,9 +73,9 @@ public class PowerUps extends GameObject
         this.done = done;
     }
     
-    //public boolean getDone(){
-      //  return done;
-    //}
+    public boolean getDone(){
+       return done;
+    }
 
     
 
