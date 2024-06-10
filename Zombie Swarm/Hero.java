@@ -24,7 +24,12 @@ public class Hero extends GameObject {
 
     private double maxHealth;
     private double health;
-
+/**
+ * 
+ * @param x starting X value
+ * @param y starting Y value
+ * @param gp gamepanel
+ */
     public Hero(int x, int y, GamePanel gp) {
         super(x, y);
         this.setSize(32, 36);
@@ -58,27 +63,25 @@ public class Hero extends GameObject {
     }
 
     /**
-     * Change direction of the character
-     * 
-     * @param direction
+     * Changes direction of the character
      */
     public void setDirection(Direction direction) {
         this.direction = direction.getDirection();
     }
 
     /**
-     * update the icon to animate the character
+     * updates the icon to animate the character
      */
     private void updateIcon() {
         if (phaseCounter % 6 == 0) {
-            phase = (phase + 1) % icons[direction].length; // Update phase
+            phase = (phase + 1) % icons[direction].length; 
             this.setIcon(icons[direction][phase]);
         }
         phaseCounter++;
     }
 
     /**
-     * reset character in idle position
+     * resets character in idle position
      */
     public void setIdle() {
         phase = 0;
@@ -86,11 +89,7 @@ public class Hero extends GameObject {
         phaseCounter = 0;
     }
 
-    /**
-     * set dx for the character to make him move horizontally
-     * 
-     * @param dx horizontal velocity
-     */
+    
     public void setDx(int dx) {
         this.dx = dx;
     }
@@ -104,22 +103,15 @@ public class Hero extends GameObject {
         return dy;
     }
 
-    /**
-     * set dy for the character to make him move vertically
-     * 
-     * @param dy vertical velocity
-     */
+   
     public void setDy(int dy) {
         this.dy = dy;
     }
 
-    /**
-     * update the character's location and image based on the dx and dy
-     */
+    //the bounds so that the hero doesnt move outside of the frame
     public void update() {
     if(gunList.size() > 0)
         this.gun = gunList.get(gunIndex);
-        // if(gun != null)
         gun.update();
 
         if (dx != 0 || dy != 0) {
