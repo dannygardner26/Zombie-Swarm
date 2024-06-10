@@ -26,7 +26,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     private BufferedImage background;
     private Hero hero;
     private static GamePanel tempGP;
-    private ArrayList<Gun> gunList;
+    private ArrayList<Gun> gunList  = new ArrayList<Gun>();
     private ArrayList<Gun> gunListUpdate;
 
     private ArrayList<Zombie> zombieList;
@@ -90,8 +90,10 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         bulletList = new ArrayList<Bullet>();
         gunPics = new ArrayList<ImageIcon>();
         coinList = new ArrayList<Coin>();
-        gunList = new ArrayList<Gun>();
+        // gunList = new ArrayList<Gun>();
         gunListUpdate = new ArrayList<Gun>();
+        
+        
 
         this.healthMulti = 10;
         this.fireTimer = 100;
@@ -110,7 +112,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
             gunPics.add(new ImageIcon("./Zombie Swarm/images/realGun" + i + ".png"));
         }
         
-                                       
+                             
                                   
         
        
@@ -126,38 +128,38 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         Gun AssaultRifle = new Gun("Assault Rifle", 0, 0, gunPics.get(1), 5, 10,  30, 15, this, hero);
         gunList.add(AssaultRifle);
         Gun revolver = new Gun("Revolver", 0, 0, gunPics.get(2), 10, 10, 6, 5, this ,hero);
-        gunList.add(revolver);
-        Gun burst = new Gun("Burst Rifle", 0, 0, gunPics.get(3), 7, 10, 6, 8, this,hero);
+        gunList.add(revolver);  
+        Gun burst = new Gun("Burst Rifle", 0, 0, gunPics.get(3), 15, 20, 30, 5, this,hero);
         gunList.add(burst);
-        Gun deagalGun = new Gun("Deagal Pistol", 0, 0, gunPics.get(4), 10, 10, 3, 3, this ,hero);
+        Gun deagalGun = new Gun("Deagal Pistol", 0, 0, gunPics.get(4), 20, 15, 3, 3, this ,hero);
         gunList.add(deagalGun);
-        Gun stingerSMG = new Gun("Stinger Submachine Gun", 0,0, gunPics.get(5), 4, 5, 12, 15, this,hero);
+        Gun stingerSMG = new Gun("Stinger Submachine Gun", 0,0, gunPics.get(5), 5, 15, 12, 15, this,hero);
         gunList.add(stingerSMG);
-        Gun machineGun = new Gun("Machine Gun", 0,0, gunPics.get(6), 1, 10, 20, 30, this, hero);
+        Gun machineGun = new Gun("Machine Gun", 0,0, gunPics.get(6), 3, 50, 100, 30, this, hero);
         gunList.add(machineGun);
        
-        Gun hunterRifleGun = new Gun("Hunter Sniper Rifle", 0, 0, gunPics.get(8), 10, 5, 1, 1, this,hero);
+        Gun hunterRifleGun = new Gun("Hunter Sniper Rifle", 0, 0, gunPics.get(8), 75, 20, 1, 1, this,hero);
         gunList.add(hunterRifleGun);
 
-        Gun dmrRifle = new Gun("Designated Marksman Rifle", 0, 0, gunPics.get(9), 12, 5, 3, 3, this,hero);
+        Gun dmrRifle = new Gun("Designated Marksman Rifle", 0, 0, gunPics.get(9), 15, 25, 12, 5, this,hero);
         gunList.add(dmrRifle);
 
-        Gun boltactioGun = new Gun("Bolt Action Sniper Rifle", 0, 0, gunPics.get(10), 20, 7, 2, 2, this,hero);
+        Gun boltactioGun = new Gun("Bolt Action Sniper Rifle", 0, 0, gunPics.get(10), 50, 30, 2, 2, this,hero);
         gunList.add(boltactioGun);
 
-        Gun machinePistolGun = new Gun("Machine Pistol Gun", 0, 0, gunPics.get(11), 3, 4, 10, 17, this,hero);
+        Gun machinePistolGun = new Gun("Machine Pistol Gun", 0, 0, gunPics.get(11), 4, 24, 10, 20, this,hero);
         gunList.add(machinePistolGun);
 
         //Gun pistol = new Gun("Designated Marksman Rifle", 0, 0, gunPics.get(12), 4, 5, 3, 3, this,hero);
         //gunList.add(revolver);
 
-        Gun drumGun = new Gun("Drum Gun Assualt Rifle", 0, 0, gunPics.get(13), 3, 5, 15, 19, this,hero);
+        Gun drumGun = new Gun("Drum Gun Assualt Rifle", 0, 0, gunPics.get(13), 5, 5, 40, 25, this,hero);
         gunList.add(drumGun);
 
-        Gun starblasterGun = new Gun("Blaster Assualt Rifle", 0, 0, gunPics.get(14), 5, 5, 14, 10, this,hero);
+        Gun starblasterGun = new Gun("Blaster Assualt Rifle", 0, 0, gunPics.get(14), 4, 5, 20, 14, this,hero);
         gunList.add(starblasterGun);
 
-        Gun submachineGun = new Gun("Submachine Gun", 0, 0, gunPics.get(15), 2, 8, 30, 23, this,hero);
+        Gun submachineGun = new Gun("Submachine Gun", 0, 0, gunPics.get(15), 2, 20, 30, 25, this,hero);
         gunList.add(submachineGun);
         
         
@@ -645,7 +647,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
     public void spawnGun(){ // spawns a gun whenever the coin bar is full, picks a random gun and spawns it at a random point
         coins = 0;
-        Gun random = gunList.get((int)(Math.random()*gunList.size()));
+        int ran = (int)(Math.random()*gunList.size());
+        System.out.println(ran + "   " + gunList.size());
+        Gun random = gunList.get(ran);
       
 
         random.setVisible(true);
