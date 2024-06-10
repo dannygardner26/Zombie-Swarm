@@ -5,13 +5,13 @@ import java.awt.event.ActionListener;
 
 public class Coin extends GameObject {
 
-    private ImageIcon[] icons;
-    private Hero hero;
-    private int coinCount;
-    private boolean done;
-    private int phase;
-    private Timer coinTimer;
-    private GamePanel gp;
+    private ImageIcon[] icons;// array of images of coins, multiple due to animation 
+    private Hero hero; //hero for collison 
+    private int coinCount; // how much coins hero has
+    private boolean done; // if coin has been collected and disapeared 
+    private int phase; // for the animation
+    private Timer coinTimer; // animation essintial 
+    private GamePanel gp; // acess gp 
     
 /**
  * 

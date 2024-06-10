@@ -10,12 +10,12 @@ import java.awt.Font;
 
 public class Main implements ActionListener {
 
-    private JFrame frame; 
-    private JPanel titlescreen;
-    private JButton playButton;
+    private JFrame frame; //frame needed for bath menu screen and game panel 
+    private JPanel titlescreen; // the panel of the menu screen, similair to Gamepanel 
+    private JButton playButton; //button to press play that takes actionperformed to get game panel 
 
     
-
+  //essential method that creates both the gamepanel and menu screen to show up on the frame, and makes button work as intended 
     public void menu() {
         
         titlescreen = new JPanel();

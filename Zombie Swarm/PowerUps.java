@@ -6,12 +6,12 @@ import javax.swing.ImageIcon;
 public class PowerUps extends GameObject
 {
 
-    private ArrayList<String> powerUps;
-    private Hero hero;
-    private ImageIcon icon;
-    private String name;
-    private int id;
-    private boolean done;
+    private ArrayList<String> powerUps;// list of powerUps, we have one in gamepanel but was here in case
+    private Hero hero; // hero for collison 
+    private ImageIcon icon; // for images of the powerups 
+    private String name; // indicator of the powerup type 
+    private int id; // identification of powerup by number
+    private boolean done;// check of hero has collided and can remove 
 /**
  * 
  * @param x x-position of the powerup
