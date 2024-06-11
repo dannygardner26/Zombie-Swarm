@@ -26,7 +26,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
     private BufferedImage background;// image background
     private Hero hero; //hero, the person we move with WASD
     private static GamePanel tempGP;  // temporary gamepanel with same properties as this one 
-    private ArrayList<Gun> gunList  = new ArrayList<Gun>();//gun list 
+    private ArrayList<Gun> gunList;//gun list 
     private ArrayList<Gun> gunListUpdate; 
 
     private ArrayList<Zombie> zombieList; //list of zombies to acess
@@ -100,7 +100,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         this.fireTimer = 100;
         this.allMulti = 1;
         this.coinThreshold = 5;
-
+        gunList = new ArrayList<Gun>();
 
         //sound implementation, intilaized sounds class then had diffrent sounds to use at various parts of code by using setFile method 
         seGun = new Sounds();
@@ -109,7 +109,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         gsound = "Zombie Swarm/images/12-Gauge-Pump-Action-Shotgun-Close-Gunshot-D-www.fesliyanstudios.com - Copy.wav";
         reloads = "Zombie Swarm/images/1911-reload-6248.wav";
 
-        for(int i = 0; i < 19; i++){
+        for(int i = 0; i < 15; i++){
             gunPics.add(new ImageIcon("./Zombie Swarm/images/realGun" + i + ".png"));
         }
         
