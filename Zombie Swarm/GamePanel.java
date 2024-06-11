@@ -130,10 +130,10 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         gunList.add(AssaultRifle);
         Gun revolver = new Gun("Revolver", 0, 0, gunPics.get(2), 10, 10, 6, 5, this ,hero);
         gunList.add(revolver);  
-        Gun burst = new Gun("Burst Rifle", 0, 0, gunPics.get(3), 15, 20, 30, 5, this,hero);
-        gunList.add(burst);
-        Gun deagalGun = new Gun("Deagal Pistol", 0, 0, gunPics.get(4), 20, 15, 3, 3, this ,hero);
-        gunList.add(deagalGun);
+        // Gun burst = new Gun("Burst Rifle", 0, 0, gunPics.get(3), 15, 20, 30, 5, this,hero);
+        // gunList.add(burst);
+        // Gun deagalGun = new Gun("Deagal Pistol", 0, 0, gunPics.get(4), 20, 15, 3, 3, this ,hero);
+        // gunList.add(deagalGun);
         Gun stingerSMG = new Gun("Stinger Submachine Gun", 0,0, gunPics.get(5), 5, 15, 12, 15, this,hero);
         gunList.add(stingerSMG);
         Gun machineGun = new Gun("Machine Gun", 0,0, gunPics.get(6), 3, 50, 100, 30, this, hero);
@@ -419,7 +419,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
         //this code is used to spawn a gun whenever the bar fills up (past 100%)
         if(coinPercent >= 1)
         {
-            spawnGun();
+            this.spawnGun();
             increaseThreshold();
         }
 
@@ -648,6 +648,11 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
     public void spawnGun(){ // spawns a gun whenever the coin bar is full, picks a random gun and spawns it at a random point
         coins = 0;
+
+        Gun deagalGun = new Gun("Deagal Pistol", 0, 0, gunPics.get(4), 20, 15, 3, 3, this ,hero);
+        gunList.add(deagalGun);
+        Gun burst = new Gun("Burst Rifle", 0, 0, gunPics.get(3), 15, 20, 30, 5, this,hero);
+        gunList.add(burst);
         int ran = (int)(Math.random()*gunList.size());
         System.out.println(ran + "   " + gunList.size());
         Gun random = gunList.get(ran);
